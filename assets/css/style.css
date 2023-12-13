@@ -429,8 +429,8 @@ h6 {
   background: rgba(255, 255, 255, 0.9);
   padding-top: 30px;
   padding-bottom: 30px;
-  margin-bottom: 50px;
-  border-top: 4px solid #CC94CC;
+  margin-bottom: 250px;
+/*  border-top: 4px solid #CC94CC;*/
 }
 
 @media (max-width: 1200px) {
@@ -1284,8 +1284,16 @@ section {
 
   bottom: 0;
 }
-
-
+.mt-7{
+  margin-top: 140px;
+}
+.graph{
+  padding: 30px 30px 30px 30px;
+/*  border: 1px solid darkgray;*/
+}
+.graph:hover{
+  scale:1.03;
+}
 }
 #footer .footer-top {
   background: #f6f6f6;
