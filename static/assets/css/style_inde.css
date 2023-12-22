@@ -480,6 +480,12 @@ h6 {
 }
 .image-container {
   position: relative;
+  top: 130px;
+  right: 190px;
+}
+@media screen and (max-width: 1600px) {
+.image-container {
+  position: relative;
   top: 80px;
   right: 120px;
 }
@@ -492,6 +498,7 @@ h6 {
 .resultimg2{
   width:27%;
 
+}
 }
 @media screen and (max-width: 1000px) {
 .resultimg1{
