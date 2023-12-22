@@ -396,7 +396,7 @@ h6 {
 #hero {
   width: 100%;
   height: calc(100vh - 70px);
-  background: url("../img/slide-1.jpeg") center center;
+  background: url("../img/slide-2.jpeg") center center;
   background-size: cover;
   position: relative;
   margin-top: 70px;
@@ -476,5 +476,59 @@ h6 {
     font-size: 18px;
     line-height: 24px;
     margin-bottom: 30px;
+  }
+}
+.image-container {
+  position: relative;
+  top: 80px;
+  right: 120px;
+}
+.resultimg1{
+  width:30%;
+
+    animation: moveUpDown 1s ease-in-out infinite alternate;
+
+}
+.resultimg2{
+  width:27%;
+
+}
+@media screen and (max-width: 1000px) {
+.resultimg1{
+  width:40%;
+
+    animation: moveUpDown 1s ease-in-out infinite alternate;
+
+}
+.resultimg2{
+  width:37%;
+
+}
+.image-container {
+  position: relative;
+  top: 170px;
+  right: 140px;
+}
+}
+@media screen and (max-width: 800px) {
+.resultimg1{
+display:none;
+}
+.resultimg2{
+display:none;
+
+}
+.image-container {
+  position: relative;
+  top: 170px;
+  right: 140px;
+}
+}
+@keyframes moveUpDown {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-15px); /* Adjust the distance to move up */
   }
 }

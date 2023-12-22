@@ -65,7 +65,19 @@
   <!-- ======= Hero Section ======= -->
   <section id="hero" class="d-flex flex-column justify-content-center align-items-center">
     <div class="container text-end text-md-left" data-aos="fade-up">
-      <h1>Welcome to RELAXIO</h1>
+      <div class="row">
+          <div class="col-md-6">
+            <div class="image-container">
+                              <img class="img-fluid resultimg2 mx-auto" src="../static/assets/img/c2.png">
+
+                <img class="img-fluid resultimg1" src="../static/assets/img/c3.png">
+
+            </div>
+
+          </div>
+                  <div class="col-md-6" class="mt-md-5">
+                    <p class="mt-md-5"> &nbsp;</p>
+      <h1 class="mt-md-5">Welcome to RELAXIO</h1>
       <h2>Recovery Roadmap: Navigating to a Brighter Tomorrow</h2>
                                 {% if isLogin %}
               <a href="{{url_for('bsurvey')}}" class="btn-get-started scrollto">Get started</a>
@@ -75,6 +87,9 @@
 
 
         {%endif%}
+          </div>
+      </div>
+
     </div>
   </section>
 

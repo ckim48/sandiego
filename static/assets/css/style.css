@@ -400,7 +400,7 @@ h6 {
 #hero {
   width: 100%;
   height: calc(100vh - 70px);
-  background: url("../img/slide-1.jpeg") center center;
+  background: url("../img/slide-2.jpeg") center center;
   background-size: cover;
   position: relative;
   margin-top: 70px;
@@ -1383,10 +1383,13 @@ border-radius:25px;
     animation: moveUpDown 1s ease-in-out infinite alternate;
 
 }
-
+.image-container {
+  position: relative;
+  top: 150px;
+  right:150px;
+}
 .resultimg4{
   width:86%;
-  margin-top: 0px;
     animation: moveUpDown 1s ease-in-out infinite alternate;
 
 }
