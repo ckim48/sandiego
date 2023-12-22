@@ -478,10 +478,21 @@ h6 {
     margin-bottom: 30px;
   }
 }
+
 .image-container {
   position: relative;
   top: 130px;
   right: 190px;
+}
+.resultimg1{
+  width:33%;
+
+    animation: moveUpDown 1s ease-in-out infinite alternate;
+
+}
+.resultimg2{
+  width:30%;
+
 }
 @media screen and (max-width: 1600px) {
 .image-container {
