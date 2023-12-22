@@ -710,7 +710,9 @@ section {
 /*--------------------------------------------------------------
 # About Us
 --------------------------------------------------------------*/
-
+.aboutimg{
+border-radius:25px;
+}
 .mycol{
   padding: 50px 50px 50px 50px;
 }
@@ -1434,7 +1436,9 @@ section {
   border: 1px solid #ECC8EF;
   color: white;
 }
-
+.aboutp{
+text-align:justify;
+}
 
 .close{
     border:none;

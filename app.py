@@ -15,13 +15,13 @@ def index():
 @app.route("/dashboard/",methods=['GET'])
 def dashboard():
     if "username" not in session:
-        redirect(url_for("login"))
+        return redirect(url_for("login"))
     return render_template("index.html")
 
 @app.route("/chat",methods=['GET'])
 def chat():
     if "username" not in session:
-        redirect(url_for("login"))
+        return redirect(url_for("login"))
     return render_template("chat.html")
 @app.route("/about",methods=['GET','POST'])
 def about():
@@ -30,13 +30,13 @@ def about():
 @app.route("/bsurvey",methods=['GET','POST'])
 def bsurvey():
     if "username" not in session:
-        redirect(url_for("login"))
+        return redirect(url_for("login"))
     return render_template('before_survey.html')
 
 @app.route("/assistants",methods=['GET','POST'])
 def assistants():
     if "username" not in session:
-        redirect(url_for("login"))
+        return redirect(url_for("login"))
     return render_template('assistants.html')
 @app.route("/result/<int:score>",methods=['GET','POST'])
 def result(score):
@@ -44,24 +44,24 @@ def result(score):
 @app.route("/statistics",methods=['GET','POST'])
 def statistics():
     if "username" not in session:
-        redirect(url_for("login"))
+        return redirect(url_for("login"))
     return render_template('statistics.html')
 @app.route("/survey",methods=['GET','POST'])
 def survey():
     if "username" not in session:
-        redirect(url_for("login"))
+        return redirect(url_for("login"))
     return render_template('survey.html')
 
 @app.route("/survey_d",methods=['GET','POST'])
 def survey_d():
     if "username" not in session:
-        redirect(url_for("login"))
+        return redirect(url_for("login"))
     return render_template('survey_d.html')
 
 @app.route("/survey_g",methods=['GET','POST'])
 def survey_g():
     if "username" not in session:
-        redirect(url_for("login"))
+        return redirect(url_for("login"))
     return render_template('survey_g.html')
 @app.route("/result_d/<int:score>",methods=['GET','POST'])
 def result_d(score):
