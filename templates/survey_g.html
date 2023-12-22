@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Relaxio</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="../static/assets/img/favicon.png" rel="icon">
+  <link href="../static/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="../static/assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+  <link href="../static/assets/vendor/animate.css/animate.min.css" rel="stylesheet">
+  <link href="../static/assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="../static/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../static/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="../static/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="../static/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="../static/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="../static/assets/css/style.css" rel="stylesheet">
+
+</head>
+
+<body class="d-flex flex-column min-vh-100">
+
+
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top">
+    <div class="container d-flex align-items-center">
+
+      <!-- <a href="index.html" class="logo me-auto"><img src="../static/assets/img/logo.png" alt=""></a> -->
+      <!-- Uncomment below if you prefer to use an image logo -->
+      <h1 class="logo me-auto"><a href="{{url_for('index')}}l">Relaxio</a></h1>
+
+      <nav id="navbar" class="navbar order-last order-lg-0">
+        <ul>
+          <li><a class="nav-link scrollto " href="{{url_for('about')}}">About</a></li>
+          <li><a class="nav-link scrollto" href="{{url_for('bsurvey')}}">WELLNESS CHECK-UP</a></li>
+          <li><a class="nav-link scrollto" href="{{url_for('chat')}}">CHAT</a></li>
+                      <li><a class="nav-link scrollto" href="{{url_for('statistics')}}">DATA</a></li>
+          <li><a class="nav-link scrollto" href="{{url_for('assistants')}}">NEARBY CLINIC</a></li>
+
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+
+      <a href="#appointment" class="appointment-btn scrollto"><span class="d-none d-md-inline">Login</span> </a>
+
+    </div>
+  </header><!-- End Header -->
+
+
+
+  <main id="main">
+
+    <!-- ======= Featured Services Section ======= -->
+    <section id="survey" class="survey mt-5">
+      <div class="container">
+          <div class="section-title" data-aos="fade-up" data-aos-duration="1200">
+          <h2>Survey</h2>
+          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+        </div>
+               <form class="mt-7" id="surveyForm" action="/calculate_g" method="post">
+      <div class="form-group text-center" data-aos="fade-in" data-aos-duration="1200">
+        <label class="questions">1. I have been involved in group activities or practices because of betting money.</label><br>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="question9" id="q1_0" value="0">
+          <label class="form-check-label" for="q1_0">Never</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="question9" id="q1_1" value="1">
+          <label class="form-check-label" for="q1_1">Sometimes</label>
+        </div>
+                <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="question9" id="q1_2" value="2">
+          <label class="form-check-label" for="q1_2">Often</label>
+        </div>
+                <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="question9" id="q1_3" value="3">
+          <label class="form-check-label" for="q1_3">Frequently</label>
+        </div>
+
+        <!-- Repeat the similar structure for other options -->
+      </div>
+
+      <!-- Add similar form groups for the rest of the questions -->
+      
+      <!-- Example for another question -->
+      <div class="form-group text-center" data-aos="fade-in" data-aos-duration="1200">
+        <label class="questions">2. I have broken commitments with other friends due to promises made with friends involved in betting games.</label><br>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="question9" id="q1_0" value="0">
+          <label class="form-check-label" for="q1_0">Never</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="question9" id="q1_1" value="1">
+          <label class="form-check-label" for="q1_1">Sometimes</label>
+        </div>
+                <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="question9" id="q1_2" value="2">
+          <label class="form-check-label" for="q1_2">Often</label>
+        </div>
+                <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="question9" id="q1_3" value="3">
+          <label class="form-check-label" for="q1_3">Frequently</label>
+        </div>
+
+        <!-- Repeat the similar structure for other options -->
+      </div>
+            <div class="form-group text-center" data-aos="fade-in" data-aos-duration="1200">
+        <label class="questions">3. I have made plans for betting games.</label><br>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="question9" id="q1_0" value="0">
+          <label class="form-check-label" for="q1_0">Never</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="question9" id="q1_1" value="1">
+          <label class="form-check-label" for="q1_1">Sometimes</label>
+        </div>
+                <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="question9" id="q1_2" value="2">
+          <label class="form-check-label" for="q1_2">Often</label>
+        </div>
+                <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="question9" id="q1_3" value="3">
+          <label class="form-check-label" for="q1_3">Frequently</label>
+        </div>
+
+        <!-- Repeat the similar structure for other options -->
+      </div>
+            <div class="form-group text-center" data-aos="fade-in" data-aos-duration="1200">
+        <label class="questions">4. I have felt bad at times because of betting games.</label><br>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="question9" id="q1_0" value="0">
+          <label class="form-check-label" for="q1_0">Never</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="question9" id="q1_1" value="1">
+          <label class="form-check-label" for="q1_1">Sometimes</label>
+        </div>
+                <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="question9" id="q1_2" value="2">
+          <label class="form-check-label" for="q1_2">Often</label>
+        </div>
+                <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="question9" id="q1_3" value="3">
+          <label class="form-check-label" for="q1_3">Frequently</label>
+        </div>
+
+        <!-- Repeat the similar structure for other options -->
+      </div>
+            <div class="form-group text-center" data-aos="fade-in" data-aos-duration="1200">
+        <label class="questions">5. I have played betting games again to recover money previously lost.</label><br>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="question9" id="q1_0" value="0">
+          <label class="form-check-label" for="q1_0">Never</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="question9" id="q1_1" value="1">
+          <label class="form-check-label" for="q1_1">Sometimes</label>
+        </div>
+                <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="question9" id="q1_2" value="2">
+          <label class="form-check-label" for="q1_2">Often</label>
+        </div>
+                <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="question9" id="q1_3" value="3">
+          <label class="form-check-label" for="q1_3">Frequently</label>
+        </div>
+
+        <!-- Repeat the similar structure for other options -->
+      </div>
+            <div class="form-group text-center" data-aos="fade-in" data-aos-duration="1200">
+        <label class="questions">6. I have hidden the fact that I engage in betting games from parents or teachers.</label><br>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="question9" id="q1_0" value="0">
+          <label class="form-check-label" for="q1_0">Never</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="question9" id="q1_1" value="1">
+          <label class="form-check-label" for="q1_1">Sometimes</label>
+        </div>
+                <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="question9" id="q1_2" value="2">
+          <label class="form-check-label" for="q1_2">Often</label>
+        </div>
+                <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="question9" id="q1_3" value="3">
+          <label class="form-check-label" for="q1_3">Frequently</label>
+        </div>
+
+        <!-- Repeat the similar structure for other options -->
+      </div>
+            <div class="form-group text-center" data-aos="fade-in" data-aos-duration="1200">
+        <label class="questions">7. Within the past three months, I have felt that betting games have caused problems for me.</label><br>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="question9" id="q1_0" value="0">
+          <label class="form-check-label" for="q1_0">Never</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="question9" id="q1_1" value="1">
+          <label class="form-check-label" for="q1_1">Sometimes</label>
+        </div>
+                <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="question9" id="q1_2" value="2">
+          <label class="form-check-label" for="q1_2">Often</label>
+        </div>
+                <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="question9" id="q1_3" value="3">
+          <label class="form-check-label" for="q1_3">Frequently</label>
+        </div>
+
+        <!-- Repeat the similar structure for other options -->
+      </div>
+            <div class="form-group text-center" data-aos="fade-in" data-aos-duration="1200">
+        <label class="questions">8. I have used money that should have been spent on meals, clothes, movie tickets, etc., for betting games.
+</label><br>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="question9" id="q1_0" value="0">
+          <label class="form-check-label" for="q1_0">Never</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="question9" id="q1_1" value="1">
+          <label class="form-check-label" for="q1_1">Sometimes</label>
+        </div>
+                <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="question9" id="q1_2" value="2">
+          <label class="form-check-label" for="q1_2">Often</label>
+        </div>
+                <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="question9" id="q1_3" value="3">
+          <label class="form-check-label" for="q1_3">Frequently</label>
+        </div>
+        <!-- Repeat the similar structure for other options -->
+      </div>
+            <div class="form-group text-center" data-aos="fade-in" data-aos-duration="1200">
+        <label class="questions">9. I have secretly taken someone else's money or something valuable that could be turned into money for betting games.</label><br>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="question9" id="q1_0" value="0">
+          <label class="form-check-label" for="q1_0">Never</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="question9" id="q1_1" value="1">
+          <label class="form-check-label" for="q1_1">Sometimes</label>
+        </div>
+                <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="question9" id="q1_2" value="2">
+          <label class="form-check-label" for="q1_2">Often</label>
+        </div>
+                <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="question9" id="q1_3" value="3">
+          <label class="form-check-label" for="q1_3">Frequently</label>
+        </div>
+
+        <!-- Repeat the similar structure for other options -->
+      </div>
+
+      
+      
+<!--       <div class="text-center">
+        <a class="btn submit-btn mt-5" href="result.html"data-aos="fade-doen" data-aos-duration="1200">Submit</a>
+      </div>  -->   
+    </form>
+      </div>
+
+
+
+    </section><!-- End Cta Section -->
+
+
+   
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer" class="mt-auto">
+
+
+    <div class="container">
+      <div class="copyright">
+        &copy; Copyright <strong><span>Medicio</span></strong>. All Rights Reserved
+      </div>
+
+    </div>
+  </footer><!-- End Footer -->
+
+  <div id="preloader"></div>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="../static/assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="../static/assets/vendor/aos/aos.js"></script>
+  <script src="../static/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../static/assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="../static/assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="../static/assets/vendor/php-email-form/validate.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="../static/assets/js/main.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const form = document.getElementById("surveyForm");
+      const questions = form.querySelectorAll(".form-group");
+
+      let currentQuestion = 0;
+
+      // Function to show the next question
+      const showNextQuestion = () => {
+        if (currentQuestion < questions.length - 1) {
+          questions[currentQuestion].style.display = "none";
+          currentQuestion++;
+          questions[currentQuestion].style.display = "block";
+        } else {
+          form.submit(); // Submit the form if all questions are answered
+        }
+      };
+
+      // Hide all questions except the first one initially
+      for (let i = 1; i < questions.length; i++) {
+        questions[i].style.display = "none";
+      }
+
+      // Listen for change events on radio inputs to show the next question
+      form.addEventListener("change", showNextQuestion);
+    });
+</script>
+<script>
+  $(document).ready(function() {
+    $('input[type=radio]').change(function() {
+      var totalQuestions = 9; // Total number of questions
+      var answeredQuestions = $('input[type=radio]:checked').length;
+
+      if (answeredQuestions === totalQuestions) {
+        $('#surveyForm').submit(); // Submit the form when all questions are answered
+      }
+    });
+  });
+</script>
+</body>
+
+</html>

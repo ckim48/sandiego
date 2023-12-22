@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Relaxo Register</title>
+    <link href="../static/assets/img/favicon.png" rel="icon">
+    <link href="../static/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../static/assets/css/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+</head>
+<body>
+
+<div class="Container">
+    <div class="login-box mx-auto mt-5">
+        <h1 class="title text-center">Register</h1>
+        <form action="/register" method="POST">
+            <div class="form-group mt-4">
+                <label for="InputID" class="form-label">Username</label>
+                <input class="form-control" placeholder="Enter your username" id="InputID" name="username">
+            </div>
+            <div class="form-group mt-2 mb-1">
+                <label for="InputPassword" class="form-label">Password</label>
+                <input type="password" class="form-control" placeholder="Enter your password" id="InputPassword" name="password">
+            </div>
+            <div class="form-group mt-2 mb-1">
+                <label for="InputGender" class="form-label">Gender</label>
+                <select class="form-select" id="InputGender" name="gender">
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+            <div class="form-group mt-2 mb-1">
+                <label for="InputAge" class="form-label">Age</label>
+                <input type="number" class="form-control" placeholder="Enter your age" id="InputAge" name="age">
+            </div>
+
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    <div class="alert alert-danger mt-3" role="alert">
+                        Username is already existed.
+                    </div>
+                {% endif %}
+            {% endwith %}
+
+            <div class="submit">
+                <button type="submit" class="submit_btn mx-auto mb-5">Sign Up</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function(){
+        var showPassword = document.querySelector('.show-pw');
+        var password = document.getElementById('InputPassword');
+        showPassword.addEventListener('change', function(){
+            if(this.checked){
+                password.type = 'text';
+            }else{
+                password.type = 'password';
+            }
+        });
+    });
+</script>
+
+</body>
+</html>
