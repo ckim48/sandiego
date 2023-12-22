@@ -64,7 +64,7 @@
 
   <!-- ======= Hero Section ======= -->
   <section id="hero" class="d-flex flex-column justify-content-center align-items-center">
-    <div class="container text-end text-md-left" data-aos="fade-up">
+    <div class="container text-end text-md-left">
       <div class="row">
           <div class="col-md-6">
             <div class="image-container">
@@ -77,13 +77,15 @@
           </div>
                   <div class="col-md-6" class="mt-md-5">
                     <p class="mt-md-5"> &nbsp;</p>
-      <h1 class="mt-md-5">Welcome to RELAXIO</h1>
-      <h2>Recovery Roadmap: Navigating to a Brighter Tomorrow</h2>
+      <h1 class="mt-md-5" data-aos="fade-down">Welcome to RELAXIO</h1>
+                    <h2 class="typing-animation">
+  <span id="typed"></span>
+</h2>
                                 {% if isLogin %}
-              <a href="{{url_for('bsurvey')}}" class="btn-get-started scrollto">Get started</a>
+              <a href="{{url_for('bsurvey')}}" class="btn-get-started scrollto" id="delayedFadeIn" style="opacity: 0;">Get started</a>
 
         {%else%}
-              <a href="{{url_for('login')}}" class="btn-get-started scrollto">Login</a>
+              <a href="{{url_for('login')}}" class="btn-get-started scrollto" id="delayedFadeIn"style="opacity: 0;">>Login</a>
 
 
         {%endif%}
@@ -130,6 +132,22 @@
         window.location.href = 'index.html';
     }
 </script>
+  <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+  <script>
+    var typed = new Typed('#typed', {
+      strings: ['Recovery Roadmap: Navigating to a Brighter Tomorrow'],
+      typeSpeed: 60,
+    });
+  </script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+  <script>
+    $(document).ready(function() {
+  setTimeout(function() {
+    $("#delayedFadeIn").css("opacity", "1").addClass("fade-in-animation");
+  }, 1000); // Delay in milliseconds (2 seconds)
+});
+  </script>
   <!-- Template Main JS File -->
   <script src="../static/assets/js/main.js"></script>
 

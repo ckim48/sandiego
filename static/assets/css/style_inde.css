@@ -550,3 +550,26 @@ display:none;
     transform: translateY(-15px); /* Adjust the distance to move up */
   }
 }
+
+/* Add fade-in animation */
+.fade-in-animation {
+  animation: fadeInAnimation 0.8s ease; /* Use keyframe animation */
+}
+
+@keyframes fadeInAnimation {
+  0% {
+    opacity: 0; /* Start with 0 opacity */
+  }
+  25% {
+    opacity: 0.25; /* Gradually increase opacity */
+  }
+  50% {
+    opacity: 0.5; /* Further increase opacity */
+  }
+  75% {
+    opacity: 0.75; /* Continue increasing opacity */
+  }
+  100% {
+    opacity: 1; /* Fully visible with 100% opacity */
+  }
+}
