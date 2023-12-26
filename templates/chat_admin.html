@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Relaxio</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="../static/assets/img/favicon.png" rel="icon">
+  <link href="../static/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="../static/assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+  <link href="../static/assets/vendor/animate.css/animate.min.css" rel="stylesheet">
+  <link href="../static/assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="../static/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../static/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="../static/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="../static/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="../static/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="../static/assets/css/style.css" rel="stylesheet">
+
+</head>
+
+<body class="d-flex flex-column min-vh-100">
+
+
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top">
+    <div class="container d-flex align-items-center">
+
+      <!-- <a href="index.html" class="logo me-auto"><img src="../static/assets/img/logo.png" alt=""></a> -->
+      <!-- Uncomment below if you prefer to use an image logo -->
+      <h1 class="logo me-auto"><a href="{{url_for('index')}}">Relaxio</a></h1>
+
+      <nav id="navbar" class="navbar order-last order-lg-0">
+        <ul>
+          <li><a class="nav-link scrollto " href="{{url_for('about')}}">About</a></li>
+          <li><a class="nav-link scrollto" href="{{url_for('bsurvey')}}">WELLNESS CHECK-UP</a></li>
+          <li><a class="nav-link scrollto" href="{{url_for('chat')}}">CHAT</a></li>
+                      <li><a class="nav-link scrollto" href="{{url_for('statistics')}}">DATA</a></li>
+          <li><a class="nav-link scrollto" href="{{url_for('assistants')}}">NEARBY CLINIC</a></li>
+
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+
+
+    </div>
+  </header><!-- End Header -->
+
+
+
+  <main id="main">
+
+    <!-- ======= Featured Services Section ======= -->
+    <section id="featured-services" class="featured-services mt-5">
+   <div class="container mt-4">
+        <div class="row">
+            <div class="col-md-3">
+                <!-- Sidebar -->
+                <div class="card">
+                    <div class="card-header chatheader">
+                        Mailbox
+                    </div>
+                    <div class="list-group" id="emailList">
+                        <!-- List of emails -->
+                        <a href="#" class="list-group-item list-group-item-action" data-name="Alice" data-age="25" data-gender="Female" data-symptoms="Depression,Alcohol">Email 1</a>
+                        <a href="#" class="list-group-item list-group-item-action" data-name="Bob" data-age="30" data-gender="Male" data-symptoms="Gambling">Email 2</a>
+                        <a href="#" class="list-group-item list-group-item-action" data-name="Charlie" data-age="40" data-gender="Male" data-symptoms="Depression,Alcohol,Gambling">Email 3</a>
+                        <!-- Add more emails as needed -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-9">
+                <!-- Email Content -->
+                <div class="card">
+                    <div class="card-header chatheader">
+                        Email Content
+                    </div>
+                    <div class="card-body" id="emailContent">
+                        <!-- Display selected email content -->
+                        <h5 class="card-title" id="emailSubject">Selected Email</h5>
+                        <p class="card-text" id="emailInfo">Click on an email to see details...</p>
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#replyModal">
+                            Reply
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Reply Modal -->
+    <div class="modal fade" id="replyModal" tabindex="-1" role="dialog" aria-labelledby="replyModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="replyModalLabel">Compose Reply</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <!-- Reply form -->
+                    <form>
+                        <div class="form-group">
+                            <label for="replyMessage">Message</label>
+                            <textarea class="form-control" id="replyMessage" rows="3"></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Send Reply</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    </section>
+
+
+   
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer" class="mt-auto">
+
+
+    <div class="container">
+      <div class="copyright">
+        &copy; Copyright <strong><span>Relaxio</span></strong>. All Rights Reserved
+      </div>
+
+    </div>
+  </footer><!-- End Footer -->
+
+  <div id="preloader"></div>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="../static/assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="../static/assets/vendor/aos/aos.js"></script>
+  <script src="../static/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../static/assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="../static/assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="../static/assets/vendor/php-Chat-form/validate.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="../static/assets/js/main.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const form = document.getElementById("surveyForm");
+      const questions = form.querySelectorAll(".form-group");
+
+      let currentQuestion = 0;
+
+      // Function to show the next question
+      const showNextQuestion = () => {
+        if (currentQuestion < questions.length - 1) {
+          questions[currentQuestion].style.display = "none";
+          currentQuestion++;
+          questions[currentQuestion].style.display = "block";
+        } else {
+          form.submit(); // Submit the form if all questions are answered
+        }
+      };
+
+      // Hide all questions except the first one initially
+      for (let i = 1; i < questions.length; i++) {
+        questions[i].style.display = "none";
+      }
+
+      // Listen for change events on radio inputs to show the next question
+      form.addEventListener("change", showNextQuestion);
+    });
+</script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const ChatList = document.getElementById("ChatList");
+            const ChatContent = document.getElementById("ChatContent");
+            const ChatSubject = document.getElementById("ChatSubject");
+            const ChatInfo = document.getElementById("ChatInfo");
+
+            ChatList.addEventListener("click", function (event) {
+                const target = event.target;
+                if (target.matches("a.list-group-item")) {
+                    // Get data attributes
+                    const name = target.getAttribute("data-name");
+                    const age = target.getAttribute("data-age");
+                    const gender = target.getAttribute("data-gender");
+                    const symptoms = target.getAttribute("data-symptoms").split(',');
+
+                    // Update the Chat content when an Chat is clicked
+                    ChatSubject.textContent = target.textContent;
+                    ChatInfo.innerHTML = `
+                        <p><strong>Name:</strong> ${name}</p>
+                        <p><strong>Age:</strong> ${age}</p>
+                        <p><strong>Gender:</strong> ${gender}</p>
+                        <p><strong>Symptoms:</strong></p>
+                        <ul>
+                            ${symptoms.map(symptom => `<li>${symptom}</li>`).join('')}
+                        </ul>
+                    `;
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

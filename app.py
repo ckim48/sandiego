@@ -8,9 +8,12 @@ session = {}
 @app.route("/",methods=['GET'])
 def index():
     isLogin = False
+    isAdmin = False
     if "username" in session:
         isLogin = True
-    return render_template("index.html", isLogin=isLogin)
+        if session["username"] == "test123":
+            isAdmin = True
+    return render_template("index.html", isLogin=isLogin,isAdmin = True)
 
 @app.route("/dashboard/",methods=['GET'])
 def dashboard():
@@ -154,6 +157,11 @@ def register():
         if "username" in session:  # If user is already logged in, redirect to index/homepage
             return redirect(url_for('index'))
         return render_template('register.html')
+
+@app.route("/chat_admin",methods=['GET'])
+def chat_admin():
+    session.clear() # remove everything in session
+    return render_template("chat_admin.html")
 @app.route("/logout",methods=['GET'])
 def logout():
     session.clear() # remove everything in session
