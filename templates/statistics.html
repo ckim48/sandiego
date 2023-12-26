@@ -41,7 +41,7 @@
 
       <!-- <a href="index.html" class="logo me-auto"><img src="../static/assets/img/logo.png" alt=""></a> -->
       <!-- Uncomment below if you prefer to use an image logo -->
-      <h1 class="logo me-auto"><a href="{{url_for('index')}}l">Relaxio</a></h1>
+      <h1 class="logo me-auto"><a href="{{url_for('index')}}">Relaxio</a></h1>
 
       <nav id="navbar" class="navbar order-last order-lg-0">
         <ul>
@@ -72,7 +72,7 @@
         <div class="row">
           <!-- Location Pie Chart -->
           <div class="col-lg-4 mb-4 graph">
-            <div class="card">
+            <div class="card chartcard">
               <div class="card-body">
                     <h4 class="text-center">Location Distribution</h4>
                     <canvas id="locationChart" width="300" height="300"></canvas>              
@@ -82,7 +82,7 @@
           </div>
           <!-- Age Pie Chart -->
           <div class="col-lg-4 mb-4 graph">
-                        <div class="card">
+                        <div class="card chartcard">
               <div class="card-body">
                         <h4 class="text-center">Age Distribution</h4>
 
@@ -93,7 +93,7 @@
           </div>
           <!-- Gender Pie Chart -->
           <div class="col-lg-4 mb-4 graph">
-                        <div class="card">
+                        <div class="card chartcard">
               <div class="card-body">
                                     <h4 class="text-center">Gender Distribution</h4>
 
@@ -104,18 +104,18 @@
           </div>
           <!-- Symptom(s) Pie Chart -->
           <div class="col-lg-4 mb-4 mt-md-5 graph">
-                        <div class="card">
+                        <div class="card chartcard">
               <div class="card-body">
                                     <h4 class="text-center">Symptom Distribution</h4>
 
-            <canvas id="symptomChart" width="400" height="300"></canvas>          
+            <canvas class="mt-5" id="symptomChart" width="400" height="300"></canvas>
                 </div>
             </div>
 
           </div>
           <!-- Cause for Illness Pie Chart -->
           <div class="col-lg-4 mb-4 mt-md-5 graph">
-                        <div class="card">
+                        <div class="card chartcard">
               <div class="card-body">
                                     <h4 class="text-center">Cause Distribution</h4>
 
@@ -168,7 +168,7 @@
       const causeCanvas = document.getElementById("causeChart").getContext("2d");
 
       const locationData = {
-        labels: ["Location 1", "Location 2", "Location 3"],
+        labels: ["EST", "CDT", "PST"],
         datasets: [{
           data: [30, 40, 30],
           backgroundColor: ["#FF6384", "#36A2EB", "#FFCE56"]
@@ -191,7 +191,7 @@
 
 
       new Chart(ageCanvas, {
-        type: 'pie',
+        type: 'bar',
         data: ageData
       });
 
@@ -213,7 +213,7 @@
 
 
                   const symptomData = {
-        labels: ["symtom A", "symtom B","symtom C"],
+        labels: ["Depression", "Alcohol","Gambling"],
         datasets: [{
           data: [10, 40,20],
           backgroundColor: ["#FF6384", "#36A2EB", "#FFCE56"]
@@ -222,7 +222,7 @@
 
 
       new Chart(symptomCanvas, {
-        type: 'pie',
+        type: 'bar',
         data: symptomData
       });
 
