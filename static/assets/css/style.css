@@ -97,7 +97,13 @@ h6 {
   visibility: visible;
   opacity: 1;
 }
-
+  .form-control,
+  .form-select {
+    height: 38px; /* You can adjust this value to match the desired height */
+  }
+  .left-row{
+  height:600px;
+  }
 /*--------------------------------------------------------------
 # Disable aos animation delay on mobile devices
 --------------------------------------------------------------*/
@@ -1476,12 +1482,16 @@ color:white;
     border: 2px solid rgba(239, 204, 243,0.8);
     border-radius: 8px;
     padding: 25px;
+    height:460px;
 }
 .assistimg1{
-width:50%;
+width:40%;
 }
 .assistimg2{
-width:30%;
+width:20%;
+}
+.assistimg3{
+width:35%;
 }
 .assistitem{
     border: 1.5px solid rgba(239, 204, 243,0.4);
@@ -1529,4 +1539,32 @@ color:#84D939;
 
 .email-box form {
   margin-top: 15px;
+}
+
+    /* Add this CSS to your existing stylesheet */
+.survey-container {
+    position: relative;
+}
+
+.background-image {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 150px; /* Adjust height as needed */
+    background-image: url('../img/alhocol_survey.jpeg');
+    background-size: cover;
+    background-position: center;
+}
+
+
+.background-image2 {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 150px; /* Adjust height as needed */
+    background-image: url('../img/despress_srvey.jpeg');
+    background-size: cover;
+    background-position: center;
 }

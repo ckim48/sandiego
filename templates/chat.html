@@ -67,28 +67,54 @@
     <section id="featured-services" class="featured-services mt-5">
       <div class="container" data-aos="fade-up">
         <div class="section-title">
-          <h2>Chat</h2>
-          <p>Take on a transformative journey to mental and emotional well-being by empowering yourself through our self-diagnostic tests.</p>
-          <p>Take the first step towards a healthier you today</p>
+          <h2 class="mt-5">Chat</h2>
+          <p class="mt-5 mb-5">Please feel free to share an open and honest story about your current situation, environment, or any challenges you’re facing in the form below. We will make sure to reach out to you as soon as possible with someone who can provide assistance.</p>
+<!--          <p>Take the first step towards a healthier you today</p>-->
         </div>
-        <div class="row">
+        <div class="row mb-5">
           <div class="email-box">
             <h2 class="text-center">Get Assistant</h2>
             <form onsubmit="showModal(event)">
               <div class="mb-3">
-                <label for="emailInput" class="form-label">Type</label>
+          </div>
+              <div class="row">
+                <div class="col-md-6">
+                                              <div class="mb-3">
+                <label for="emailInput" class="form-label">Age</label>
+                <input class="form-control" id="" name="age" required>
+              </div>
+                </div>
+                                <div class="col-md-6">
+                                                            <div class="mb-3">
+                <label for="emailInput" class="form-label">Gender</label>
+                <input class="form-control" id="" name="gendere" required>
+              </div>
+                </div>
+              </div>
+                            <div class="row">
+                <div class="col-md-6">
+                                      <div class="mb-3">
+                <label for="emailInput" class="form-label">Location</label>
+                <input class="form-control" id="emailInput" name="email" required>
+              </div>
+                </div>
+                                <div class="col-md-6">
+                              <label for="emailInput" class="form-label">Type</label>
     <select class="form-select" id="typeSelect" name="type" required>
       <option value="depression">Select Type</option>
       <option value="depression">Depression</option>
       <option value="alcohol">Alochol</option>
       <option value="gambling">Gambling</option>
-      <option value="other">Other</option>
-      <!-- Add more options as needed -->
-    </select>              </div>
-                            <div class="mb-3">
-                <label for="emailInput" class="form-label">Location</label>
-                <input class="form-control" id="emailInput" name="email" required>
+<!--      <option value="other">Other</option>-->
+    </select>
               </div>
+                </div>
+
+
+
+
+
+
               <div class="mb-3">
                 <label for="messageInput" class="form-label">Message</label>
                 <textarea class="form-control" id="messageInput" name="message" rows="4" required></textarea>

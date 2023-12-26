@@ -74,21 +74,21 @@
             <div class="col-md-8 mt-md-5">
                 {% if score >= 11%}
                                 <h3 class="big-result">Your Current Status: <span class="high"> Severe</span> </h3>
-                <p class="mt-3 big-result2"><strong>Severe:</strong> Professional counseling may be helpful. Please click on the ‘Local Clinic’ button for more information.</p>
+                <p class="mt-3 big-result2"><strong>Severe:</strong> You have a history of repetitive gambling experiences, with severe loss of control and significant psychological, social, and economic harm. This indicates a high risk of developing gambling addiction, and professional help is needed. Please click the ‘Local Clinic’ button below.</p>
 
 
                 {% elif score >5 %}
                                 <h3 class="big-result">Your Current Status: <span class="high"> Moderately Severe</span> </h3>
-                <p class="mt-3 big-result2"><strong>Moderately Severe:</strong> Professional counseling may be helpful. Please click on the ‘Local Clinic’ button for more information.</p>
+                <p class="mt-3 big-result2"><strong>Moderately Severe:</strong> You have a history of repetitive gambling experiences, with severe loss of control and significant psychological, social, and economic harm. This indicates a high risk of developing gambling addiction, and professional help is needed. Please click the ‘Local Clinic’ button below.</p>
 
 
                 {% elif score >1 %}
                                 <h3 class="big-result">Your Current Status: <span class="moderate"> Moderate</span> </h3>
-                <p class="mt-3 big-result2"><strong>Moderate:</strong> You may find it helpful to talk to someone and share what’s on your mind.</p>
+                <p class="mt-3 big-result2"><strong>Moderate:</strong> You have experience with gambling, and it has led to moderate to severe levels of loss of control, resulting in psychological, social, and economic harms. There is a possibility of progressing to a problematic level. Please click the ‘Chat’ button below.</p>
 
                 {%else%}
                                 <h3 class="big-result">Your Current Status: <span class="good">Excellent</span> </h3>
-                <p class="mt-3 big-result2"><strong>Good:</strong> You are perfectly fine! Keep up with your current lifestyle, and if you need assistance, please click the ‘Chat’ button below.</p>
+                <p class="mt-3 big-result2"><strong>Good:</strong> You are in a state where you have no experience with gambling or have suffered any harm or damage from gambling activities. You are able to control your involvement in gambling.</p>
 
                 {%endif%}
 
@@ -96,7 +96,9 @@
 
 
     <div class="mt-5">
+        {% if score > 5%}
         <a class="result-btn me-4 mt-5" href="{{url_for('assistants')}}">Useful Resources</a>
+        {% endif %}
         <a class="result-btn ms-4 mt-5" href="result.html">Get Immediate Help</a>
     </div>
 

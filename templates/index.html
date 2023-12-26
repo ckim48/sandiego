@@ -47,7 +47,10 @@
         <ul>
           <li><a class="nav-link scrollto " href="{{url_for('about')}}">About</a></li>
           <li><a class="nav-link scrollto" href="{{url_for('bsurvey')}}">WELLNESS CHECK-UP</a></li>
+                                            {% if isLogin %}
+
           <li><a class="nav-link scrollto" href="{{url_for('chat')}}">CHAT</a></li>
+            {%endif%}
                       <li><a class="nav-link scrollto" href="{{url_for('statistics')}}">DATA</a></li>
           <li><a class="nav-link scrollto" href="{{url_for('assistants')}}">NEARBY CLINIC</a></li>
 
@@ -56,9 +59,9 @@
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
-
-<!--      <a class="appointment-btn scrollto"  href="{{url_for('login')}}"><span class="d-none d-md-inline">Login</span> </a>-->
-
+{% if isLogin %}
+      <a class="appointment-btn scrollto"  href="{{url_for('logout')}}"><span class="d-none d-md-inline">Logout</span> </a>
+{%endif%}
     </div>
   </header><!-- End Header -->
 
@@ -82,10 +85,10 @@
   <span id="typed"></span>
 </h2>
                                 {% if isLogin %}
-              <a href="{{url_for('bsurvey')}}" class="btn-get-started scrollto" id="delayedFadeIn" style="opacity: 0;">Get started</a>
+              <a href="{{url_for('bsurvey')}}" class="btn-get-started scrollto" id="delayedFadeIn" style="opacity: 0;"><strong>Get started</strong></a>
 
         {%else%}
-              <a href="{{url_for('login')}}" class="btn-get-started scrollto" id="delayedFadeIn"style="opacity: 0;">>Login</a>
+              <a href="{{url_for('login')}}" class="btn-get-started scrollto" id="delayedFadeIn"style="opacity: 0;">Login</a>
 
 
         {%endif%}

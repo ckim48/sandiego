@@ -74,21 +74,23 @@
             <div class="col-md-8 mt-md-5">
                 {% if score >= 15%}
                                 <h3 class="big-result">Your Current Status: <span class="high"> Severe</span> </h3>
-                <p class="mt-3 big-result2"><strong>Severe:</strong> Professional counseling may be helpful. Please click on the ‘Local Clinic’ button for more information.</p>
+                <p class="mt-3 big-result2"><strong>Severe:</strong>  Warrants active treatment with psychotherapy, medications, or combination. Please click on the ‘Local Clinic’ button for more information.
+</p>
 
 
                 {% elif score >9 %}
                                 <h3 class="big-result">Your Current Status: <span class="high"> Moderately Severe</span> </h3>
-                <p class="mt-3 big-result2"><strong>Moderately Severe:</strong> Professional counseling may be helpful. Please click on the ‘Local Clinic’ button for more information.</p>
+                <p class="mt-3 big-result2"><strong>Moderately Severe:</strong>  Warrants active treatment with psychotherapy, medications, or combination. Please click on the ‘Local Clinic’ button for more information.
+</p>
 
 
                 {% elif score >4 %}
                                 <h3 class="big-result">Your Current Status: <span class="moderate"> Moderate</span> </h3>
-                <p class="mt-3 big-result2"><strong>Moderate:</strong> You may find it helpful to talk to someone and share what’s on your mind.</p>
+                <p class="mt-3 big-result2"><strong>Moderate:</strong> Use clinical judgement (symptom duration, functional impairment) to determine necessity of treatment. Please click on the ‘Chat’ button below.</p>
 
                 {%else%}
                                 <h3 class="big-result">Your Current Status: <span class="good">Excellent</span> </h3>
-                <p class="mt-3 big-result2"><strong>Good:</strong> You are perfectly fine! Keep up with your current lifestyle, and if you need assistance, please click the ‘Chat’ button below.</p>
+                <p class="mt-3 big-result2"><strong>Good:</strong> Monitor; may not require treatment. If you need assistance, please click the ‘Chat’ button below.</p>
 
                 {%endif%}
 
@@ -96,7 +98,9 @@
 
 
     <div class="mt-5">
+                        {% if score > 15%}
         <a class="result-btn me-4 mt-5" href="{{url_for('assistants')}}">Useful Resources</a>
+        {%endif%}
         <a class="result-btn ms-4 mt-5" href="result.html">Get Immediate Help</a>
     </div>
 

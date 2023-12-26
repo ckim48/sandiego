@@ -67,29 +67,29 @@
     <section id="survey" class="survey mt-5">
       <div class="container">
           <div class="section-title">
-          <h2>Result</h2>
-          <p>The following are your results, please read carefully and follow the recommended actions or seek further assistance if needed..</p>
+          <h2 class="mt-5">Result</h2>
+          <p class="mt-5 mb-5">The following are your results, please read carefully and follow the recommended actions or seek further assistance if needed..</p>
         </div>
         <div class="row ">
             <div class="col-md-8 mt-md-5">
                 {% if score >= 21%}
                                 <h3 class="big-result">Your Current Status: <span class="high"> Severe</span> </h3>
-                <p class="mt-3 big-result2"><strong>Severe:</strong> Professional counseling may be helpful. Please click on the ‘Local Clinic’ button for more information.</p>
+                <p class="mt-3 big-result2"><strong>Severe:</strong> Alcohol addict, necessitating professional inpatient treatment and counseling. Please click the ‘Local Clinic’ button below.</p>
 
 
                 {% elif score >15 %}
                                 <h3 class="big-result">Your Current Status: <span class="high"> Moderately Severe</span> </h3>
-                <p class="mt-3 big-result2"><strong>Moderately Severe:</strong> Professional counseling may be helpful. Please click on the ‘Local Clinic’ button for more information.</p>
+                <p class="mt-3 big-result2"><strong>Moderately Severe:</strong> Professional counseling is required. Please click the ‘Local Clinic’ button below.</p>
 
 
                 {% elif score >12 %}
                                 <h3 class="big-result">Your Current Status: <span class="moderate"> Moderate</span> </h3>
-                <p class="mt-3 big-result2"><strong>Moderate:</strong> You may find it helpful to talk to someone and share what’s on your mind.</p>
+                <p class="mt-3 big-result2"><strong>Moderate:</strong> Problem drinker requiring appropriate intervention. Please click the ‘Chat’ button below.</p>
 
 
                 {% elif score >8 %}
                                 <h3 class="big-result">Your Current Status: <span class="good"> Good</span> </h3>
-                <p class="mt-3 big-result2"><strong>Good:</strong> You are perfectly fine! Keep up with your current lifestyle, and if you need assistance, please click the ‘Chat’ button below.</p>
+                <p class="mt-3 big-result2"><strong>Good:</strong>Habitual binge drinker, in need of support from those around you. Please click the ‘Chat’ button below.</p>
 
                 {%else%}
                                 <h3 class="big-result">Your Current Status: <span class="good">Excellent</span> </h3>
@@ -101,7 +101,11 @@
 
 
     <div class="mt-5">
+                        {% if score >15%}
+
         <a class="result-btn me-4 mt-5" href="{{url_for('assistants')}}">Useful Resources</a>
+
+        {%endif%}
         <a class="result-btn ms-4 mt-5" href="result.html">Get Immediate Help</a>
     </div>
 
@@ -114,7 +118,8 @@
                 <img class="img-fluid resultimg2 mx-auto" src="../static/assets/img/c4.png">
 
                 {% elif score >12%}
-                   <img class="img-fluid resultimg3 mx-auto" src="../static/assets/img/c1.png">
+<!--                   <img class="img-fluid resultimg3 mx-auto" src="../static/assets/img/c1.png">-->
+                <img class="img-fluid resultimg2 mx-auto" src="../static/assets/img/c2.png">
 
 
                 {% elif score >8 %}
