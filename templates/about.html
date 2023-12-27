@@ -54,7 +54,9 @@
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
-
+{% if isLogin %}
+      <a class="appointment-btn scrollto"  href="{{url_for('logout')}}"><span class="d-none d-md-inline">Logout</span> </a>
+{%endif%}
 
     </div>
   </header><!-- End Header -->
@@ -68,7 +70,7 @@
       <div class="container" data-aos="fade-up">
 
         <div class="section-title">
-          <h2>About Me</h2>
+          <h2 class="mt-5">About Me</h2>
         </div>
 
         <div class="row">

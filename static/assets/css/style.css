@@ -595,6 +595,7 @@ section {
 --------------------------------------------------------------*/
 .featured-services .icon-box {
   padding: 30px;
+  width: 500px;
   position: relative;
   overflow: hidden;
   background: #fff;
@@ -1583,4 +1584,7 @@ color:white;
 
 .chartcard{
 height:440px;
+}
+.mycontrol{
+height: 140px;
 }

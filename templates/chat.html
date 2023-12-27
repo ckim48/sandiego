@@ -54,7 +54,9 @@
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
-
+{% if isLogin %}
+      <a class="appointment-btn scrollto"  href="{{url_for('logout')}}"><span class="d-none d-md-inline">Logout</span> </a>
+{%endif%}
 
     </div>
   </header><!-- End Header -->
@@ -74,7 +76,7 @@
         <div class="row mb-5">
           <div class="email-box">
             <h2 class="text-center">Get Assistant</h2>
-            <form onsubmit="showModal(event)">
+            <form action="/chat" method="post" onsubmit="showModal(event)">
               <div class="mb-3">
           </div>
               <div class="row">
@@ -87,16 +89,25 @@
                                 <div class="col-md-6">
                                                             <div class="mb-3">
                 <label for="emailInput" class="form-label">Gender</label>
-                <input class="form-control" id="" name="gendere" required>
-              </div>
+    <select class="form-select" name="gender" required>
+      <option value="male">Select Gender</option>
+      <option value="female">Female</option>
+      <option value="male">Male</option>
+    </select>
+                                                            </div>
                 </div>
               </div>
                             <div class="row">
                 <div class="col-md-6">
                                       <div class="mb-3">
                 <label for="emailInput" class="form-label">Location</label>
-                <input class="form-control" id="emailInput" name="email" required>
-              </div>
+   <select class="form-select" name="location" required>
+           <option value="est">Select Location</option>
+
+      <option value="est">EST</option>
+      <option value="cdt">CDT</option>
+      <option value="pst">PST</option>
+    </select>                      </div>
                 </div>
                                 <div class="col-md-6">
                               <label for="emailInput" class="form-label">Type</label>
@@ -111,13 +122,16 @@
                 </div>
 
 
-
+              <div class="mb-3">
+                <label for="messageInput" class="form-label">Symptom</label>
+                <textarea class="form-control"  name="symptom" rows="4" required></textarea>
+              </div>
 
 
 
               <div class="mb-3">
                 <label for="messageInput" class="form-label">Message</label>
-                <textarea class="form-control" id="messageInput" name="message" rows="4" required></textarea>
+                <textarea class="form-control mycontrol" id="messageInput" name="message" rows="4" required></textarea>
               </div>
 
 <button type="submit" class="btn submit_btn d-block mx-auto">Send Message</button>
@@ -201,13 +215,56 @@
     });
 </script>
 <script>
-  function showModal(event) {
-    event.preventDefault(); // Prevent form submission (you might want to handle form submission via AJAX or other means)
+  function submitForm(event) {
+    event.preventDefault();
 
-    // Show the modal using its ID
-    var myModal = new bootstrap.Modal(document.getElementById('myModal'));
-    myModal.show();
+    const formData = new FormData(document.getElementById('messageForm'));
+
+    fetch('/chat', {
+      method: 'POST',
+      body: formData
+    })
+      .then(response => {
+        if (response.ok) {
+          return response.json(); // Parse the response JSON
+        } else {
+          throw new Error('Form submission failed.');
+        }
+      })
+      .then(data => {
+        // Data might contain a success message from the server
+        console.log('Data:', data); // Check the response from the server
+
+        // Show a success message in a modal or alert
+        showModal();
+      })
+      .catch(error => {
+        console.error('Error:', error);
+        // Show an error message in a modal or alert if desired
+      });
   }
+
+  function showModal() {
+    const myModal = new bootstrap.Modal(document.getElementById('myModal'));
+    myModal.show();
+
+    // Adding an event listener for the 'hidden.bs.modal' event
+    myModal.element.addEventListener('hidden.bs.modal', function () {
+      // This function will be executed when the modal is closed
+      console.log('Modal closed'); // Check if this log appears in the console
+    });
+  }
+</script>
+
+<script>
+  // Check if 'submitted' flag is True
+  {% if submitted %}
+    // Show the pop-up using Bootstrap modal or custom alert
+    document.addEventListener('DOMContentLoaded', function() {
+      const myModal = new bootstrap.Modal(document.getElementById('myModal'));
+      myModal.show();
+    });
+  {% endif %}
 </script>
 </body>
 

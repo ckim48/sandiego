@@ -41,7 +41,7 @@
 
       <!-- <a href="Relaxio.html" class="logo me-auto"><img src="../static/assets/img/logo.png" alt=""></a> -->
       <!-- Uncomment below if you prefer to use an image logo -->
-      <h1 class="logo me-auto"><a href="{{url_for('Relaxio')}}">Relaxio</a></h1>
+      <h1 class="logo me-auto"><a href="{{url_for('index')}}">Relaxio</a></h1>
 
       <nav id="navbar" class="navbar order-last order-lg-0">
         <ul>
@@ -54,7 +54,9 @@
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
-
+{% if isLogin %}
+      <a class="appointment-btn scrollto"  href="{{url_for('logout')}}"><span class="d-none d-md-inline">Logout</span> </a>
+{%endif%}
 
     </div>
   </header><!-- End Header -->

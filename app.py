@@ -1,10 +1,14 @@
 from flask import Flask, render_template, request, redirect, url_for, flash
 import sqlite3
-app = Flask(__name__)
+from datetime import datetime
 
+app = Flask(__name__)
+chat_id = 0
 app.secret_key = "abcde"
 session = {}
-
+def create_connection():
+    conn = sqlite3.connect('static/database.db')
+    return conn
 @app.route("/",methods=['GET'])
 def index():
     isLogin = False
@@ -13,7 +17,7 @@ def index():
         isLogin = True
         if session["username"] == "test123":
             isAdmin = True
-    return render_template("index.html", isLogin=isLogin,isAdmin = True)
+    return render_template("index.html", isLogin=isLogin,isAdmin = isAdmin)
 
 @app.route("/dashboard/",methods=['GET'])
 def dashboard():
@@ -21,54 +25,98 @@ def dashboard():
         return redirect(url_for("login"))
     return render_template("index.html")
 
-@app.route("/chat",methods=['GET'])
+@app.route("/chat",methods=['GET','POST'])
 def chat():
-    if "username" not in session:
-        return redirect(url_for("login"))
-    return render_template("chat.html")
+    if request.method == "POST":
+        global chat_id
+        username = session["username"]
+        age = request.form.get('age')
+        gender = request.form.get('gender')
+        location = request.form.get('location')
+        symptom = request.form.get('symptom')
+        date = datetime.now().strftime('%Y-%m-%d')
+        chat_id += 1
+
+        content = request.form.get('message')  # Assuming the message field is for content
+
+        conn = create_connection()
+        cursor = conn.cursor()
+        cursor.execute('INSERT INTO chats (username, date, content, id, read,symptom,location,age,gender) VALUES (?, ?, ?, ?,?,?,?,?,?)',
+                       (username, date, content, chat_id,0,symptom,location,age,gender))
+        conn.commit()
+        conn.close()
+        return render_template("chat.html", submitted=True)
+    else:
+        isLogin = False
+        if "username" not in session:
+            return redirect(url_for("login"))
+        else:
+            isLogin=True
+        return render_template("chat.html",isLogin=isLogin)
 @app.route("/about",methods=['GET','POST'])
 def about():
-    return render_template('about.html')
+    isLogin = False
+    if "username" in session:
+        isLogin = True
+    return render_template('about.html',isLogin=isLogin)
 
 @app.route("/bsurvey",methods=['GET','POST'])
 def bsurvey():
+    isLogin = False
     if "username" not in session:
         return redirect(url_for("login"))
-    return render_template('before_survey.html')
+    isLogin = True
+    return render_template('before_survey.html',isLogin=isLogin)
 
 @app.route("/assistants",methods=['GET','POST'])
 def assistants():
+    isLogin = False
     if "username" not in session:
         return redirect(url_for("login"))
-    return render_template('assistants.html')
+    isLogin = True
+    return render_template('assistants.html',isLogin=isLogin)
 @app.route("/result/<int:score>",methods=['GET','POST'])
 def result(score):
-    return render_template('result.html', score=score)
+    isLogin = False
+    if "username" in session:
+        isLogin = True
+    return render_template('result.html', score=score,isLogin=isLogin)
 @app.route("/statistics",methods=['GET','POST'])
 def statistics():
+    isLogin = False
     if "username" not in session:
         return redirect(url_for("login"))
-    return render_template('statistics.html')
+    isLogin=True
+    return render_template('statistics.html',isLogin=isLogin)
 @app.route("/survey",methods=['GET','POST'])
 def survey():
+    isLogin = False
     if "username" not in session:
         return redirect(url_for("login"))
-    return render_template('survey.html')
+    isLogin = True
+    return render_template('survey.html',isLogin=isLogin)
 
 @app.route("/survey_d",methods=['GET','POST'])
 def survey_d():
+    isLogin = False
     if "username" not in session:
         return redirect(url_for("login"))
-    return render_template('survey_d.html')
+    isLogin = True
+    return render_template('survey_d.html',isLogin=isLogin)
 
 @app.route("/survey_g",methods=['GET','POST'])
 def survey_g():
+    isLogin = False
     if "username" not in session:
         return redirect(url_for("login"))
-    return render_template('survey_g.html')
+    isLogin = True
+    return render_template('survey_g.html',isLogin=isLogin)
 @app.route("/result_d/<int:score>",methods=['GET','POST'])
 def result_d(score):
-    return render_template('result_d.html', score=score)
+    isLogin = False
+    if "username" in session:
+        isLogin = True
+    return render_template('result_d.html', score=score,isLogin=isLogin)
 @app.route('/calculate_d', methods=['POST'])
 def calculate_score_d():
     total_score = 0
@@ -131,7 +179,6 @@ def register():
         password = request.form.get("password")
         gender = request.form.get("gender")
         age = request.form.get("age")
-
         # Connect to the database
         conn = sqlite3.connect('static/database.db')
         cursor = conn.cursor()
@@ -150,7 +197,7 @@ def register():
         conn.commit()
         conn.close()
 
-        flash("Registration successful! You can now log in.")
+        # flash("Registration successful! You can now log in.")
         return redirect(url_for('login'))
 
     else:  # Accessing the registration page via GET request

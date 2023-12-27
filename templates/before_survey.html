@@ -54,7 +54,9 @@
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
-
+{% if isLogin %}
+      <a class="appointment-btn scrollto"  href="{{url_for('logout')}}"><span class="d-none d-md-inline">Logout</span> </a>
+{%endif%}
 
     </div>
   </header><!-- End Header -->
@@ -73,7 +75,7 @@
         </div>
         <div class="row mb-5">
           <div class="col-md-4 col-lg-4 d-flex align-items-stretch mb-5 mb-lg-0">
-            <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
+            <div class="icon-box mx-auto" data-aos="fade-up" data-aos-delay="100">
               <div class="icon"><i class="bi bi-cup-straw"></i></div>
               <h4 class="title"><a href="{{url_for('survey')}}">Alcohol Dependence</a></h4>
               <p class="description">Recognize and address alcohol dependency.</p>
@@ -82,7 +84,7 @@
           </div>
 
           <div class="col-md-4 col-lg-4 d-flex align-items-stretch mb-5 mb-lg-0">
-            <div class="icon-box" data-aos="fade-up" data-aos-delay="200">
+            <div class="icon-box mx-auto" data-aos="fade-up" data-aos-delay="200">
               <div class="icon"><i class="fas fa-heartbeat"></i></div>
               <h4 class="title"><a href="{{url_for('survey_d')}}">Depression</a></h4>
               <p class="description">Understand signs and impacts of depression.</p>
@@ -92,10 +94,10 @@
           </div>
 
           <div class="col-md-4 col-lg-4 d-flex align-items-stretch mb-5 mb-lg-0">
-            <div class="icon-box" data-aos="fade-up" data-aos-delay="300">
+            <div class="icon-box mx-auto" data-aos="fade-up" data-aos-delay="300">
               <div class="icon"><i class="bi bi-cash-coin"></i></div>
               <h4 class="title"><a href="{{url_for('survey_g')}}">Gambling Addiction</a></h4>
-              <p class="description">Get to know reasons for your thoughts and behavior.</p>
+              <p class="description">Get to know reasons for your gambling behavior.</p>
                                           <a class="test-now mt-4" href="{{url_for('survey_g')}}"style="display: block; text-align: right;"><i class="bi bi-chevron-right"></i> Test Now</a>
 
             </div>
