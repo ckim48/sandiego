@@ -1588,3 +1588,41 @@ height:440px;
 .mycontrol{
 height: 140px;
 }
+.bottom-right-image {
+  position: fixed;
+  bottom: 100px; /* Adjust the distance from the bottom as needed */
+  right: 80px; /* Adjust the distance from the right as needed */
+  z-index: 9999; /* Set a higher z-index if needed to ensure it's on top */
+}
+
+/* Optional styles for the image */
+.bottom-right-image img {
+  width: 250px; /* Adjust the width of the image */
+  height: auto; /* Maintain aspect ratio */
+}
+
+.bottom-right-imaged {
+  position: fixed;
+  bottom: 100px; /* Adjust the distance from the bottom as needed */
+  right: 120px; /* Adjust the distance from the right as needed */
+  z-index: 9999; /* Set a higher z-index if needed to ensure it's on top */
+}
+
+/* Optional styles for the image */
+.bottom-right-imaged img {
+  width: 290px; /* Adjust the width of the image */
+  height: auto; /* Maintain aspect ratio */
+}
+
+.bottom-right-imageg {
+  position: fixed;
+  bottom: 100px; /* Adjust the distance from the bottom as needed */
+  right: 140px; /* Adjust the distance from the right as needed */
+  z-index: 9999; /* Set a higher z-index if needed to ensure it's on top */
+}
+
+/* Optional styles for the image */
+.bottom-right-imageg img {
+  width: 190px; /* Adjust the width of the image */
+  height: auto; /* Maintain aspect ratio */
+}
