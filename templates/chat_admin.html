@@ -41,7 +41,7 @@
 
       <!-- <a href="Relaxio.html" class="logo me-auto"><img src="../static/assets/img/logo.png" alt=""></a> -->
       <!-- Uncomment below if you prefer to use an image logo -->
-      <h1 class="logo me-auto"><a href="{{url_for('Relaxio')}}">Relaxio</a></h1>
+      <h1 class="logo me-auto"><a href="{{url_for('index')}}">Relaxio</a></h1>
 
       <nav id="navbar" class="navbar order-last order-lg-0">
         <ul>
@@ -75,37 +75,82 @@
                     <div class="card-header chatheader">
                         Mailbox
                     </div>
-                    <div class="list-group" id="emailList">
-                        <!-- List of emails -->
-                        <a href="#" class="list-group-item list-group-item-action" data-name="Alice" data-age="25" data-gender="Female" data-symptoms="Depression,Alcohol">Email 1</a>
-                        <a href="#" class="list-group-item list-group-item-action" data-name="Bob" data-age="30" data-gender="Male" data-symptoms="Gambling">Email 2</a>
-                        <a href="#" class="list-group-item list-group-item-action" data-name="Charlie" data-age="40" data-gender="Male" data-symptoms="Depression,Alcohol,Gambling">Email 3</a>
-                        <!-- Add more emails as needed -->
-                    </div>
+<div class="list-group" id="emailList">
+{% for chat in chats %}
+  <a href="#" class="list-group-item list-group-item-action"
+     data-username="{{ chat[0] }}"
+     data-date="{{ chat[1] }}"
+     data-content="{{ chat[2] }}"
+     data-id="{{ chat[3] }}"
+     data-read="{{ chat[4] }}"
+     data-symptom="{{ chat[5] }}"
+     data-location="{{ chat[6] }}"
+     data-age="{{ chat[7] }}"
+     data-gender="{{ chat[8] }}">
+    Chat {{ chat[3] }} <!-- Display chat ID or any relevant chat identifier -->
+  </a>
+  <!-- Modal for sending chat -->
+  <div class="modal fade" id="sendChatModal_{{ chat[3] }}" tabindex="-1" role="dialog" aria-labelledby="sendChatModalLabel_{{ chat[3] }}" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="sendChatModalLabel_{{ chat[3] }}">Send Chat</h5>
+          <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p><strong>Username:</strong> {{ chat[0] }}</p>
+          <p><strong>Date:</strong> {{ chat[1] }}</p>
+          <p><strong>Content:</strong> {{ chat[2] }}</p>
+          <!-- Add form elements for sending a chat -->
+          <form id="sendChatForm_{{ chat[3] }}">
+            <div class="form-group">
+              <label class="mb-2" for="chatMessage_{{ chat[3] }}">Enter your message:</label>
+              <textarea class="form-control" id="chatMessage_{{ chat[3] }}" rows="3"></textarea>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" onclick="sendChat('{{ chat[3] }}')">Send</button>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endfor %}
+</div>
                 </div>
             </div>
 
-            <div class="col-md-9">
-                <!-- Email Content -->
-                <div class="card">
-                    <div class="card-header chatheader">
-                        Email Content
-                    </div>
-                    <div class="card-body" id="emailContent">
-                        <!-- Display selected email content -->
-                        <h5 class="card-title" id="emailSubject">Selected Email</h5>
-                        <p class="card-text" id="emailInfo">Click on an email to see details...</p>
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#replyModal">
-                            Reply
-                        </button>
-                    </div>
-                </div>
-            </div>
+<div class="col-md-9">
+
+    <div class="card">
+        <div class="card-header chatheader">
+            Email Content
+        </div>
+        {% for chat in chats %}
+        <div class="card-body chat-content" id="emailContent_{{ chat[3] }}">
+            <!-- Display selected email content -->
+            <h5 class="card-title emailSubject">Selected Email</h5>
+            <p class="card-text emailInfo">Click on an email to see details...</p>
+            <button type="button" class="btn btn-primary replyButton" data-bs-toggle="modal" data-bs-target="#sendChatModal_{{ chat[3] }}">
+                Reply
+            </button>
+        </div>
+            <!-- Reply Modal for this chat -->
+
+        {% endfor %}
+    </div>
+
+
+
+</div>
         </div>
     </div>
 
     <!-- Reply Modal -->
-    <div class="modal fade" id="replyModal" tabRelaxio="-1" role="dialog" aria-labelledby="replyModalLabel" aria-hidden="true">
+    <div class="modal fade" id="replyModal" tabindex="-1" role="dialog" aria-labelledby="replyModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -190,37 +235,71 @@
       form.addEventListener("change", showNextQuestion);
     });
 </script>
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const ChatList = document.getElementById("ChatList");
-            const ChatContent = document.getElementById("ChatContent");
-            const ChatSubject = document.getElementById("ChatSubject");
-            const ChatInfo = document.getElementById("ChatInfo");
+  <script>
+         document.addEventListener("DOMContentLoaded", function () {
+        const chatList = document.getElementById("emailList");
+        const chatContent = document.querySelectorAll(".chat-content");
+        const emailSubject = document.querySelectorAll(".emailSubject");
+        const emailInfo = document.querySelectorAll(".emailInfo");
 
-            ChatList.addEventListener("click", function (event) {
-                const target = event.target;
-                if (target.matches("a.list-group-item")) {
-                    // Get data attributes
-                    const name = target.getAttribute("data-name");
-                    const age = target.getAttribute("data-age");
-                    const gender = target.getAttribute("data-gender");
-                    const symptoms = target.getAttribute("data-symptoms").split(',');
+        // Display details of the first chat initially
+        updateChatDetails(chatList.firstElementChild);
 
-                    // Update the Chat content when an Chat is clicked
-                    ChatSubject.textContent = target.textContent;
-                    ChatInfo.innerHTML = `
-                        <p><strong>Name:</strong> ${name}</p>
-                        <p><strong>Age:</strong> ${age}</p>
-                        <p><strong>Gender:</strong> ${gender}</p>
-                        <p><strong>Symptoms:</strong></p>
-                        <ul>
-                            ${symptoms.map(symptom => `<li>${symptom}</li>`).join('')}
-                        </ul>
-                    `;
-                }
+        // Function to update chat details
+        function updateChatDetails(target) {
+            const username = target.getAttribute("data-username");
+            const date = target.getAttribute("data-date");
+            const content = target.getAttribute("data-content");
+            const id = target.getAttribute("data-id");
+            const read = target.getAttribute("data-read");
+            const symptom = target.getAttribute("data-symptom");
+                  const location = target.getAttribute("data-location");
+            const age = target.getAttribute("data-age");
+            const gender = target.getAttribute("data-gender");
+
+            // Loop through chatContent, emailSubject, and emailInfo to update details
+            chatContent.forEach(element => {
+                element.style.display = "none";
             });
+
+            document.getElementById(`emailContent_${id}`).style.display = "block";
+
+            emailSubject.forEach(element => {
+                element.textContent = `Chat ${id}`;
+            });
+
+            emailInfo.forEach(element => {
+                element.innerHTML = `
+                    <p><strong>Name:</strong> ${username}</p>
+                    <p><strong>Date:</strong> ${date}</p>
+                    <p><strong>Location:</strong> ${location}</p>
+                    <p><strong>Gender:</strong> ${gender}</p>
+                    <p><strong>Age:</strong> ${age}</p>
+                    <p><strong>Content:</strong> ${content}</p>
+                    <p><strong>Symptom:</strong> ${symptom}</p>
+                `;
+            });
+        }
+
+        // Event listener for clicking on list-group-item
+        chatList.addEventListener("click", function (event) {
+            const target = event.target;
+            if (target.matches("a.list-group-item")) {
+                updateChatDetails(target);
+            }
         });
-    </script>
+    });
+  </script>
+<script>
+      function sendChat(chatId) {
+    const message = document.getElementById(`chatMessage_${chatId}`).value;
+
+
+    alert(`Message sent for Chat ${chatId}: ${message}`);
+
+    $(`#sendChatModal_${chatId}`).modal('hide');
+  }
+</script>
 </body>
 
 </html>

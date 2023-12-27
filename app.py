@@ -210,8 +210,15 @@ def register():
 
 @app.route("/chat_admin",methods=['GET'])
 def chat_admin():
-    session.clear() # remove everything in session
-    return render_template("chat_admin.html")
+    conn = sqlite3.connect('static/database.db')  # Replace 'your_database.db' with your database file
+    cursor = conn.cursor()
+
+    cursor.execute("SELECT * FROM chats")  # Fetch all chats from the 'chats' table
+    chats = cursor.fetchall()  # Get all fetched chats
+    print("AAAAA",chats)
+    conn.close()
+
+    return render_template("chat_admin.html",chats=chats)
 @app.route("/logout",methods=['GET'])
 def logout():
     session.clear() # remove everything in session
