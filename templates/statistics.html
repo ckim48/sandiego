@@ -123,7 +123,7 @@
           <div class="col-lg-4 mb-4 mt-md-5 graph">
                         <div class="card chartcard">
               <div class="card-body">
-                                    <h4 class="text-center">Cause Distribution</h4>
+                                    <h4 class="text-center">Type Distribution</h4>
 
             <canvas id="causeChart" width="400" height="300"></canvas>            
                 </div>
@@ -196,10 +196,32 @@
       };
 
 
-      new Chart(ageCanvas, {
-        type: 'bar',
-        data: ageData
-      });
+  new Chart(ageCanvas, {
+  type: 'bar',
+  data: ageData,
+		    options:{
+		    	scales:{
+		    		y:{
+		    			title:{
+		    				display:true,
+		    				text:"Number"
+		    			}
+
+		    		},
+		    		x:{
+		    			title:{
+		    				display:true,
+		    				text:"Age"
+		    			}
+		    		}
+		    	},
+		    	plugins:{
+		    		legend:{
+		    			display:false
+		    		}
+		    	}
+		    }
+});
 
 
             const genderData = {
@@ -229,15 +251,38 @@
 
       new Chart(symptomCanvas, {
         type: 'bar',
-        data: symptomData
+        data: symptomData,
+		    options:{
+		    	scales:{
+		    		y:{
+		    			title:{
+		    				display:true,
+		    				text:"Number"
+		    			}
+
+		    		},
+		    		x:{
+		    			title:{
+		    				display:true,
+		    				text:"Symptom"
+		    			}
+		    		}
+		    	},
+		    	plugins:{
+		    		legend:{
+		    			display:false
+		    		}
+		    	}
+		    }
+  
       });
 
 
                         const causeData = {
-        labels: ["cause A", "cause B","cause C"],
+        labels: ["None", "Alcohol","Gambling","Depression"],
         datasets: [{
           data: [20, 20,20],
-          backgroundColor: ["#FF6384", "#36A2EB", "#FFCE56"]
+          backgroundColor: ["#FF6384", "#36A2EB", "#FFCE56","#E774E9"]
         }]
       };
 
