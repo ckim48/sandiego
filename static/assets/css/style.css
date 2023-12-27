@@ -1371,6 +1371,16 @@ border-radius:25px;
 .submit-btn:hover{
   background-color: #F74BFA;
 }
+
+.replyButton{
+  background-color: #CC94CC;
+  border: 1px solid #CC94CC;
+  padding: 8px 30px 8px 30px;
+}
+.replyButton:hover{
+border: 1px solid #F6DFF6;
+  background-color: #F6DFF6;
+}
 .resultimg1{
   width:50%;
   margin-top: -80px;

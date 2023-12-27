@@ -153,6 +153,32 @@
         </div>
     </div>
 
+    <!-- Reply Modal -->
+    <div class="modal fade" id="replyModal" tabindex="-1" role="dialog" aria-labelledby="replyModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="replyModalLabel">Compose Reply</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <!-- Reply form -->
+                    <form>
+                        <div class="form-group">
+                            <label for="replyMessage">Message</label>
+                            <textarea class="form-control" id="replyMessage" rows="3"></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Send Reply</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
     </section>
@@ -268,43 +294,16 @@
         });
     });
   </script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
 <script>
+      function sendChat(chatId) {
+    const message = document.getElementById(`chatMessage_${chatId}`).value;
 
-    function sendChat(chatId) {
-        const message = document.getElementById(`chatMessage_${chatId}`).value;
-        const username = document.querySelector(`[data-id="${chatId}"]`).getAttribute("data-username");
 
-        const data = {
-            username: username,
-            message: message
-        };
+    alert(`Message sent for Chat ${chatId}: ${message}`);
 
-        fetch('/reply-message', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(data)
-        })
-        .then(response => {
-            if (response.ok) {
-                // Message sent successfully
-                alert(`Message sent!`);
-                $('#sendChatModal_' + chatId).modal('hide'); // Closing the modal using jQuery
-            } else {
-                // Handle error
-                throw new Error('Failed to send message');
-            }
-        })
-        .catch(error => {
-            console.error('Error:', error);
-        });
-    }
+    $(`#sendChatModal_${chatId}`).modal('hide');
+  }
 </script>
-
-
 </body>
 
 </html>

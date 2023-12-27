@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, flash
+from flask import Flask, render_template, request, redirect, url_for, flash,jsonify
 import sqlite3
 from datetime import datetime
 
@@ -219,6 +219,27 @@ def chat_admin():
     conn.close()
 
     return render_template("chat_admin.html",chats=chats)
+
+chat_messages = {}
+@app.route('/reply-message', methods=['POST'])
+def reply_message():
+    if request.method == 'POST':
+        conn = sqlite3.connect('static/database.db')  # Replace 'your_database.db' with your database file
+        cursor = conn.cursor()
+        data = request.get_json()
+
+        # Extract data from the request
+        username = data.get('username')
+        date = datetime.now().strftime('%Y-%m-%d')
+        content = data.get('message')
+
+        # Save chat into the 'replay' table
+        cursor.execute('INSERT INTO reply (toUsername, date, content) VALUES (?, ?, ?)', (username, date, content))
+        conn.commit()
+
+        return jsonify({'success': True, 'message': 'Message saved successfully'})
+
+
 @app.route("/logout",methods=['GET'])
 def logout():
     session.clear() # remove everything in session
