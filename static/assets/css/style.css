@@ -1482,17 +1482,20 @@ color:white;
 .assist{
     border: 2px solid rgba(239, 204, 243,0.8);
     border-radius: 8px;
-    padding: 25px;
-    height:460px;
+    padding: 20px 4px 20px 4px;
+    height:455px;
 }
 .assistimg1{
-width:40%;
+width:37%;
 }
 .assistimg2{
-width:20%;
+width:18%;
+}
+.assistimg4{
+width:23%;
 }
 .assistimg3{
-width:35%;
+width:32%;
 }
 .assistitem{
     border: 1.5px solid rgba(239, 204, 243,0.4);
