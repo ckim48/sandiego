@@ -56,9 +56,12 @@ def chat():
 @app.route("/about",methods=['GET','POST'])
 def about():
     isLogin = False
+    isAdmin = False
     if "username" in session:
         isLogin = True
-    return render_template('about.html',isLogin=isLogin)
+        if session["username"] == "test123":
+            isAdmin = True
+    return render_template('about.html',isLogin=isLogin,isAdmin=isAdmin)
 
 @app.route("/bsurvey",methods=['GET','POST'])
 def bsurvey():
