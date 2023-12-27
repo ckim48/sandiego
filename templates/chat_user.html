@@ -47,8 +47,12 @@
         <ul>
           <li><a class="nav-link scrollto " href="{{url_for('about')}}">About</a></li>
           <li><a class="nav-link scrollto" href="{{url_for('bsurvey')}}">WELLNESS CHECK-UP</a></li>
+                                            {% if isLogin %}
+
           <li><a class="nav-link scrollto" href="{{url_for('chat')}}">CHAT</a></li>
-                      <li><a class="nav-link scrollto" href="{{url_for('statistics')}}">DATA</a></li>
+                      <li><a class="nav-link scrollto" href="{{url_for('chat_user')}}">REPLY</a></li>
+
+            {%endif%}                      <li><a class="nav-link scrollto" href="{{url_for('statistics')}}">DATA</a></li>
           <li><a class="nav-link scrollto" href="{{url_for('assistants')}}">NEARBY CLINIC</a></li>
 
         </ul>
@@ -131,7 +135,7 @@
 
     <div class="card">
         <div class="card-header chatheader">
-            Email Content
+            Reply
         </div>
         {% for chat in chats %}
         <div class="card-body chat-content" id="emailContent_{{ chat[3] }}">
@@ -269,18 +273,15 @@
             document.getElementById(`emailContent_${id}`).style.display = "block";
 
             emailSubject.forEach(element => {
-                element.textContent = `Chat ${id}`;
+                element.textContent = `Reply ${id}`;
             });
 
             emailInfo.forEach(element => {
                 element.innerHTML = `
-                    <p><strong>Name:</strong> ${username}</p>
+<!--                    <p><strong>Name:</strong> ${username}</p>-->
                     <p><strong>Date:</strong> ${date}</p>
-                    <p><strong>Location:</strong> ${location}</p>
-                    <p><strong>Gender:</strong> ${gender}</p>
-                    <p><strong>Age:</strong> ${age}</p>
                     <p><strong>Content:</strong> ${content}</p>
-                    <p><strong>Symptom:</strong> ${symptom}</p>
+<!--                    <p><strong>Symptom:</strong> ${symptom}</p>-->
                 `;
             });
         }

@@ -239,6 +239,17 @@ def reply_message():
 
         return jsonify({'success': True, 'message': 'Message saved successfully'})
 
+@app.route("/chat_user",methods=['GET'])
+def chat_user():
+    conn = sqlite3.connect('static/database.db')  # Replace 'your_database.db' with your database file
+    cursor = conn.cursor()
+    username = session["username"]
+    cursor.execute("SELECT * FROM reply where toUsername =?",(username,))  # Fetch all chats from the 'chats' table
+    chats = cursor.fetchall()  # Get all fetched chats
+    print("AAAAA",chats)
+    conn.close()
+
+    return render_template("chat_user.html",chats=chats)
 
 @app.route("/logout",methods=['GET'])
 def logout():
