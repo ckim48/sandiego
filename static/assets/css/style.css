@@ -1433,6 +1433,16 @@ border: 1px solid #F6DFF6;
     padding: 50px 50px 0px 50px;
 }
 
+@media screen and (max-width: 768px) {
+.login-box{
+    max-width: 400px;
+
+}
+.submit_btn{
+    padding: 10px 129px 10px 129px !important;
+}
+}
+
 .form-control{
     padding: 10px 10px 10px 10px
 }
@@ -1448,7 +1458,7 @@ border: 1px solid #F6DFF6;
     transition-duration: 0.5s;
     background-color:#CC94CC;
     color:white;
-    padding: 10px 169px 10px 169px
+    padding: 10px 169px 10px 169px;
 }
 
 .submit_btn:hover {

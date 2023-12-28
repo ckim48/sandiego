@@ -60,6 +60,7 @@
             {%endif%}
                       <li><a class="nav-link scrollto" href="{{url_for('statistics')}}">DATA</a></li>
           <li><a class="nav-link scrollto" href="{{url_for('assistants')}}">NEARBY CLINIC</a></li>
+<li class="logoutmenu"><a class="nav-link scrollto" href="{{url_for('logout')}}">Logout</a></li>
 
 <!--                    <li><a class="nav-link scrollto" href="{{url_for('statistics')}}">Statistics</a></li>-->
 
@@ -67,7 +68,7 @@
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
 {% if isLogin %}
-      <a class="appointment-btn scrollto"  href="{{url_for('logout')}}"><span class="d-none d-md-inline">Logout</span> </a>
+      <a class="appointment-btn scrollto logout"  href="{{url_for('logout')}}"><span class="d-none d-md-inline">Logout</span> </a>
 {%endif%}
     </div>
   </header><!-- End Header -->

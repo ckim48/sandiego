@@ -145,7 +145,17 @@ h6 {
 #header .logo img {
   max-height: 40px;
 }
-
+.logoutmenu{
+display:none !important;
+}
+@media screen and (max-width: 1000px) {
+    .logoutmenu{
+    display:block !important;
+    }
+    .logout{
+        display:none !important;
+    }
+}
 /**
 * Appointment Button
 */

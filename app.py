@@ -216,9 +216,11 @@ def chat_admin():
     cursor.execute("SELECT * FROM chats")  # Fetch all chats from the 'chats' table
     chats = cursor.fetchall()  # Get all fetched chats
     print("AAAAA",chats)
+    if "username" in session:
+        isLogin = True
     conn.close()
 
-    return render_template("chat_admin.html",chats=chats)
+    return render_template("chat_admin.html",chats=chats,isLogin=isLogin)
 
 chat_messages = {}
 @app.route('/reply-message', methods=['POST'])
@@ -247,9 +249,11 @@ def chat_user():
     cursor.execute("SELECT * FROM reply where toUsername =?",(username,))  # Fetch all chats from the 'chats' table
     chats = cursor.fetchall()  # Get all fetched chats
     print("AAAAA",chats)
+    if "username" in session:
+        isLogin = True
     conn.close()
 
-    return render_template("chat_user.html",chats=chats)
+    return render_template("chat_user.html",chats=chats,isLogin=isLogin)
 
 @app.route("/logout",methods=['GET'])
 def logout():
