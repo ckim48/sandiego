@@ -47,13 +47,22 @@
         <ul>
           <li><a class="nav-link scrollto " href="{{url_for('about')}}">About</a></li>
           <li><a class="nav-link scrollto" href="{{url_for('bsurvey')}}">WELLNESS CHECK-UP</a></li>
-                                            {% if isLogin %}
+                                                        {% if isAdmin %}
 
-          <li><a class="nav-link scrollto" href="{{url_for('chat')}}">CHAT</a></li>
-                        {% if isAdmin == False %}
-                      <li><a class="nav-link scrollto" href="{{url_for('chat_user')}}">REPLY</a></li>
-                        {%endif%}
-            {%endif%}                   <li><a class="nav-link scrollto" href="{{url_for('statistics')}}">DATA</a></li>
+          <li><a class="nav-link scrollto" href="{{url_for('chat_admin')}}">CHAT</a></li>
+            {%else%}
+                                                        {% if isLogin %}
+          <li class="dropdown"><a class="nav-link scrollto" href="{{url_for('chat')}}">CHAT<i class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li><a class="nav-link scrollto" href="{{url_for('chat')}}">Send Message</a></li>
+              <li><a class="nav-link scrollto" href="{{url_for('chat_user')}}">Inbox</a></li>
+            </ul>
+          </li>
+
+            {%endif%}
+
+            {%endif%}
+            <li><a class="nav-link scrollto" href="{{url_for('statistics')}}">DATA</a></li>
           <li><a class="nav-link scrollto" href="{{url_for('assistants')}}">NEARBY CLINIC</a></li>
 
         </ul>
@@ -82,7 +91,7 @@
                 <!-- Sidebar -->
                 <div class="card">
                     <div class="card-header chatheader">
-                        Mailbox
+                        Inbox
                     </div>
 <div class="list-group" id="emailList">
 {% for chat in chats %}
@@ -96,7 +105,7 @@
      data-location="{{ chat[6] }}"
      data-age="{{ chat[7] }}"
      data-gender="{{ chat[8] }}">
-    Chat {{ chat[3] }} <!-- Display chat ID or any relevant chat identifier -->
+    <strong>{{ chat[0] }}</strong> - {{ chat[1] }} <!-- Display chat ID or any relevant chat identifier -->
   </a>
   <!-- Modal for sending chat -->
   <div class="modal fade" id="sendChatModal_{{ chat[3] }}" tabindex="-1" role="dialog" aria-labelledby="sendChatModalLabel_{{ chat[3] }}" aria-hidden="true">
@@ -248,18 +257,33 @@
             document.getElementById(`emailContent_${id}`).style.display = "block";
 
             emailSubject.forEach(element => {
-                element.textContent = `Chat ${id}`;
+                element.textContent = `Chat ${id} - ${date}`;
             });
-
             emailInfo.forEach(element => {
                 element.innerHTML = `
-                    <p><strong>Name:</strong> ${username}</p>
-                    <p><strong>Date:</strong> ${date}</p>
-                    <p><strong>Location:</strong> ${location}</p>
-                    <p><strong>Gender:</strong> ${gender}</p>
-                    <p><strong>Age:</strong> ${age}</p>
-                    <p><strong>Content:</strong> ${content}</p>
-                    <p><strong>Symptom:</strong> ${symptom}</p>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <p><strong>Name:</strong> ${username}</p>
+                            <p><strong>Location:</strong> ${location}</p>
+                        </div>
+                        <div class="col-md-4">
+                            <p><strong>Age:</strong> ${age}</p>
+                            <p><strong>Symptom:</strong> ${symptom}</p>
+
+
+
+                        </div>
+
+                                                <div class="col-md-4">
+                            <p><strong>Gender:</strong> ${gender}</p>
+
+                        </div>
+                        <p><strong>Messages </strong></p>
+                            <div style="border: 1px solid #ccc; padding: 10px; width:80%; margin-left:10px; border-radius:5px;">
+            ${content}
+        </div>
+
+                    </div>
                 `;
             });
         }

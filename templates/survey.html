@@ -47,13 +47,23 @@
         <ul>
           <li><a class="nav-link scrollto " href="{{url_for('about')}}">About</a></li>
           <li><a class="nav-link scrollto" href="{{url_for('bsurvey')}}">WELLNESS CHECK-UP</a></li>
-                                             {% if isLogin %}
+                                                        {% if isAdmin %}
 
-          <li><a class="nav-link scrollto" href="{{url_for('chat')}}">CHAT</a></li>
-                        {% if isAdmin == False %}
-                      <li><a class="nav-link scrollto" href="{{url_for('chat_user')}}">REPLY</a></li>
-                        {%endif%}
-            {%endif%}                     <li><a class="nav-link scrollto" href="{{url_for('statistics')}}">DATA</a></li>
+          <li><a class="nav-link scrollto" href="{{url_for('chat_admin')}}">CHAT</a></li>
+            {%else%}
+                                                        {% if isLogin %}
+          <li class="dropdown"><a class="nav-link scrollto" href="{{url_for('chat')}}">CHAT<i class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li><a class="nav-link scrollto" href="{{url_for('chat')}}">Send Message</a></li>
+              <li><a class="nav-link scrollto" href="{{url_for('chat_user')}}">Inbox</a></li>
+            </ul>
+          </li>
+
+            {%endif%}
+
+            {%endif%}
+
+            <li><a class="nav-link scrollto" href="{{url_for('statistics')}}">DATA</a></li>
           <li><a class="nav-link scrollto" href="{{url_for('assistants')}}">NEARBY CLINIC</a></li>
 
         </ul>

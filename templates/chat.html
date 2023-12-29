@@ -47,13 +47,22 @@
         <ul>
           <li><a class="nav-link scrollto " href="{{url_for('about')}}">About</a></li>
           <li><a class="nav-link scrollto" href="{{url_for('bsurvey')}}">WELLNESS CHECK-UP</a></li>
-                                            {% if isLogin %}
+                                                        {% if isAdmin %}
 
-          <li><a class="nav-link scrollto" href="{{url_for('chat')}}">CHAT</a></li>
-                        {% if isAdmin == False %}
-                      <li><a class="nav-link scrollto" href="{{url_for('chat_user')}}">REPLY</a></li>
-                        {%endif%}
-            {%endif%}                      <li><a class="nav-link scrollto" href="{{url_for('statistics')}}">DATA</a></li>
+          <li><a class="nav-link scrollto" href="{{url_for('chat_admin')}}">CHAT</a></li>
+            {%else%}
+                                                        {% if isLogin %}
+          <li class="dropdown"><a class="nav-link scrollto" href="{{url_for('chat')}}">CHAT<i class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li><a class="nav-link scrollto" href="{{url_for('chat')}}">Send Message</a></li>
+              <li><a class="nav-link scrollto" href="{{url_for('chat_user')}}">Inbox</a></li>
+            </ul>
+          </li>
+
+            {%endif%}
+
+            {%endif%}
+            <li><a class="nav-link scrollto" href="{{url_for('statistics')}}">DATA</a></li>
           <li><a class="nav-link scrollto" href="{{url_for('assistants')}}">NEARBY CLINIC</a></li>
 
         </ul>
@@ -85,7 +94,7 @@
         <div class="row mb-5">
           <div class="email-box">
             <h2 class="text-center">Get Assistant</h2>
-            <form action="/chat" method="post" onsubmit="showModal(event)">
+            <form action="/chat" method="post">
               <div class="mb-3">
           </div>
               <div class="row">
@@ -196,60 +205,35 @@
 
   <!-- Template Main JS File -->
   <script src="../static/assets/js/main.js"></script>
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-      const form = document.getElementById("surveyForm");
-      const questions = form.querySelectorAll(".form-group");
 
-      let currentQuestion = 0;
-
-      // Function to show the next question
-      const showNextQuestion = () => {
-        if (currentQuestion < questions.length - 1) {
-          questions[currentQuestion].style.display = "none";
-          currentQuestion++;
-          questions[currentQuestion].style.display = "block";
-        } else {
-          form.submit(); // Submit the form if all questions are answered
-        }
-      };
-
-      // Hide all questions except the first one initially
-      for (let i = 1; i < questions.length; i++) {
-        questions[i].style.display = "none";
-      }
-
-      // Listen for change events on radio inputs to show the next question
-      form.addEventListener("change", showNextQuestion);
-    });
-</script>
 <script>
   function submitForm(event) {
     event.preventDefault();
 
     const formData = new FormData(document.getElementById('messageForm'));
 
-    fetch('/chat', {
+    fetch('/send', {
       method: 'POST',
       body: formData
     })
       .then(response => {
         if (response.ok) {
-          return response.json(); // Parse the response JSON
+          return response.json();
         } else {
           throw new Error('Form submission failed.');
         }
       })
       .then(data => {
-        // Data might contain a success message from the server
-        console.log('Data:', data); // Check the response from the server
-
-        // Show a success message in a modal or alert
-        showModal();
+        if (data.success) {
+          showModal();
+        } else {
+          console.error('Error:', data.error);
+          // Handle errors if needed
+        }
       })
       .catch(error => {
         console.error('Error:', error);
-        // Show an error message in a modal or alert if desired
+        // Show an error message if desired
       });
   }
 
@@ -257,10 +241,8 @@
     const myModal = new bootstrap.Modal(document.getElementById('myModal'));
     myModal.show();
 
-    // Adding an event listener for the 'hidden.bs.modal' event
     myModal.element.addEventListener('hidden.bs.modal', function () {
-      // This function will be executed when the modal is closed
-      console.log('Modal closed'); // Check if this log appears in the console
+      console.log('Modal closed');
     });
   }
 </script>

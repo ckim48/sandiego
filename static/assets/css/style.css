@@ -1008,6 +1008,7 @@ border-radius:25px;
 
 .departments .nav-link h4 {
   font-size: 18px;
+  margin-top:10px;
   font-weight: 600;
   transition: 0.3s;
 }
@@ -1018,6 +1019,7 @@ border-radius:25px;
 }
 
 .departments .nav-link:hover h4 {
+
   color: #CC94CC;
 }
 
@@ -1504,8 +1506,8 @@ color:white;
 .assist{
     border: 2px solid rgba(239, 204, 243,0.8);
     border-radius: 8px;
-    padding: 20px 4px 20px 4px;
-    height:455px;
+    padding: 20px 10px 20px 10px;
+    height:505px;
 }
 .assistimg1{
 width:37%;
@@ -1627,7 +1629,20 @@ height: 140px;
   width: 250px; /* Adjust the width of the image */
   height: auto; /* Maintain aspect ratio */
 }
-
+@media (min-width: 1000px) {
+.bottom-right-image img {
+  width: 350px; /* Adjust the width of the image */
+  height: auto; /* Maintain aspect ratio */
+}
+.bottom-right-imaged img {
+  width: 370px; /* Adjust the width of the image */
+  height: auto; /* Maintain aspect ratio */
+}
+.bottom-right-imageg img {
+  width: 250px; /* Adjust the width of the image */
+  height: auto; /* Maintain aspect ratio */
+}
+}
 .bottom-right-imaged {
   position: fixed;
   bottom: 100px; /* Adjust the distance from the bottom as needed */
@@ -1654,6 +1669,21 @@ height: 140px;
   height: auto; /* Maintain aspect ratio */
 }
 
+.bottom-right-imageg2 {
+  position: fixed;
+  bottom: 100px; /* Adjust the distance from the bottom as needed */
+  right: 50px; /* Adjust the distance from the right as needed */
+  z-index: 9999; /* Set a higher z-index if needed to ensure it's on top */
+}
+
+/* Optional styles for the image */
+.bottom-right-imageg2 img {
+  width: 200px; /* Adjust the width of the image */
+  height: auto; /* Maintain aspect ratio */
+}
+.replyimg{
+width:18%;
+}
   .custom-radio .form-check-label {
   pointer: cursor;
   background-color:#F6DFF6;

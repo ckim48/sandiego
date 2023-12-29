@@ -47,13 +47,23 @@
         <ul>
           <li><a class="nav-link scrollto " href="{{url_for('about')}}">About</a></li>
           <li><a class="nav-link scrollto" href="{{url_for('bsurvey')}}">WELLNESS CHECK-UP</a></li>
-                                            {% if isLogin %}
+                                                        {% if isAdmin %}
 
-          <li><a class="nav-link scrollto" href="{{url_for('chat')}}">CHAT</a></li>
-                        {% if isAdmin == False %}
-                      <li><a class="nav-link scrollto" href="{{url_for('chat_user')}}">REPLY</a></li>
-                        {%endif%}
-            {%endif%}                      <li><a class="nav-link scrollto" href="{{url_for('statistics')}}">DATA</a></li>
+          <li><a class="nav-link scrollto" href="{{url_for('chat_admin')}}">CHAT</a></li>
+            {%else%}
+                                                        {% if isLogin %}
+          <li class="dropdown"><a class="nav-link scrollto" href="{{url_for('chat')}}">CHAT<i class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li><a class="nav-link scrollto" href="{{url_for('chat')}}">Send Message</a></li>
+              <li><a class="nav-link scrollto" href="{{url_for('chat_user')}}">Inbox</a></li>
+            </ul>
+          </li>
+
+            {%endif%}
+
+            {%endif%}
+
+            <li><a class="nav-link scrollto" href="{{url_for('statistics')}}">DATA</a></li>
           <li><a class="nav-link scrollto" href="{{url_for('assistants')}}">NEARBY CLINIC</a></li>
 
         </ul>
@@ -95,7 +105,7 @@
           <div class="col-lg-4 mb-4 graph">
                         <div class="card chartcard">
               <div class="card-body">
-                        <h4 class="text-center">Age Distribution</h4>
+                        <h4 class="text-center mb-4">Age Distribution</h4>
 
             <canvas id="ageChart" width="300" height="300"></canvas>          
                 </div>
@@ -117,7 +127,7 @@
           <div class="col-lg-4 mb-4 mt-md-5 graph">
                         <div class="card chartcard">
               <div class="card-body">
-                                    <h4 class="text-center">Symptom Distribution</h4>
+                                    <h4 class="text-center mb-5">Symptom Distribution</h4>
 
             <canvas class="mt-5" id="symptomChart" width="400" height="300"></canvas>
                 </div>
@@ -209,15 +219,22 @@
 		    		y:{
 		    			title:{
 		    				display:true,
-		    				text:"Number"
-		    			}
+		    				text:"Number",
+		    				          font: {
+            weight: 'bold'
+          }
+		    			},
+
 
 		    		},
 		    		x:{
 		    			title:{
 		    				display:true,
-		    				text:"Age"
-		    			}
+		    				text:"Age",
+		    				          font: {
+            weight: 'bold'
+          }
+		    			},
 		    		}
 		    	},
 		    	plugins:{
@@ -262,15 +279,21 @@
 		    		y:{
 		    			title:{
 		    				display:true,
-		    				text:"Number"
-		    			}
+		    				text:"Number",
+		    				          font: {
+            weight: 'bold'
+          }
+		    			},
 
 		    		},
 		    		x:{
 		    			title:{
 		    				display:true,
-		    				text:"Symptom"
-		    			}
+		    				text:"Symptom",
+		    				          font: {
+            weight: 'bold'
+          }
+		    			},
 		    		}
 		    	},
 		    	plugins:{

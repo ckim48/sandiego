@@ -3,7 +3,7 @@ import sqlite3
 from datetime import datetime
 
 app = Flask(__name__)
-chat_id = 0
+chat_id = 14
 app.secret_key = "abcde"
 session = {}
 def create_connection():
@@ -24,9 +24,30 @@ def dashboard():
     if "username" not in session:
         return redirect(url_for("login"))
     return render_template("index.html")
+@app.route("/send",methods=['POST'])
+def send():
+    global chat_id
+    username = session["username"]
+    age = request.form.get('age')
+    gender = request.form.get('gender')
+    location = request.form.get('location')
+    symptom = request.form.get('symptom')
+    date = datetime.now().strftime('%Y-%m-%d')
+    chat_id += 1
 
+    content = request.form.get('message')  # Assuming the message field is for content
+
+    conn = create_connection()
+    cursor = conn.cursor()
+    cursor.execute(
+        'INSERT INTO chats (username, date, content, id, read,symptom,location,age,gender) VALUES (?, ?, ?, ?,?,?,?,?,?)',
+        (username, date, content, chat_id, 0, symptom, location, age, gender))
+    conn.commit()
+    conn.close()
+    return redirect(url_for("chat"))
 @app.route("/chat",methods=['GET','POST'])
 def chat():
+    isLogin = False
     if request.method == "POST":
         global chat_id
         username = session["username"]
@@ -45,13 +66,13 @@ def chat():
                        (username, date, content, chat_id,0,symptom,location,age,gender))
         conn.commit()
         conn.close()
-        return render_template("chat.html", submitted=True)
+        return render_template("chat.html", submitted=True,isLogin=True)
     else:
-        isLogin = False
+
         if "username" not in session:
             return redirect(url_for("login"))
         else:
-            isLogin=True
+            isLogin = True
         return render_template("chat.html",isLogin=isLogin)
 @app.route("/about",methods=['GET','POST'])
 def about():
