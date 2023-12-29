@@ -1655,6 +1655,7 @@ height: 140px;
 }
 
   .custom-radio .form-check-label {
+  pointer: cursor;
   background-color:#F6DFF6;
     padding: 0.5rem 1rem; /* Adjust padding as needed */
     border: 1px solid #F6DFF6;/* Button border color */
