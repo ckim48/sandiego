@@ -47,12 +47,13 @@
         <ul>
           <li><a class="nav-link scrollto " href="{{url_for('about')}}">About</a></li>
           <li><a class="nav-link scrollto" href="{{url_for('bsurvey')}}">WELLNESS CHECK-UP</a></li>
-                                            {% if isLogin %}
+                                             {% if isLogin %}
 
           <li><a class="nav-link scrollto" href="{{url_for('chat')}}">CHAT</a></li>
+                        {% if isAdmin == False %}
                       <li><a class="nav-link scrollto" href="{{url_for('chat_user')}}">REPLY</a></li>
-
-            {%endif%}                      <li><a class="nav-link scrollto" href="{{url_for('statistics')}}">DATA</a></li>
+                        {%endif%}
+            {%endif%}                     <li><a class="nav-link scrollto" href="{{url_for('statistics')}}">DATA</a></li>
           <li><a class="nav-link scrollto" href="{{url_for('assistants')}}">NEARBY CLINIC</a></li>
 
         </ul>
@@ -84,23 +85,23 @@ For accurate results, kindly provide honest responses.</p>
                <form class="mt-7" id="surveyForm" action="/calculate" method="post">
       <div class="form-group text-center" data-aos="fade-in" data-aos-duration="1200">
         <label class="questions">1. I’ve not been able to study for an exam because of alcohol before.</label><br>
-        <div class="form-check form-check-inline">
+        <div class="form-check form-check-inline custom-radio">
           <input class="form-check-input" type="radio" name="question1" id="q1_0" value="0">
           <label class="form-check-label" for="q1_0">Never</label>
         </div>
-        <div class="form-check form-check-inline">
+        <div class="form-check form-check-inline custom-radio">
           <input class="form-check-input" type="radio" name="question1" id="q1_0" value="1">
           <label class="form-check-label" for="q1_0">Rarely</label>
         </div>
-                <div class="form-check form-check-inline">
+                <div class="form-check form-check-inline custom-radio">
           <input class="form-check-input" type="radio" name="question1" id="q1_0" value="2">
           <label class="form-check-label" for="q1_0">Sometimes</label>
         </div>
-                <div class="form-check form-check-inline">
+                <div class="form-check form-check-inline custom-radio">
           <input class="form-check-input" type="radio" name="question1" id="q1_0" value="3">
           <label class="form-check-label" for="q1_0">Often</label>
         </div>
-                <div class="form-check form-check-inline">
+                <div class="form-check form-check-inline custom-radio">
           <input class="form-check-input" type="radio" name="question1" id="q1_0" value="4">
           <label class="form-check-label" for="q1_0">Frequently</label>
         </div>
@@ -112,23 +113,23 @@ For accurate results, kindly provide honest responses.</p>
       <!-- Example for another question -->
       <div class="form-group text-center" data-aos="fade-in" data-aos-duration="1200">
         <label class="questions">2. I’ve been thinking that I’ve been drinking too much.</label><br>
-        <div class="form-check form-check-inline">
+        <div class="form-check form-check-inline custom-radio">
           <input class="form-check-input" type="radio" name="question2" id="q1_1" value="0">
           <label class="form-check-label" for="q1_1">Never</label>
         </div>
-        <div class="form-check form-check-inline">
+        <div class="form-check form-check-inline custom-radio">
           <input class="form-check-input" type="radio" name="question2" id="q1_1" value="1">
           <label class="form-check-label" for="q1_1">Rarely</label>
         </div>
-                <div class="form-check form-check-inline">
+                <div class="form-check form-check-inline custom-radio">
           <input class="form-check-input" type="radio" name="question2" id="q1_1" value="2">
           <label class="form-check-label" for="q1_1">Sometimes</label>
         </div>
-                <div class="form-check form-check-inline">
+                <div class="form-check form-check-inline custom-radio">
           <input class="form-check-input" type="radio" name="question2" id="q1_1" value="3">
           <label class="form-check-label" for="q1_1">Often</label>
         </div>
-                <div class="form-check form-check-inline">
+                <div class="form-check form-check-inline custom-radio">
           <input class="form-check-input" type="radio" name="question2" id="q1_1s" value="4">
           <label class="form-check-label" for="q1_1">Frequently</label>
         </div>
@@ -136,23 +137,23 @@ For accurate results, kindly provide honest responses.</p>
       </div>
             <div class="form-group text-center" data-aos="fade-in" data-aos-duration="1200">
         <label class="questions">3. I’ve thought that I need to cut down on alcohol.</label><br>
-        <div class="form-check form-check-inline">
+        <div class="form-check form-check-inline custom-radio">
           <input class="form-check-input" type="radio" name="question3" id="q1_0" value="0">
           <label class="form-check-label" for="q1_0">Never</label>
         </div>
-        <div class="form-check form-check-inline">
+        <div class="form-check form-check-inline custom-radio">
           <input class="form-check-input" type="radio" name="question3" id="q1_1" value="1">
           <label class="form-check-label" for="q1_1">Rarely</label>
         </div>
-                <div class="form-check form-check-inline">
+                <div class="form-check form-check-inline custom-radio">
           <input class="form-check-input" type="radio" name="question3" id="q1_2" value="2">
           <label class="form-check-label" for="q1_2">Sometimes</label>
         </div>
-                <div class="form-check form-check-inline">
+                <div class="form-check form-check-inline custom-radio">
           <input class="form-check-input" type="radio" name="question3" id="q1_3" value="3">
           <label class="form-check-label" for="q1_3">Often</label>
         </div>
-                <div class="form-check form-check-inline">
+                <div class="form-check form-check-inline custom-radio">
           <input class="form-check-input" type="radio" name="question3" id="q1_4" value="4">
           <label class="form-check-label" for="q1_4">Frequently</label>
         </div>
@@ -160,23 +161,23 @@ For accurate results, kindly provide honest responses.</p>
       </div>
             <div class="form-group text-center" data-aos="fade-in" data-aos-duration="1200">
         <label class="questions">4. I’ve experienced problems in my school life due to alcohol.</label><br>
-        <div class="form-check form-check-inline">
+        <div class="form-check form-check-inline custom-radio">
           <input class="form-check-input" type="radio" name="question4" id="q1_0" value="0">
           <label class="form-check-label" for="q1_0">Never</label>
         </div>
-        <div class="form-check form-check-inline">
+        <div class="form-check form-check-inline custom-radio">
           <input class="form-check-input" type="radio" name="question4" id="q1_1" value="1">
           <label class="form-check-label" for="q1_1">Rarely</label>
         </div>
-                <div class="form-check form-check-inline">
+                <div class="form-check form-check-inline custom-radio">
           <input class="form-check-input" type="radio" name="question4" id="q1_2" value="2">
           <label class="form-check-label" for="q1_2">Sometimes</label>
         </div>
-                <div class="form-check form-check-inline">
+                <div class="form-check form-check-inline custom-radio">
           <input class="form-check-input" type="radio" name="question4" id="q1_3" value="3">
           <label class="form-check-label" for="q1_3">Often</label>
         </div>
-                <div class="form-check form-check-inline">
+                <div class="form-check form-check-inline custom-radio">
           <input class="form-check-input" type="radio" name="question4" id="q1_4" value="4">
           <label class="form-check-label" for="q1_4">Frequently</label>
         </div>
@@ -184,23 +185,23 @@ For accurate results, kindly provide honest responses.</p>
       </div>
             <div class="form-group text-center" data-aos="fade-in" data-aos-duration="1200">
         <label class="questions">5. I’ve driven under the influence of alcohol (on a motorcycle or in a car) or ridden in a vehicle with someone who was drunk.</label><br>
-        <div class="form-check form-check-inline">
+        <div class="form-check form-check-inline custom-radio">
           <input class="form-check-input" type="radio" name="question5" id="q1_0" value="0">
           <label class="form-check-label" for="q1_0">Never</label>
         </div>
-        <div class="form-check form-check-inline">
+        <div class="form-check form-check-inline custom-radio">
           <input class="form-check-input" type="radio" name="question5" id="q1_1" value="1">
           <label class="form-check-label" for="q1_1">Rarely</label>
         </div>
-                <div class="form-check form-check-inline">
+                <div class="form-check form-check-inline custom-radio">
           <input class="form-check-input" type="radio" name="question5" id="q1_2" value="2">
           <label class="form-check-label" for="q1_2">Sometimes</label>
         </div>
-                <div class="form-check form-check-inline">
+                <div class="form-check form-check-inline custom-radio">
           <input class="form-check-input" type="radio" name="question5" id="q1_3" value="3">
           <label class="form-check-label" for="q1_3">Often</label>
         </div>
-                <div class="form-check form-check-inline">
+                <div class="form-check form-check-inline custom-radio">
           <input class="form-check-input" type="radio" name="question5" id="q1_4" value="4">
           <label class="form-check-label" for="q1_4">Frequently</label>
         </div>
@@ -208,23 +209,23 @@ For accurate results, kindly provide honest responses.</p>
       </div>
             <div class="form-group text-center" data-aos="fade-in" data-aos-duration="1200">
         <label class="questions">6. I had a drink to relieve a hangover the day after drinking.</label><br>
-        <div class="form-check form-check-inline">
+        <div class="form-check form-check-inline custom-radio">
           <input class="form-check-input" type="radio" name="question6" id="q1_0" value="0">
           <label class="form-check-label" for="q1_0">Never</label>
         </div>
-        <div class="form-check form-check-inline">
+        <div class="form-check form-check-inline custom-radio">
           <input class="form-check-input" type="radio" name="question6" id="q1_1" value="1">
           <label class="form-check-label" for="q1_1">Rarely</label>
         </div>
-                <div class="form-check form-check-inline">
+                <div class="form-check form-check-inline custom-radio">
           <input class="form-check-input" type="radio" name="question6" id="q1_2" value="2">
           <label class="form-check-label" for="q1_2">Sometimes</label>
         </div>
-                <div class="form-check form-check-inline">
+                <div class="form-check form-check-inline custom-radio">
           <input class="form-check-input" type="radio" name="question6" id="q1_3" value="3">
           <label class="form-check-label" for="q1_3">Often</label>
         </div>
-                <div class="form-check form-check-inline">
+                <div class="form-check form-check-inline custom-radio">
           <input class="form-check-input" type="radio" name="question6" id="q1_4" value="4">
           <label class="form-check-label" for="q1_4">Frequently</label>
         </div>
@@ -232,23 +233,23 @@ For accurate results, kindly provide honest responses.</p>
       </div>
             <div class="form-group text-center" data-aos="fade-in" data-aos-duration="1200">
         <label class="questions">7. I’ve had trouble remembering things I did after drinking alcohol.</label><br>
-        <div class="form-check form-check-inline">
+        <div class="form-check form-check-inline custom-radio">
           <input class="form-check-input" type="radio" name="question7" id="q1_0" value="0">
           <label class="form-check-label" for="q1_0">Never</label>
         </div>
-        <div class="form-check form-check-inline">
+        <div class="form-check form-check-inline custom-radio">
           <input class="form-check-input" type="radio" name="question7" id="q1_1" value="1">
           <label class="form-check-label" for="q1_1">Rarely</label>
         </div>
-                <div class="form-check form-check-inline">
+                <div class="form-check form-check-inline custom-radio">
           <input class="form-check-input" type="radio" name="question7" id="q1_2" value="2">
           <label class="form-check-label" for="q1_2">Sometimes</label>
         </div>
-                <div class="form-check form-check-inline">
+                <div class="form-check form-check-inline custom-radio">
           <input class="form-check-input" type="radio" name="question7" id="q1_3" value="3">
           <label class="form-check-label" for="q1_3">Often</label>
         </div>
-                <div class="form-check form-check-inline">
+                <div class="form-check form-check-inline custom-radio">
           <input class="form-check-input" type="radio" name="question7" id="q1_4" value="4">
           <label class="form-check-label" for="q1_4">Frequently</label>
         </div>
@@ -256,23 +257,23 @@ For accurate results, kindly provide honest responses.</p>
       </div>
             <div class="form-group text-center" data-aos="fade-in" data-aos-duration="1200">
         <label class="questions">8. I’ve taken medication or received treatment due to alcohol-induced illness.</label><br>
-        <div class="form-check form-check-inline">
+        <div class="form-check form-check-inline custom-radio">
           <input class="form-check-input" type="radio" name="question8" id="q1_0" value="0">
           <label class="form-check-label" for="q1_0">Never</label>
         </div>
-        <div class="form-check form-check-inline">
+        <div class="form-check form-check-inline custom-radio">
           <input class="form-check-input" type="radio" name="question8" id="q1_1" value="1">
           <label class="form-check-label" for="q1_1">Rarely</label>
         </div>
-                <div class="form-check form-check-inline">
+                <div class="form-check form-check-inline custom-radio">
           <input class="form-check-input" type="radio" name="question8" id="q1_2" value="2">
           <label class="form-check-label" for="q1_2">Sometimes</label>
         </div>
-                <div class="form-check form-check-inline">
+                <div class="form-check form-check-inline custom-radio">
           <input class="form-check-input" type="radio" name="question8" id="q1_3" value="3">
           <label class="form-check-label" for="q1_3">Often</label>
         </div>
-                <div class="form-check form-check-inline">
+                <div class="form-check form-check-inline custom-radio">
           <input class="form-check-input" type="radio" name="question8" id="q1_4" value="4">
           <label class="form-check-label" for="q1_4">Frequently</label>
         </div>
@@ -280,23 +281,23 @@ For accurate results, kindly provide honest responses.</p>
       </div>
             <div class="form-group text-center" data-aos="fade-in" data-aos-duration="1200">
         <label class="questions">9. I’ve vomited after drinking alcohol.</label><br>
-        <div class="form-check form-check-inline">
+        <div class="form-check form-check-inline custom-radio">
           <input class="form-check-input" type="radio" name="question9" id="q1_0" value="0">
           <label class="form-check-label" for="q1_0">Never</label>
         </div>
-        <div class="form-check form-check-inline">
+        <div class="form-check form-check-inline custom-radio">
           <input class="form-check-input" type="radio" name="question9" id="q1_1" value="1">
           <label class="form-check-label" for="q1_1">Rarely</label>
         </div>
-                <div class="form-check form-check-inline">
+                <div class="form-check form-check-inline custom-radio">
           <input class="form-check-input" type="radio" name="question9" id="q1_2" value="2">
           <label class="form-check-label" for="q1_2">Sometimes</label>
         </div>
-                <div class="form-check form-check-inline">
+                <div class="form-check form-check-inline custom-radio">
           <input class="form-check-input" type="radio" name="question9" id="q1_3" value="3">
           <label class="form-check-label" for="q1_3">Often</label>
         </div>
-                <div class="form-check form-check-inline">
+                <div class="form-check form-check-inline custom-radio">
           <input class="form-check-input" type="radio" name="question9" id="q1_4" value="4">
           <label class="form-check-label" for="q1_4">Frequently</label>
         </div>
@@ -304,23 +305,23 @@ For accurate results, kindly provide honest responses.</p>
       </div>
             <div class="form-group text-center" data-aos="fade-in" data-aos-duration="1200">
         <label class="questions">10. I’ve failed to do something important because I was drinking alcohol.</label><br>
-        <div class="form-check form-check-inline">
+        <div class="form-check form-check-inline custom-radio">
           <input class="form-check-input" type="radio" name="question10" id="q1_0" value="0">
           <label class="form-check-label" for="q1_0">Never</label>
         </div>
-        <div class="form-check form-check-inline">
+        <div class="form-check form-check-inline custom-radio">
           <input class="form-check-input" type="radio" name="question10" id="q1_1" value="1">
           <label class="form-check-label" for="q1_1">Rarely</label>
         </div>
-                <div class="form-check form-check-inline">
+                <div class="form-check form-check-inline custom-radio">
           <input class="form-check-input" type="radio" name="question10" id="q1_2" value="2">
           <label class="form-check-label" for="q1_2">Sometimes</label>
         </div>
-                <div class="form-check form-check-inline">
+                <div class="form-check form-check-inline custom-radio">
           <input class="form-check-input" type="radio" name="question10" id="q1_3" value="3">
           <label class="form-check-label" for="q1_3">Often</label>
         </div>
-                <div class="form-check form-check-inline">
+                <div class="form-check form-check-inline custom-radio">
           <input class="form-check-input" type="radio" name="question10" id="q1_4" value="4">
           <label class="form-check-label" for="q1_4">Frequently</label>
         </div>
@@ -328,23 +329,23 @@ For accurate results, kindly provide honest responses.</p>
       </div>
             <div class="form-group text-center" data-aos="fade-in" data-aos-duration="1200">
         <label class="questions">11. I’ve felt depressed because I couldn’t drink when I wanted to.</label><br>
-        <div class="form-check form-check-inline">
+        <div class="form-check form-check-inline custom-radio">
           <input class="form-check-input" type="radio" name="question11" id="q1_0" value="0">
           <label class="form-check-label" for="q1_0">Never</label>
         </div>
-        <div class="form-check form-check-inline">
+        <div class="form-check form-check-inline custom-radio">
           <input class="form-check-input" type="radio" name="question11" id="q1_1" value="1">
           <label class="form-check-label" for="q1_1">Rarely</label>
         </div>
-                <div class="form-check form-check-inline">
+                <div class="form-check form-check-inline custom-radio">
           <input class="form-check-input" type="radio" name="question11" id="q1_2" value="2">
           <label class="form-check-label" for="q1_2">Sometimes</label>
         </div>
-                <div class="form-check form-check-inline">
+                <div class="form-check form-check-inline custom-radio">
           <input class="form-check-input" type="radio" name="question11" id="q1_3" value="3">
           <label class="form-check-label" for="q1_3">Often</label>
         </div>
-                <div class="form-check form-check-inline">
+                <div class="form-check form-check-inline custom-radio">
           <input class="form-check-input" type="radio" name="question11" id="q1_4" value="4">
           <label class="form-check-label" for="q1_4">Frequently</label>
         </div>
@@ -352,23 +353,23 @@ For accurate results, kindly provide honest responses.</p>
       </div>
             <div class="form-group text-center" data-aos="fade-in" data-aos-duration="1200">
         <label class="questions">12. I couldn’t stop drinking even when someone told me to stop.</label><br>
-        <div class="form-check form-check-inline">
+        <div class="form-check form-check-inline custom-radio">
           <input class="form-check-input" type="radio" name="question12" id="q1_0" value="0">
           <label class="form-check-label" for="q1_0">Never</label>
         </div>
-        <div class="form-check form-check-inline">
+        <div class="form-check form-check-inline custom-radio">
           <input class="form-check-input" type="radio" name="question12" id="q1_1" value="1">
           <label class="form-check-label" for="q1_1">Rarely</label>
         </div>
-                <div class="form-check form-check-inline">
+                <div class="form-check form-check-inline custom-radio">
           <input class="form-check-input" type="radio" name="question12" id="q1_2" value="2">
           <label class="form-check-label" for="q1_2">Sometimes</label>
         </div>
-                <div class="form-check form-check-inline">
+                <div class="form-check form-check-inline custom-radio">
           <input class="form-check-input" type="radio" name="question12" id="q1_3" value="3">
           <label class="form-check-label" for="q1_3">Often</label>
         </div>
-                <div class="form-check form-check-inline">
+                <div class="form-check form-check-inline custom-radio">
           <input class="form-check-input" type="radio" name="question12" id="q1_4" value="4">
           <label class="form-check-label" for="q1_4">Frequently</label>
         </div>
@@ -376,23 +377,23 @@ For accurate results, kindly provide honest responses.</p>
       </div>
             <div class="form-group text-center" data-aos="fade-in" data-aos-duration="1200">
         <label class="questions">13. I’ve teased and harassed others after drinking alcohol.</label><br>
-        <div class="form-check form-check-inline">
+        <div class="form-check form-check-inline custom-radio">
           <input class="form-check-input" type="radio" name="question13" id="q1_0" value="0">
           <label class="form-check-label" for="q1_0">Never</label>
         </div>
-        <div class="form-check form-check-inline">
+        <div class="form-check form-check-inline custom-radio">
           <input class="form-check-input" type="radio" name="question13" id="q1_1" value="1">
           <label class="form-check-label" for="q1_1">Rarely</label>
         </div>
-                <div class="form-check form-check-inline">
+                <div class="form-check form-check-inline custom-radio">
           <input class="form-check-input" type="radio" name="question13" id="q1_2" value="2">
           <label class="form-check-label" for="q1_2">Sometimes</label>
         </div>
-                <div class="form-check form-check-inline">
+                <div class="form-check form-check-inline custom-radio">
           <input class="form-check-input" type="radio" name="question13" id="q1_3" value="3">
           <label class="form-check-label" for="q1_3">Often</label>
         </div>
-                <div class="form-check form-check-inline">
+                <div class="form-check form-check-inline custom-radio">
           <input class="form-check-input" type="radio" name="question13" id="q1_4" value="4">
           <label class="form-check-label" for="q1_4">Frequently</label>
         </div>
@@ -401,23 +402,23 @@ For accurate results, kindly provide honest responses.</p>
             <div class="form-group text-center" data-aos="fade-in" data-aos-duration="1200">
         <label class="questions">14. I’ve received criticism from friends or family due to my actions after drinking alcohol.
 </label><br>
-        <div class="form-check form-check-inline">
+        <div class="form-check form-check-inline custom-radio">
           <input class="form-check-input" type="radio" name="question14" id="q1_0" value="0">
           <label class="form-check-label" for="q1_0">Never</label>
         </div>
-        <div class="form-check form-check-inline">
+        <div class="form-check form-check-inline custom-radio">
           <input class="form-check-input" type="radio" name="question14" id="q1_1" value="1">
           <label class="form-check-label" for="q1_1">Rarely</label>
         </div>
-                <div class="form-check form-check-inline">
+                <div class="form-check form-check-inline custom-radio">
           <input class="form-check-input" type="radio" name="question14" id="q1_2" value="2">
           <label class="form-check-label" for="q1_2">Sometimes</label>
         </div>
-                <div class="form-check form-check-inline">
+                <div class="form-check form-check-inline custom-radio">
           <input class="form-check-input" type="radio" name="question14" id="q1_3" value="3">
           <label class="form-check-label" for="q1_3">Often</label>
         </div>
-                <div class="form-check form-check-inline">
+                <div class="form-check form-check-inline custom-radio">
           <input class="form-check-input" type="radio" name="question14" id="q1_4" value="4">
           <label class="form-check-label" for="q1_4">Frequently</label>
         </div>
@@ -425,23 +426,23 @@ For accurate results, kindly provide honest responses.</p>
       </div>
             <div class="form-group text-center" data-aos="fade-in" data-aos-duration="1200">
         <label class="questions">15. I’ve broken something while drunk.</label><br>
-        <div class="form-check form-check-inline">
+        <div class="form-check form-check-inline custom-radio">
           <input class="form-check-input" type="radio" name="question15" id="q1_0" value="0">
           <label class="form-check-label" for="q1_0">Never</label>
         </div>
-        <div class="form-check form-check-inline">
+        <div class="form-check form-check-inline custom-radio">
           <input class="form-check-input" type="radio" name="question15" id="q1_1" value="1">
           <label class="form-check-label" for="q1_1">Rarely</label>
         </div>
-                <div class="form-check form-check-inline">
+                <div class="form-check form-check-inline custom-radio">
           <input class="form-check-input" type="radio" name="question15" id="q1_2" value="2">
           <label class="form-check-label" for="q1_2">Sometimes</label>
         </div>
-                <div class="form-check form-check-inline">
+                <div class="form-check form-check-inline custom-radio">
           <input class="form-check-input" type="radio" name="question15" id="q1_3" value="3">
           <label class="form-check-label" for="q1_3">Often</label>
         </div>
-                <div class="form-check form-check-inline">
+                <div class="form-check form-check-inline custom-radio">
           <input class="form-check-input" type="radio" name="question15" id="q1_4" value="4">
           <label class="form-check-label" for="q1_4">Frequently</label>
         </div>
@@ -449,23 +450,23 @@ For accurate results, kindly provide honest responses.</p>
       </div>
             <div class="form-group text-center">
         <label class="questions">16. I’ve engaged in bad behavior, including violence and verbal abuse, while intoxicated.</label><br>
-        <div class="form-check form-check-inline">
+        <div class="form-check form-check-inline custom-radio">
           <input class="form-check-input" type="radio" name="question16" id="q1_0" value="0">
           <label class="form-check-label" for="q1_0">Never</label>
         </div>
-        <div class="form-check form-check-inline">
+        <div class="form-check form-check-inline custom-radio">
           <input class="form-check-input" type="radio" name="question16" id="q1_1" value="1">
           <label class="form-check-label" for="q1_1">Rarely</label>
         </div>
-                <div class="form-check form-check-inline">
+                <div class="form-check form-check-inline custom-radio">
           <input class="form-check-input" type="radio" name="question16" id="q1_2" value="2">
           <label class="form-check-label" for="q1_2">Sometimes</label>
         </div>
-                <div class="form-check form-check-inline">
+                <div class="form-check form-check-inline custom-radio">
           <input class="form-check-input" type="radio" name="question16" id="q1_3" value="3">
           <label class="form-check-label" for="q1_3">Often</label>
         </div>
-                <div class="form-check form-check-inline">
+                <div class="form-check form-check-inline custom-radio">
           <input class="form-check-input" type="radio" name="question16" id="q1_4" value="4">
           <label class="form-check-label" for="q1_4">Frequently</label>
         </div>

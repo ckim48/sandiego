@@ -47,12 +47,13 @@
         <ul>
           <li><a class="nav-link scrollto " href="{{url_for('about')}}">About</a></li>
           <li><a class="nav-link scrollto" href="{{url_for('bsurvey')}}">WELLNESS CHECK-UP</a></li>
-                                            {% if isLogin %}
+                                             {% if isLogin %}
 
           <li><a class="nav-link scrollto" href="{{url_for('chat')}}">CHAT</a></li>
+                        {% if isAdmin == False %}
                       <li><a class="nav-link scrollto" href="{{url_for('chat_user')}}">REPLY</a></li>
-
-            {%endif%}                      <li><a class="nav-link scrollto" href="{{url_for('statistics')}}">DATA</a></li>
+                        {%endif%}
+            {%endif%}                     <li><a class="nav-link scrollto" href="{{url_for('statistics')}}">DATA</a></li>
           <li><a class="nav-link scrollto" href="{{url_for('assistants')}}">NEARBY CLINIC</a></li>
 
         </ul>
@@ -84,19 +85,19 @@ For accurate results, kindly provide honest responses.</p>
                <form class="mt-7" id="surveyForm" action="/calculate_g" method="post">
       <div class="form-group text-center" data-aos="fade-in" data-aos-duration="1200">
         <label class="questions">1. I have been involved in group activities or practices because of betting money.</label><br>
-        <div class="form-check form-check-inline">
+        <div class="form-check form-check-inline custom-radio">
           <input class="form-check-input" type="radio" name="question9" id="q1_0" value="0">
           <label class="form-check-label" for="q1_0">Never</label>
         </div>
-        <div class="form-check form-check-inline">
+        <div class="form-check form-check-inline custom-radio">
           <input class="form-check-input" type="radio" name="question9" id="q1_1" value="1">
           <label class="form-check-label" for="q1_1">Sometimes</label>
         </div>
-                <div class="form-check form-check-inline">
+                <div class="form-check form-check-inline custom-radio">
           <input class="form-check-input" type="radio" name="question9" id="q1_2" value="2">
           <label class="form-check-label" for="q1_2">Often</label>
         </div>
-                <div class="form-check form-check-inline">
+                <div class="form-check form-check-inline custom-radio">
           <input class="form-check-input" type="radio" name="question9" id="q1_3" value="3">
           <label class="form-check-label" for="q1_3">Frequently</label>
         </div>
@@ -109,19 +110,19 @@ For accurate results, kindly provide honest responses.</p>
       <!-- Example for another question -->
       <div class="form-group text-center" data-aos="fade-in" data-aos-duration="1200">
         <label class="questions">2. I have broken commitments with other friends due to promises made with friends involved in betting games.</label><br>
-        <div class="form-check form-check-inline">
+        <div class="form-check form-check-inline custom-radio">
           <input class="form-check-input" type="radio" name="question9" id="q1_0" value="0">
           <label class="form-check-label" for="q1_0">Never</label>
         </div>
-        <div class="form-check form-check-inline">
+        <div class="form-check form-check-inline custom-radio">
           <input class="form-check-input" type="radio" name="question9" id="q1_1" value="1">
           <label class="form-check-label" for="q1_1">Sometimes</label>
         </div>
-                <div class="form-check form-check-inline">
+                <div class="form-check form-check-inline custom-radio">
           <input class="form-check-input" type="radio" name="question9" id="q1_2" value="2">
           <label class="form-check-label" for="q1_2">Often</label>
         </div>
-                <div class="form-check form-check-inline">
+                <div class="form-check form-check-inline custom-radio">
           <input class="form-check-input" type="radio" name="question9" id="q1_3" value="3">
           <label class="form-check-label" for="q1_3">Frequently</label>
         </div>
@@ -130,19 +131,19 @@ For accurate results, kindly provide honest responses.</p>
       </div>
             <div class="form-group text-center" data-aos="fade-in" data-aos-duration="1200">
         <label class="questions">3. I have made plans for betting games.</label><br>
-        <div class="form-check form-check-inline">
+        <div class="form-check form-check-inline custom-radio">
           <input class="form-check-input" type="radio" name="question9" id="q1_0" value="0">
           <label class="form-check-label" for="q1_0">Never</label>
         </div>
-        <div class="form-check form-check-inline">
+        <div class="form-check form-check-inline custom-radio">
           <input class="form-check-input" type="radio" name="question9" id="q1_1" value="1">
           <label class="form-check-label" for="q1_1">Sometimes</label>
         </div>
-                <div class="form-check form-check-inline">
+                <div class="form-check form-check-inline custom-radio">
           <input class="form-check-input" type="radio" name="question9" id="q1_2" value="2">
           <label class="form-check-label" for="q1_2">Often</label>
         </div>
-                <div class="form-check form-check-inline">
+                <div class="form-check form-check-inline custom-radio">
           <input class="form-check-input" type="radio" name="question9" id="q1_3" value="3">
           <label class="form-check-label" for="q1_3">Frequently</label>
         </div>
@@ -151,19 +152,19 @@ For accurate results, kindly provide honest responses.</p>
       </div>
             <div class="form-group text-center" data-aos="fade-in" data-aos-duration="1200">
         <label class="questions">4. I have felt bad at times because of betting games.</label><br>
-        <div class="form-check form-check-inline">
+        <div class="form-check form-check-inline custom-radio">
           <input class="form-check-input" type="radio" name="question9" id="q1_0" value="0">
           <label class="form-check-label" for="q1_0">Never</label>
         </div>
-        <div class="form-check form-check-inline">
+        <div class="form-check form-check-inline custom-radio">
           <input class="form-check-input" type="radio" name="question9" id="q1_1" value="1">
           <label class="form-check-label" for="q1_1">Sometimes</label>
         </div>
-                <div class="form-check form-check-inline">
+                <div class="form-check form-check-inline custom-radio">
           <input class="form-check-input" type="radio" name="question9" id="q1_2" value="2">
           <label class="form-check-label" for="q1_2">Often</label>
         </div>
-                <div class="form-check form-check-inline">
+                <div class="form-check form-check-inline custom-radio">
           <input class="form-check-input" type="radio" name="question9" id="q1_3" value="3">
           <label class="form-check-label" for="q1_3">Frequently</label>
         </div>
@@ -172,19 +173,19 @@ For accurate results, kindly provide honest responses.</p>
       </div>
             <div class="form-group text-center" data-aos="fade-in" data-aos-duration="1200">
         <label class="questions">5. I have played betting games again to recover money previously lost.</label><br>
-        <div class="form-check form-check-inline">
+        <div class="form-check form-check-inline custom-radio">
           <input class="form-check-input" type="radio" name="question9" id="q1_0" value="0">
           <label class="form-check-label" for="q1_0">Never</label>
         </div>
-        <div class="form-check form-check-inline">
+        <div class="form-check form-check-inline custom-radio">
           <input class="form-check-input" type="radio" name="question9" id="q1_1" value="1">
           <label class="form-check-label" for="q1_1">Sometimes</label>
         </div>
-                <div class="form-check form-check-inline">
+                <div class="form-check form-check-inline custom-radio">
           <input class="form-check-input" type="radio" name="question9" id="q1_2" value="2">
           <label class="form-check-label" for="q1_2">Often</label>
         </div>
-                <div class="form-check form-check-inline">
+                <div class="form-check form-check-inline custom-radio">
           <input class="form-check-input" type="radio" name="question9" id="q1_3" value="3">
           <label class="form-check-label" for="q1_3">Frequently</label>
         </div>
@@ -193,19 +194,19 @@ For accurate results, kindly provide honest responses.</p>
       </div>
             <div class="form-group text-center" data-aos="fade-in" data-aos-duration="1200">
         <label class="questions">6. I have hidden the fact that I engage in betting games from parents or teachers.</label><br>
-        <div class="form-check form-check-inline">
+        <div class="form-check form-check-inline custom-radio">
           <input class="form-check-input" type="radio" name="question9" id="q1_0" value="0">
           <label class="form-check-label" for="q1_0">Never</label>
         </div>
-        <div class="form-check form-check-inline">
+        <div class="form-check form-check-inline custom-radio">
           <input class="form-check-input" type="radio" name="question9" id="q1_1" value="1">
           <label class="form-check-label" for="q1_1">Sometimes</label>
         </div>
-                <div class="form-check form-check-inline">
+                <div class="form-check form-check-inline custom-radio">
           <input class="form-check-input" type="radio" name="question9" id="q1_2" value="2">
           <label class="form-check-label" for="q1_2">Often</label>
         </div>
-                <div class="form-check form-check-inline">
+                <div class="form-check form-check-inline custom-radio">
           <input class="form-check-input" type="radio" name="question9" id="q1_3" value="3">
           <label class="form-check-label" for="q1_3">Frequently</label>
         </div>
@@ -214,19 +215,19 @@ For accurate results, kindly provide honest responses.</p>
       </div>
             <div class="form-group text-center" data-aos="fade-in" data-aos-duration="1200">
         <label class="questions">7. Within the past three months, I have felt that betting games have caused problems for me.</label><br>
-        <div class="form-check form-check-inline">
+        <div class="form-check form-check-inline custom-radio">
           <input class="form-check-input" type="radio" name="question9" id="q1_0" value="0">
           <label class="form-check-label" for="q1_0">Never</label>
         </div>
-        <div class="form-check form-check-inline">
+        <div class="form-check form-check-inline custom-radio">
           <input class="form-check-input" type="radio" name="question9" id="q1_1" value="1">
           <label class="form-check-label" for="q1_1">Sometimes</label>
         </div>
-                <div class="form-check form-check-inline">
+                <div class="form-check form-check-inline custom-radio">
           <input class="form-check-input" type="radio" name="question9" id="q1_2" value="2">
           <label class="form-check-label" for="q1_2">Often</label>
         </div>
-                <div class="form-check form-check-inline">
+                <div class="form-check form-check-inline custom-radio">
           <input class="form-check-input" type="radio" name="question9" id="q1_3" value="3">
           <label class="form-check-label" for="q1_3">Frequently</label>
         </div>
@@ -236,19 +237,19 @@ For accurate results, kindly provide honest responses.</p>
             <div class="form-group text-center" data-aos="fade-in" data-aos-duration="1200">
         <label class="questions">8. I have used money that should have been spent on meals, clothes, movie tickets, etc., for betting games.
 </label><br>
-        <div class="form-check form-check-inline">
+        <div class="form-check form-check-inline custom-radio">
           <input class="form-check-input" type="radio" name="question9" id="q1_0" value="0">
           <label class="form-check-label" for="q1_0">Never</label>
         </div>
-        <div class="form-check form-check-inline">
+        <div class="form-check form-check-inline custom-radio">
           <input class="form-check-input" type="radio" name="question9" id="q1_1" value="1">
           <label class="form-check-label" for="q1_1">Sometimes</label>
         </div>
-                <div class="form-check form-check-inline">
+                <div class="form-check form-check-inline custom-radio">
           <input class="form-check-input" type="radio" name="question9" id="q1_2" value="2">
           <label class="form-check-label" for="q1_2">Often</label>
         </div>
-                <div class="form-check form-check-inline">
+                <div class="form-check form-check-inline custom-radio">
           <input class="form-check-input" type="radio" name="question9" id="q1_3" value="3">
           <label class="form-check-label" for="q1_3">Frequently</label>
         </div>
@@ -256,19 +257,19 @@ For accurate results, kindly provide honest responses.</p>
       </div>
             <div class="form-group text-center" data-aos="fade-in" data-aos-duration="1200">
         <label class="questions">9. I have secretly taken someone else's money or something valuable that could be turned into money for betting games.</label><br>
-        <div class="form-check form-check-inline">
+        <div class="form-check form-check-inline custom-radio">
           <input class="form-check-input" type="radio" name="question9" id="q1_0" value="0">
           <label class="form-check-label" for="q1_0">Never</label>
         </div>
-        <div class="form-check form-check-inline">
+        <div class="form-check form-check-inline custom-radio">
           <input class="form-check-input" type="radio" name="question9" id="q1_1" value="1">
           <label class="form-check-label" for="q1_1">Sometimes</label>
         </div>
-                <div class="form-check form-check-inline">
+                <div class="form-check form-check-inline custom-radio">
           <input class="form-check-input" type="radio" name="question9" id="q1_2" value="2">
           <label class="form-check-label" for="q1_2">Often</label>
         </div>
-                <div class="form-check form-check-inline">
+                <div class="form-check form-check-inline custom-radio">
           <input class="form-check-input" type="radio" name="question9" id="q1_3" value="3">
           <label class="form-check-label" for="q1_3">Frequently</label>
         </div>

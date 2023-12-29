@@ -47,8 +47,13 @@
         <ul>
           <li><a class="nav-link scrollto " href="{{url_for('about')}}">About</a></li>
           <li><a class="nav-link scrollto" href="{{url_for('bsurvey')}}">WELLNESS CHECK-UP</a></li>
+                                            {% if isLogin %}
+
           <li><a class="nav-link scrollto" href="{{url_for('chat')}}">CHAT</a></li>
-                                                                    {% if isAdmin %}
+                        {% if isAdmin == False %}
+                      <li><a class="nav-link scrollto" href="{{url_for('chat_user')}}">REPLY</a></li>
+                        {%endif%}
+            {%endif%}                                                                    {% if isAdmin %}
 
           <li><a class="nav-link scrollto" href="{{url_for('chat_admin')}}">ADMIN CHAT</a></li>
             {%endif%}

@@ -1212,10 +1212,11 @@ border-radius:25px;
 }
 .graph{
   padding: 30px 30px 30px 30px;
+  transition:transform 0.3s ease-in-out;
 /*  border: 1px solid darkgray;*/
 }
 .graph:hover{
-  scale:1.03;
+  transform: translateY(-18px);
 }
 }
 #footer .footer-top {
@@ -1356,6 +1357,7 @@ border-radius:25px;
 .questions {
       font-weight: bold;
       font-size: 20px;
+      margin-bottom:15px;
     }
 
 .form-group{
@@ -1606,6 +1608,8 @@ color:white;
 }
 
 .chartcard{
+background-color:#F5EEF5;
+border: 1px solid #F5EEF5;
 height:440px;
 }
 .mycontrol{
@@ -1627,13 +1631,13 @@ height: 140px;
 .bottom-right-imaged {
   position: fixed;
   bottom: 100px; /* Adjust the distance from the bottom as needed */
-  right: 120px; /* Adjust the distance from the right as needed */
+  right: 50px; /* Adjust the distance from the right as needed */
   z-index: 9999; /* Set a higher z-index if needed to ensure it's on top */
 }
 
 /* Optional styles for the image */
 .bottom-right-imaged img {
-  width: 290px; /* Adjust the width of the image */
+  width: 270px; /* Adjust the width of the image */
   height: auto; /* Maintain aspect ratio */
 }
 
@@ -1649,3 +1653,27 @@ height: 140px;
   width: 190px; /* Adjust the width of the image */
   height: auto; /* Maintain aspect ratio */
 }
+
+  .custom-radio .form-check-label {
+  background-color:#F6DFF6;
+    padding: 0.5rem 1rem; /* Adjust padding as needed */
+    border: 1px solid #F6DFF6;/* Button border color */
+    border-radius: 0.25rem; /* Button border radius */
+    margin-right: 5px; /* Margin between buttons */
+    transition: 0.4s ease;
+  }
+    .custom-radio:hover .form-check-label{
+        background-color: #CC94CC;
+        border: 1px solid #CC94CC;
+  }
+
+  /* Hide default radio input */
+  .custom-radio input[type="radio"] {
+    display: none;
+  }
+
+  /* Style for checked radio label */
+  .custom-radio input[type="radio"]:checked + .form-check-label {
+    background-color: #007bff; /* Button background color when checked */
+    color: #fff; /* Text color when checked */
+  }

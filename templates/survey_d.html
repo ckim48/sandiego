@@ -50,9 +50,10 @@
                                             {% if isLogin %}
 
           <li><a class="nav-link scrollto" href="{{url_for('chat')}}">CHAT</a></li>
+                        {% if isAdmin == False %}
                       <li><a class="nav-link scrollto" href="{{url_for('chat_user')}}">REPLY</a></li>
-
-            {%endif%}                      <li><a class="nav-link scrollto" href="{{url_for('statistics')}}">DATA</a></li>
+                        {%endif%}
+            {%endif%}                     <li><a class="nav-link scrollto" href="{{url_for('statistics')}}">DATA</a></li>
           <li><a class="nav-link scrollto" href="{{url_for('assistants')}}">NEARBY CLINIC</a></li>
 
         </ul>
@@ -83,19 +84,19 @@ For accurate results, kindly provide honest responses.</p>
                <form class="mt-7" id="surveyForm" action="/calculate_d" method="post">
       <div class="form-group text-center" data-aos="fade-in" data-aos-duration="1200">
         <label class="questions">1. Little interest or pleasure in doing things?.</label><br>
-        <div class="form-check form-check-inline">
+        <div class="form-check form-check-inline custom-radio">
           <input class="form-check-input" type="radio" name="question1" id="q1_0" value="0">
           <label class="form-check-label" for="q1_0">Not at all</label>
         </div>
-        <div class="form-check form-check-inline">
+        <div class="form-check form-check-inline custom-radio">
           <input class="form-check-input" type="radio" name="question1" id="q1_0" value="1">
           <label class="form-check-label" for="q1_0">Several days</label>
         </div>
-                <div class="form-check form-check-inline">
+                <div class="form-check form-check-inline custom-radio">
           <input class="form-check-input" type="radio" name="question1" id="q1_0" value="2">
-          <label class="form-check-label" for="q1_0">More than a half of the days</label>
+          <label class="form-check-label" for="q1_0">More than half of the days</label>
         </div>
-                <div class="form-check form-check-inline">
+                <div class="form-check form-check-inline custom-radio">
           <input class="form-check-input" type="radio" name="question1" id="q1_0" value="3">
           <label class="form-check-label" for="q1_0">Nearly every day</label>
         </div>
@@ -104,23 +105,23 @@ For accurate results, kindly provide honest responses.</p>
       </div>
 
       <!-- Add similar form groups for the rest of the questions -->
-      
+
       <!-- Example for another question -->
       <div class="form-group text-center" data-aos="fade-in" data-aos-duration="1200">
         <label class="questions">2. Feeling down, depressed, or hopeless?</label><br>
-        <div class="form-check form-check-inline">
+        <div class="form-check form-check-inline custom-radio">
           <input class="form-check-input" type="radio" name="question2" id="q1_1" value="0">
           <label class="form-check-label" for="q1_1">Not at all</label>
         </div>
-        <div class="form-check form-check-inline">
+        <div class="form-check form-check-inline custom-radio">
           <input class="form-check-input" type="radio" name="question2" id="q1_1" value="1">
           <label class="form-check-label" for="q1_1">Several days</label>
         </div>
-                <div class="form-check form-check-inline">
+                <div class="form-check form-check-inline custom-radio">
           <input class="form-check-input" type="radio" name="question2" id="q1_1" value="2">
-          <label class="form-check-label" for="q1_1">More than a half of the days</label>
+          <label class="form-check-label" for="q1_1">More than half of the days</label>
         </div>
-                <div class="form-check form-check-inline">
+                <div class="form-check form-check-inline custom-radio">
           <input class="form-check-input" type="radio" name="question2" id="q1_1" value="3">
           <label class="form-check-label" for="q1_1">Nearly every day</label>
         </div>
@@ -129,19 +130,19 @@ For accurate results, kindly provide honest responses.</p>
       </div>
             <div class="form-group text-center" data-aos="fade-in" data-aos-duration="1200">
         <label class="questions">3. Trouble falling or staying asleep, or sleeping too much?</label><br>
-        <div class="form-check form-check-inline">
+        <div class="form-check form-check-inline custom-radio">
           <input class="form-check-input" type="radio" name="question3" id="q1_0" value="0">
           <label class="form-check-label" for="q1_0">Not at all</label>
         </div>
-        <div class="form-check form-check-inline">
+        <div class="form-check form-check-inline custom-radio">
           <input class="form-check-input" type="radio" name="question3" id="q1_1" value="1">
           <label class="form-check-label" for="q1_1">Several days</label>
         </div>
-                <div class="form-check form-check-inline">
+                <div class="form-check form-check-inline custom-radio">
           <input class="form-check-input" type="radio" name="question3" id="q1_2" value="2">
-          <label class="form-check-label" for="q1_2">More than a half of the days</label>
+          <label class="form-check-label" for="q1_2">More than half of the days</label>
         </div>
-                <div class="form-check form-check-inline">
+                <div class="form-check form-check-inline custom-radio">
           <input class="form-check-input" type="radio" name="question3" id="q1_3" value="3">
           <label class="form-check-label" for="q1_3">Nearly every day</label>
         </div>
@@ -150,19 +151,19 @@ For accurate results, kindly provide honest responses.</p>
       </div>
             <div class="form-group text-center" data-aos="fade-in" data-aos-duration="1200">
         <label class="questions">4.Feeling tired or having little energy?</label><br>
-        <div class="form-check form-check-inline">
+        <div class="form-check form-check-inline custom-radio">
           <input class="form-check-input" type="radio" name="question4" id="q1_0" value="0">
           <label class="form-check-label" for="q1_0">Not at all</label>
         </div>
-        <div class="form-check form-check-inline">
+        <div class="form-check form-check-inline custom-radio">
           <input class="form-check-input" type="radio" name="question4" id="q1_1" value="1">
           <label class="form-check-label" for="q1_1">Several days</label>
         </div>
-                <div class="form-check form-check-inline">
+                <div class="form-check form-check-inline custom-radio">
           <input class="form-check-input" type="radio" name="question4" id="q1_2" value="2">
-          <label class="form-check-label" for="q1_2">More than a half of the days</label>
+          <label class="form-check-label" for="q1_2">More than half of the days</label>
         </div>
-                <div class="form-check form-check-inline">
+                <div class="form-check form-check-inline custom-radio">
           <input class="form-check-input" type="radio" name="question4" id="q1_3" value="3">
           <label class="form-check-label" for="q1_3">Nearly every day</label>
         </div>
@@ -171,19 +172,19 @@ For accurate results, kindly provide honest responses.</p>
       </div>
             <div class="form-group text-center" data-aos="fade-in" data-aos-duration="1200">
         <label class="questions">5.  Poor appetite or overeating?</label><br>
-        <div class="form-check form-check-inline">
+        <div class="form-check form-check-inline custom-radio">
           <input class="form-check-input" type="radio" name="question5" id="q1_0" value="0">
           <label class="form-check-label" for="q1_0">Not at all</label>
         </div>
-        <div class="form-check form-check-inline">
+        <div class="form-check form-check-inline custom-radio">
           <input class="form-check-input" type="radio" name="question5" id="q1_1" value="1">
           <label class="form-check-label" for="q1_1">Several days</label>
         </div>
-                <div class="form-check form-check-inline">
+                <div class="form-check form-check-inline custom-radio">
           <input class="form-check-input" type="radio" name="question5" id="q1_2" value="2">
-          <label class="form-check-label" for="q1_2">More than a half of the days</label>
+          <label class="form-check-label" for="q1_2">More than half of the days</label>
         </div>
-                <div class="form-check form-check-inline">
+                <div class="form-check form-check-inline custom-radio">
           <input class="form-check-input" type="radio" name="question5" id="q1_3" value="3">
           <label class="form-check-label" for="q1_3">Nearly every day</label>
         </div>
@@ -192,19 +193,19 @@ For accurate results, kindly provide honest responses.</p>
       </div>
             <div class="form-group text-center" data-aos="fade-in" data-aos-duration="1200">
         <label class="questions">6. Feeling bad about yourself — or that you are a failure or have let yourself or your family down?</label><br>
-        <div class="form-check form-check-inline">
+        <div class="form-check form-check-inline custom-radio">
           <input class="form-check-input" type="radio" name="question6" id="q1_0" value="0">
           <label class="form-check-label" for="q1_0">Not at all</label>
         </div>
-        <div class="form-check form-check-inline">
+        <div class="form-check form-check-inline custom-radio">
           <input class="form-check-input" type="radio" name="question6" id="q1_1" value="1">
           <label class="form-check-label" for="q1_1">Several days</label>
         </div>
-                <div class="form-check form-check-inline">
+                <div class="form-check form-check-inline custom-radio">
           <input class="form-check-input" type="radio" name="question6" id="q1_2" value="2">
-          <label class="form-check-label" for="q1_2">More than a half of the days</label>
+          <label class="form-check-label" for="q1_2">More than half of the days</label>
         </div>
-                <div class="form-check form-check-inline">
+                <div class="form-check form-check-inline custom-radio">
           <input class="form-check-input" type="radio" name="question6" id="q1_3" value="3">
           <label class="form-check-label" for="q1_3">Nearly every day</label>
         </div>
@@ -213,19 +214,19 @@ For accurate results, kindly provide honest responses.</p>
       </div>
             <div class="form-group text-center" data-aos="fade-in" data-aos-duration="1200">
         <label class="questions">7. Trouble concentrating on things, such as reading the newspaper or watching television?</label><br>
-        <div class="form-check form-check-inline">
+        <div class="form-check form-check-inline custom-radio">
           <input class="form-check-input" type="radio" name="question7" id="q1_0" value="0">
           <label class="form-check-label" for="q1_0">Not at all</label>
         </div>
-        <div class="form-check form-check-inline">
+        <div class="form-check form-check-inline custom-radio">
           <input class="form-check-input" type="radio" name="question7" id="q1_1" value="1">
           <label class="form-check-label" for="q1_1">Several days</label>
         </div>
-                <div class="form-check form-check-inline">
+                <div class="form-check form-check-inline custom-radio">
           <input class="form-check-input" type="radio" name="question7" id="q1_2" value="2">
-          <label class="form-check-label" for="q1_2">More than a half of the days</label>
+          <label class="form-check-label" for="q1_2">More than half of the days</label>
         </div>
-                <div class="form-check form-check-inline">
+                <div class="form-check form-check-inline custom-radio">
           <input class="form-check-input" type="radio" name="question7" id="q1_3" value="3">
           <label class="form-check-label" for="q1_3">Nearly every day</label>
         </div>
@@ -234,19 +235,19 @@ For accurate results, kindly provide honest responses.</p>
       </div>
             <div class="form-group text-center" data-aos="fade-in" data-aos-duration="1200">
         <label class="questions">8. Moving or speaking so slowly that other people could have noticed? Or so fidgety or restless that you have been moving a lot more than usual?</label><br>
-        <div class="form-check form-check-inline">
+        <div class="form-check form-check-inline custom-radio">
           <input class="form-check-input" type="radio" name="question8" id="q1_0" value="0">
           <label class="form-check-label" for="q1_0">Not at all</label>
         </div>
-        <div class="form-check form-check-inline">
+        <div class="form-check form-check-inline custom-radio">
           <input class="form-check-input" type="radio" name="question8" id="q1_1" value="1">
           <label class="form-check-label" for="q1_1">Several days</label>
         </div>
-                <div class="form-check form-check-inline">
+                <div class="form-check form-check-inline custom-radio">
           <input class="form-check-input" type="radio" name="question8" id="q1_2" value="2">
-          <label class="form-check-label" for="q1_2">More than a half of the days</label>
+          <label class="form-check-label" for="q1_2">More than half of the days</label>
         </div>
-                <div class="form-check form-check-inline">
+                <div class="form-check form-check-inline custom-radio">
           <input class="form-check-input" type="radio" name="question8" id="q1_3" value="3">
           <label class="form-check-label" for="q1_3">Nearly every day</label>
         </div>
@@ -255,19 +256,19 @@ For accurate results, kindly provide honest responses.</p>
       </div>
             <div class="form-group text-center" data-aos="fade-in" data-aos-duration="1200">
         <label class="questions">9. Thoughts that you would be better off dead, or thoughts of hurting yourself in some way?</label><br>
-        <div class="form-check form-check-inline">
+        <div class="form-check form-check-inline custom-radio">
           <input class="form-check-input" type="radio" name="question9" id="q1_0" value="0">
           <label class="form-check-label" for="q1_0">Not at all</label>
         </div>
-        <div class="form-check form-check-inline">
+        <div class="form-check form-check-inline custom-radio">
           <input class="form-check-input" type="radio" name="question9" id="q1_1" value="1">
           <label class="form-check-label" for="q1_1">Several days</label>
         </div>
-                <div class="form-check form-check-inline">
+                <div class="form-check form-check-inline custom-radio">
           <input class="form-check-input" type="radio" name="question9" id="q1_2" value="2">
-          <label class="form-check-label" for="q1_2">More than a half of the days</label>
+          <label class="form-check-label" for="q1_2">More than half of the days</label>
         </div>
-                <div class="form-check form-check-inline">
+                <div class="form-check form-check-inline custom-radio">
           <input class="form-check-input" type="radio" name="question9" id="q1_3" value="3">
           <label class="form-check-label" for="q1_3">Nearly every day</label>
         </div>

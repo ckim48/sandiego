@@ -47,8 +47,13 @@
         <ul>
           <li><a class="nav-link scrollto " href="{{url_for('about')}}">About</a></li>
           <li><a class="nav-link scrollto" href="{{url_for('bsurvey')}}">WELLNESS CHECK-UP</a></li>
+                                            {% if isLogin %}
+
           <li><a class="nav-link scrollto" href="{{url_for('chat')}}">CHAT</a></li>
-                      <li><a class="nav-link scrollto" href="{{url_for('statistics')}}">DATA</a></li>
+                        {% if isAdmin == False %}
+                      <li><a class="nav-link scrollto" href="{{url_for('chat_user')}}">REPLY</a></li>
+                        {%endif%}
+            {%endif%}                      <li><a class="nav-link scrollto" href="{{url_for('statistics')}}">DATA</a></li>
           <li><a class="nav-link scrollto" href="{{url_for('assistants')}}">NEARBY CLINIC</a></li>
 
         </ul>
