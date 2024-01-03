@@ -94,53 +94,69 @@ def bsurvey():
 
 @app.route("/assistants",methods=['GET','POST'])
 def assistants():
-    isLogin = False
-    if "username" not in session:
-        return redirect(url_for("login"))
-    isLogin = True
-    return render_template('assistants.html',isLogin=isLogin)
-@app.route("/result/<int:score>",methods=['GET','POST'])
-def result(score):
+    isAdmin = False
     isLogin = False
     if "username" in session:
         isLogin = True
-    return render_template('result.html', score=score,isLogin=isLogin)
+        if session["username"] == "test123":
+            isAdmin = True
+    return render_template('assistants.html',isLogin=isLogin,isAdmin=isAdmin)
+@app.route("/result/<int:score>",methods=['GET','POST'])
+def result(score):
+    isAdmin = False
+    isLogin = False
+    if "username" in session:
+        isLogin = True
+        if session["username"] == "test123":
+            isAdmin = True
+    return render_template('result.html', score=score,isLogin=isLogin,isAdmin=isAdmin)
 @app.route("/statistics",methods=['GET','POST'])
 def statistics():
+    isAdmin = False
     isLogin = False
-    if "username" not in session:
-        return redirect(url_for("login"))
-    isLogin=True
-    return render_template('statistics.html',isLogin=isLogin)
+    if "username" in session:
+        isLogin = True
+        if session["username"] == "test123":
+            isAdmin = True
+    return render_template('statistics.html',isLogin=isLogin,isAdmin=isAdmin)
 @app.route("/survey",methods=['GET','POST'])
 def survey():
+    isAdmin = False
     isLogin = False
-    if "username" not in session:
-        return redirect(url_for("login"))
-    isLogin = True
-    return render_template('survey.html',isLogin=isLogin)
+    if "username" in session:
+        isLogin = True
+        if session["username"] == "test123":
+            isAdmin = True
+    return render_template('survey.html',isLogin=isLogin,isAdmin=isAdmin)
 
 @app.route("/survey_d",methods=['GET','POST'])
 def survey_d():
-    isLogin = False
-    if "username" not in session:
-        return redirect(url_for("login"))
-    isLogin = True
-    return render_template('survey_d.html',isLogin=isLogin)
-
-@app.route("/survey_g",methods=['GET','POST'])
-def survey_g():
-    isLogin = False
-    if "username" not in session:
-        return redirect(url_for("login"))
-    isLogin = True
-    return render_template('survey_g.html',isLogin=isLogin)
-@app.route("/result_d/<int:score>",methods=['GET','POST'])
-def result_d(score):
+    isAdmin = False
     isLogin = False
     if "username" in session:
         isLogin = True
-    return render_template('result_d.html', score=score,isLogin=isLogin)
+        if session["username"] == "test123":
+            isAdmin = True
+    return render_template('survey_d.html',isLogin=isLogin,isAdmin=isAdmin)
+
+@app.route("/survey_g",methods=['GET','POST'])
+def survey_g():
+    isAdmin = False
+    isLogin = False
+    if "username" in session:
+        isLogin = True
+        if session["username"] == "test123":
+            isAdmin = True
+    return render_template('survey_g.html',isLogin=isLogin,isAdmin=isAdmin)
+@app.route("/result_d/<int:score>",methods=['GET','POST'])
+def result_d(score):
+    isAdmin = False
+    isLogin = False
+    if "username" in session:
+        isLogin = True
+        if session["username"] == "test123":
+            isAdmin = True
+    return render_template('result_d.html', score=score,isLogin=isLogin,isAdmin=isAdmin)
 @app.route('/calculate_d', methods=['POST'])
 def calculate_score_d():
     total_score = 0
@@ -150,7 +166,13 @@ def calculate_score_d():
     return redirect(url_for('result_d', score=total_score))
 @app.route("/result_g/<int:score>",methods=['GET','POST'])
 def result_g(score):
-    return render_template('result_g.html', score=score)
+    isAdmin = False
+    isLogin = False
+    if "username" in session:
+        isLogin = True
+        if session["username"] == "test123":
+            isAdmin = True
+    return render_template('result_g.html', score=score,isLogin=isLogin,isAdmin=isAdmin)
 @app.route('/calculate_g', methods=['POST'])
 def calculate_score_g():
     total_score = 0
@@ -233,15 +255,18 @@ def register():
 def chat_admin():
     conn = sqlite3.connect('static/database.db')  # Replace 'your_database.db' with your database file
     cursor = conn.cursor()
-
+    isLogin = False
     cursor.execute("SELECT * FROM chats")  # Fetch all chats from the 'chats' table
     chats = cursor.fetchall()  # Get all fetched chats
     print("AAAAA",chats)
+    isAdmin = False
     if "username" in session:
         isLogin = True
+        if session["username"] == "test123":
+            isAdmin = True
     conn.close()
 
-    return render_template("chat_admin.html",chats=chats,isLogin=isLogin)
+    return render_template("chat_admin.html",chats=chats,isLogin=isLogin,isAdmin=isAdmin)
 
 chat_messages = {}
 @app.route('/reply-message', methods=['POST'])
