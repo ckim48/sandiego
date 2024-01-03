@@ -145,7 +145,7 @@
 
     <div class="card">
         <div class="card-header chatheader">
-            Chats
+            Details
         </div>
         {% for chat in chats %}
         <div class="card-body chat-content" id="emailContent_{{ chat[3] }}">
@@ -257,13 +257,13 @@
             document.getElementById(`emailContent_${id}`).style.display = "block";
 
             emailSubject.forEach(element => {
-                element.textContent = `${date}`;
+                element.textContent = `${username}`;
             });
             emailInfo.forEach(element => {
                 element.innerHTML = `
                     <div class="row">
                         <div class="col-md-4">
-                            <p><strong>Name:</strong> ${username}</p>
+                            <p><strong>Date:</strong> ${date}</p>
                             <p><strong>Location:</strong> ${location}</p>
                         </div>
                         <div class="col-md-4">
