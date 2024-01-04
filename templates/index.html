@@ -66,7 +66,7 @@
             {%endif%}
 
                       <li><a class="nav-link scrollto" href="{{url_for('statistics')}}">DATA</a></li>
-          <li><a class="nav-link scrollto" href="{{url_for('assistants')}}">NEARBY CLINIC</a></li>
+          <li><a class="nav-link scrollto" href="{{url_for('assistants')}}">SUPPORT</a></li>
 <li class="logoutmenu"><a class="nav-link scrollto" href="{{url_for('logout')}}">Logout</a></li>
 
 <!--                    <li><a class="nav-link scrollto" href="{{url_for('statistics')}}">Statistics</a></li>-->
@@ -79,40 +79,60 @@
 {%endif%}
     </div>
   </header><!-- End Header -->
+ <section id="hero" class="d-flex flex-column justify-content-center align-items-center">
+    <div class="container">
+<div class="row text-center">
+    <h1 class="mymt-5" data-aos="fade-down">Welcome to <span class="color-pink">RELAXIO</span></h1>
+    <h2 class="typing-animation">
+        <span id="typed"></span>
+    </h2>
 
-  <!-- ======= Hero Section ======= -->
-  <section id="hero" class="d-flex flex-column justify-content-center align-items-center">
-    <div class="container text-end text-md-left">
-      <div class="row">
-          <div class="col-md-6">
-            <div class="image-container">
-                              <img class="img-fluid resultimg2 mx-auto" src="../static/assets/img/c2.png">
-
-                <img class="img-fluid resultimg1" src="../static/assets/img/c3.png">
-
-            </div>
-
-          </div>
-                  <div class="col-md-6" class="mt-md-5">
-                    <p class="mt-md-5"> &nbsp;</p>
-                      <p class="mt-md-5"> &nbsp;</p>
-      <h1 class="mt-md-5" data-aos="fade-down">Welcome to RELAXIO</h1>
-                    <h2 class="typing-animation">
-  <span id="typed"></span>
-</h2>
-                                {% if isLogin %}
-              <a href="{{url_for('bsurvey')}}" class="btn-get-started scrollto" id="delayedFadeIn" style="opacity: 0;"><strong>Get started</strong></a>
-
-        {%else%}
-              <a href="{{url_for('login')}}" class="btn-get-started scrollto" id="delayedFadeIn"style="opacity: 0;"><strong>Login</strong></a>
+    {% if isLogin %}
+        <a href="{{ url_for('bsurvey') }}" class="btn-get-started scrollto d-block mx-auto mt-3" id="delayedFadeIn" style="opacity: 0;"><strong>Get started</strong></a>
+    {% else %}
+        <a href="{{ url_for('login') }}" class="btn-get-started scrollto d-block mx-auto mt-3" id="delayedFadeIn" style="opacity: 0;"><strong>Login</strong></a>
+    {% endif %}
+</div>
 
 
-        {%endif%}
-          </div>
+<div class="row text-center" data-aos="fade-in" data-aos-delay="1500" data-aos-duration="2000">
+    <div class="col-12 d-flex justify-content-center align-items-center">
+        <div class="indeximg mx-auto">
+            <img class="img-fluid heroimg" src="../static/assets/img/hero4.png" alt="Hero Image">
+        </div>
+    </div>
+</div>
+
       </div>
 
     </div>
   </section>
+  <!-- ======= Hero Section ======= -->
+<!--  <section id="hero" class="d-flex flex-column justify-content-center align-items-center">-->
+<!--    <div class="container text-end text-md-left">-->
+<!--      <div class="row">-->
+<!--          <div class="col-md-6">-->
+<!--             <img class="img-fluid heroimg" src="../static/assets/img/hero1.jpeg">-->
+<!--          </div>-->
+<!--                  <div class="col-md-6" class="mt-md-5">-->
+<!--                      <p class="mt-md-5"> &nbsp;</p>-->
+<!--      <h1 class="mt-md-5" data-aos="fade-down">Welcome to RELAXIO</h1>-->
+<!--                    <h2 class="typing-animation">-->
+<!--  <span id="typed"></span>-->
+<!--</h2>-->
+<!--                                {% if isLogin %}-->
+<!--              <a href="{{url_for('bsurvey')}}" class="btn-get-started scrollto" id="delayedFadeIn" style="opacity: 0;"><strong>Get started</strong></a>-->
+
+<!--        {%else%}-->
+<!--              <a href="{{url_for('login')}}" class="btn-get-started scrollto" id="delayedFadeIn"style="opacity: 0;"><strong>Login</strong></a>-->
+
+
+<!--        {%endif%}-->
+<!--          </div>-->
+<!--      </div>-->
+
+<!--    </div>-->
+<!--  </section>-->
 
   
 

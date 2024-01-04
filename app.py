@@ -87,10 +87,12 @@ def about():
 @app.route("/bsurvey",methods=['GET','POST'])
 def bsurvey():
     isLogin = False
-    if "username" not in session:
-        return redirect(url_for("login"))
-    isLogin = True
-    return render_template('before_survey.html',isLogin=isLogin)
+    isAdmin = False
+    if "username" in session:
+        isLogin = True
+        if session["username"] == "test123":
+            isAdmin = True
+    return render_template('before_survey.html',isLogin=isLogin,isAdmin=isAdmin)
 
 @app.route("/assistants",methods=['GET','POST'])
 def assistants():

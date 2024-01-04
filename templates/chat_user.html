@@ -31,7 +31,7 @@
 
 </head>
 
-<body class="d-flex flex-column min-vh-100">
+<body class="d-flex flex-column min-vh-100"  style="overflow: hidden;">
 
 
 
@@ -63,7 +63,7 @@
 
             {%endif%}
             <li><a class="nav-link scrollto" href="{{url_for('statistics')}}">DATA</a></li>
-          <li><a class="nav-link scrollto" href="{{url_for('assistants')}}">NEARBY CLINIC</a></li>
+          <li><a class="nav-link scrollto" href="{{url_for('assistants')}}">SUPPORT</a></li>
 
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
@@ -313,9 +313,9 @@
             emailInfo.forEach(element => {
                 element.innerHTML = `
 <!--                    <p><strong>Name:</strong> ${username}</p>-->
-                    <p><strong>Date:</strong> ${date}</p>
-                    <p><strong>Content:</strong> ${content}</p>
-<!--                    <p><strong>Symptom:</strong> ${symptom}</p>-->
+                    <p  class="mt-2"><strong>Date:</strong> ${date}</p>
+                    <p class="mt-2"><strong>Content:</strong> ${content}</p>
+<!--                    <p class="mt-2"><strong>Main Concern:</strong> ${symptom}</p>-->
                 `;
             });
         }

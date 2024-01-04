@@ -133,7 +133,17 @@ h6 {
 #header.header-scrolled {
   top: 0;
 }
-
+.logoutmenu{
+display:none !important;
+}
+@media screen and (max-width: 1000px) {
+    .logoutmenu{
+    display:block !important;
+    }
+    .logout{
+        display:none !important;
+    }
+}
 #header .logo {
   font-size: 28px;
   margin: 0;
@@ -171,12 +181,30 @@ h6 {
   background: #65c9cd;
   color: #fff;
 }
-
+@media (max-width: 1200px) {
+   .chartcard{
+   height:450px !important;
+   }
+    canvas{
+    margin-top: 70px !important;
+    }
+}
 @media (max-width: 768px) {
   .appointment-btn {
+  display:none;
     margin: 0 15px 0 0;
     padding: 6px 15px;
   }
+   .chartcard{
+   height:500px !important;
+   }
+}
+
+@media (max-width: 500px) {
+   .chartcard{
+   height:550px !important;
+   }
+
 }
 
 /*--------------------------------------------------------------
@@ -718,6 +746,11 @@ section {
 # About Us
 --------------------------------------------------------------*/
 .aboutimg{
+border-radius:25px;
+}
+
+.aboutimg2{
+width:90%;
 border-radius:25px;
 }
 .mycol{
@@ -1633,6 +1666,7 @@ height: 140px;
   height: auto; /* Maintain aspect ratio */
 }
 @media (min-width: 1000px) {
+
 .bottom-right-image img {
   width: 350px; /* Adjust the width of the image */
   height: auto; /* Maintain aspect ratio */
@@ -1645,6 +1679,7 @@ height: 140px;
   width: 250px; /* Adjust the width of the image */
   height: auto; /* Maintain aspect ratio */
 }
+
 }
 .bottom-right-imaged {
   position: fixed;
@@ -1710,4 +1745,21 @@ width:18%;
   .custom-radio input[type="radio"]:checked + .form-check-label {
     background-color: #007bff; /* Button background color when checked */
     color: #fff; /* Text color when checked */
+  }
+
+  @media (max-width: 1200px) {
+  .sympmt-3{
+margin-top: 20px;
+}
+  .bottom-right-imaged{
+    display:none;
+  }
+    .bottom-right-imageg{
+    display:none;
+  }
+    .bottom-right-image{
+    display:none;
+  }
+
+
   }

@@ -148,7 +148,7 @@ h6 {
 .logoutmenu{
 display:none !important;
 }
-@media screen and (max-width: 1000px) {
+@media (max-width: 1000px) {
     .logoutmenu{
     display:block !important;
     }
@@ -176,8 +176,9 @@ display:none !important;
   color: #fff;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1000px) {
   .appointment-btn {
+
     margin: 0 15px 0 0;
     padding: 6px 15px;
   }
@@ -406,13 +407,57 @@ display:none !important;
 #hero {
   width: 100%;
   height: calc(100vh - 70px);
-  background: url("../img/slide-2.jpeg") center center;
-  background-size: cover;
+
   position: relative;
   margin-top: 70px;
   padding: 0;
 }
+.heroimg{
+width:100%;
+margin-top: -100px;
+}
+@media (max-width: 1200px) {
+.indeximg{
+width: 1000px;
+height: 300px;
+}
+.heroimg{
+margin-top: -20px;
+}
+}
 
+@media (max-width: 1000px) {
+.indeximg{
+width: 1000px;
+height: 300px;
+}
+.heroimg{
+margin-top: 38px;
+}
+}
+
+@media (max-width: 770px) {
+#hero .btn-get-started{
+width: 200px !important;
+}
+.indeximg{
+width: 1200px;
+height: 500px;
+}
+.heroimg{
+
+}
+}
+
+.indeximg{
+width: 1000px;
+height: 400px;
+object-fit: contain;
+overflow:hidden
+}
+.color-pink{
+color:#CC94CC;
+}
 #hero:before {
   content: "";
   background: rgba(0, 0, 0, 0.0);
@@ -441,19 +486,22 @@ display:none !important;
   margin-top: 15px;
   font-size: 24px;
 }
-
+.mymt-5{
+margin-top: 140px !important;
+}
 #hero .btn-get-started {
+    width:20%;
   font-family: "Raleway", sans-serif;
   text-transform: uppercase;
   font-weight: 500;
   font-size: 16px;
   letter-spacing: 1px;
   display: inline-block;
-  background-color:white;
+  background-color:#CC94CC;;
   padding: 8px 28px;
   border-radius: 4px;
   transition: 0.5s;
-  border: 2px solid white;
+  border: 2px solid #CC94CC;
   color: #555555;
 
 }

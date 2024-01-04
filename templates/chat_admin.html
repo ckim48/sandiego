@@ -63,7 +63,7 @@
 
             {%endif%}
             <li><a class="nav-link scrollto" href="{{url_for('statistics')}}">DATA</a></li>
-          <li><a class="nav-link scrollto" href="{{url_for('assistants')}}">NEARBY CLINIC</a></li>
+          <li><a class="nav-link scrollto" href="{{url_for('assistants')}}">SUPPORT</a></li>
 
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
@@ -150,7 +150,7 @@
         {% for chat in chats %}
         <div class="card-body chat-content" id="emailContent_{{ chat[3] }}">
             <!-- Display selected email content -->
-            <h5 class="card-title emailSubject">Selected Email</h5>
+            <h5 class="card-title emailSubject">Selected Chat</h5>
             <p class="card-text emailInfo">Click on an email to see details...</p>
             <button type="button" class="btn btn-primary replyButton" data-bs-toggle="modal" data-bs-target="#sendChatModal_{{ chat[3] }}">
                 Reply
@@ -263,19 +263,19 @@
                 element.innerHTML = `
                     <div class="row">
                         <div class="col-md-4">
-                            <p><strong>Date:</strong> ${date}</p>
-                            <p><strong>Location:</strong> ${location}</p>
+                            <p class="mt-2"><strong>Date:</strong> ${date}</p>
+                            <p class="mt-2"><strong>Location:</strong> ${location}</p>
                         </div>
                         <div class="col-md-4">
-                            <p><strong>Age:</strong> ${age}</p>
-                            <p><strong>Symptom:</strong> ${symptom}</p>
+                            <p class="mt-2"><strong>Age:</strong> ${age}</p>
+                            <p class="mt-2"><strong>Main Concern:</strong> ${symptom}</p>
 
 
 
                         </div>
 
                                                 <div class="col-md-4">
-                            <p><strong>Gender:</strong> ${gender}</p>
+                            <p class="mt-2"><strong>Gender:</strong> ${gender}</p>
 
                         </div>
                         <p><strong>Messages </strong></p>
