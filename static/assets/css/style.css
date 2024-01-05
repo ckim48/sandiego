@@ -642,7 +642,7 @@ section {
 --------------------------------------------------------------*/
 .featured-services .icon-box {
   padding: 30px;
-  width: 500px;
+  width: 400px;
   position: relative;
   overflow: hidden;
   background: #fff;
@@ -1654,6 +1654,11 @@ color:#84D939;
 
 
 
+@media (max-width: 995px) {
+.second{
+margin-top:45px;
+}
+}
 
 .chatheader{
 background:#CC94CC;
