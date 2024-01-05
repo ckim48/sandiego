@@ -151,6 +151,15 @@ def survey_d():
         if session["username"] == "test123":
             isAdmin = True
     return render_template('survey_d.html',isLogin=isLogin,isAdmin=isAdmin)
+@app.route("/survey_a",methods=['GET','POST'])
+def survey_a():
+    isAdmin = False
+    isLogin = False
+    if "username" in session:
+        isLogin = True
+        if session["username"] == "test123":
+            isAdmin = True
+    return render_template('survey_a.html',isLogin=isLogin,isAdmin=isAdmin)
 
 @app.route("/survey_g",methods=['GET','POST'])
 def survey_g():
@@ -170,6 +179,16 @@ def result_d(score):
         if session["username"] == "test123":
             isAdmin = True
     return render_template('result_d.html', score=score,isLogin=isLogin,isAdmin=isAdmin)
+
+@app.route("/result_a/<int:score>",methods=['GET','POST'])
+def result_a(score):
+    isAdmin = False
+    isLogin = False
+    if "username" in session:
+        isLogin = True
+        if session["username"] == "test123":
+            isAdmin = True
+    return render_template('result_a.html', score=score,isLogin=isLogin,isAdmin=isAdmin)
 @app.route('/calculate_d', methods=['POST'])
 def calculate_score_d():
     total_score = 0
@@ -193,6 +212,15 @@ def calculate_score_g():
         total_score += int(request.form[key])
 
     return redirect(url_for('result_g', score=total_score))
+
+
+@app.route('/calculate_a', methods=['POST'])
+def calculate_score_a():
+    total_score = 0
+    for key in request.form:
+        total_score += int(request.form[key])
+
+    return redirect(url_for('result_a', score=total_score))
 @app.route('/calculate', methods=['POST'])
 def calculate_score():
     total_score = 0
