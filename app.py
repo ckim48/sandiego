@@ -5,10 +5,11 @@ from datetime import datetime
 app = Flask(__name__)
 chat_id = 14
 app.secret_key = "abcde"
-session = {}
+session = {} # {'username':'scott2023'}
 def create_connection():
     conn = sqlite3.connect('static/database.db')
     return conn
+
 @app.route("/",methods=['GET'])
 def index():
     isLogin = False
@@ -19,11 +20,15 @@ def index():
             isAdmin = True
     return render_template("index.html", isLogin=isLogin,isAdmin = isAdmin)
 
+
+
 @app.route("/dashboard/",methods=['GET'])
 def dashboard():
     if "username" not in session:
         return redirect(url_for("login"))
     return render_template("index.html")
+
+
 @app.route("/send",methods=['POST'])
 def send():
     global chat_id
@@ -92,6 +97,8 @@ def bsurvey():
         isLogin = True
         if session["username"] == "test123":
             isAdmin = True
+    else:
+        return redirect(url_for('login'))
     return render_template('before_survey.html',isLogin=isLogin,isAdmin=isAdmin)
 
 @app.route("/assistants",methods=['GET','POST'])
@@ -103,6 +110,8 @@ def assistants():
         if session["username"] == "test123":
             isAdmin = True
     return render_template('assistants.html',isLogin=isLogin,isAdmin=isAdmin)
+
+
 @app.route("/result/<int:score>",methods=['GET','POST'])
 def result(score):
     isAdmin = False
@@ -120,6 +129,8 @@ def statistics():
         isLogin = True
         if session["username"] == "test123":
             isAdmin = True
+    else:
+        return redirect(url_for('login'))
     return render_template('statistics.html',isLogin=isLogin,isAdmin=isAdmin)
 @app.route("/survey",methods=['GET','POST'])
 def survey():
@@ -194,6 +205,7 @@ def calculate_score():
 @app.route('/login', methods=['GET','POST'])
 def login():
 	if request.method == "POST": #submitting
+
 		username = request.form.get("username")
 		password = request.form.get("password")
 
@@ -220,6 +232,8 @@ def login():
 		if "username" in session:
 			return redirect(url_for('index'))
 		return render_template('login.html')
+
+
 @app.route("/register",methods=['GET','POST'])
 def register():
     if request.method == "POST":  # submitting the registration form
@@ -228,12 +242,15 @@ def register():
         gender = request.form.get("gender")
         age = request.form.get("age")
         # Connect to the database
+
         conn = sqlite3.connect('static/database.db')
         cursor = conn.cursor()
 
         # Check if the username already exists in the database
         cursor.execute("SELECT * FROM Users WHERE username=?", (username,))
         existing_user = cursor.fetchone()
+
+
         if existing_user:  # If the username already exists
             flash("Username already exists. Please choose a different username.")
             conn.close()
