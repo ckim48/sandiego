@@ -65,7 +65,12 @@
 
             <li><a class="nav-link scrollto" href="{{url_for('statistics')}}">DATA</a></li>
           <li><a class="nav-link scrollto" href="{{url_for('assistants')}}">SUPPORT</a></li>
+            {% if isLogin %}
+            <li class="logoutmenu"><a class="nav-link scrollto" href="{{url_for('logout')}}">Logout</a></li>
 
+            {% else %}
+
+            {%endif%}
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
@@ -86,7 +91,7 @@
 
     <!-- ======= Featured Services Section ======= -->
     <section id="survey" class="survey mt-5">
-      <div class="container">
+      <div class="container result-container">
           <div class="section-title">
           <h2 class="mt-5">Result</h2>
           <p class="mt-5 mb-5">The following are your results, please read carefully and follow the recommended actions or seek further assistance if needed.</p>
@@ -124,10 +129,10 @@
     <div class="mt-5">
                         {% if score >15%}
 
-        <a class="result-btn me-3 mt-5" href="{{url_for('assistants')}}">Local Clinic</a>
+        <a class="result-btn me-3 mt-md-5" href="{{url_for('assistants')}}">Local Clinic</a>
 
         {%endif%}
-        <a class="result-btn mt-5" href="{{url_for('chat')}}">Chat</a>
+        <a class="result-btn mt-md-5" href="{{url_for('chat')}}">Chat</a>
     </div>
 
             </div>

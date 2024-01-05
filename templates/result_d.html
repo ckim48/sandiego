@@ -65,7 +65,12 @@
 
             <li><a class="nav-link scrollto" href="{{url_for('statistics')}}">DATA</a></li>
           <li><a class="nav-link scrollto" href="{{url_for('assistants')}}">SUPPORT</a></li>
+            {% if isLogin %}
+            <li class="logoutmenu"><a class="nav-link scrollto" href="{{url_for('logout')}}">Logout</a></li>
 
+            {% else %}
+
+            {%endif%}
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
@@ -120,9 +125,9 @@
 
     <div class="mt-5">
                         {% if score > 9%}
-        <a class="result-btn me-3 mt-5" href="{{url_for('assistants')}}">Local Clinic</a>
+        <a class="result-btn me-3 mt-md-5" href="{{url_for('assistants')}}">Local Clinic</a>
         {%endif%}
-        <a class="result-btn mt-5" href="{{url_for('chat')}}">Chat</a>
+        <a class="result-btn mt-md-5" href="{{url_for('chat')}}">Chat</a>
     </div>
 
             </div>

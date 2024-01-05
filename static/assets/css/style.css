@@ -202,9 +202,28 @@ display:none !important;
 
 @media (max-width: 500px) {
    .chartcard{
-   height:550px !important;
+   height:480px !important;
    }
+   .assist{
+    height: 640px !important;
+   }
+   .chatbtn{
+    margin-top: 20px !important;
+   }
+  .result-container.text-center {
+    text-align: center;
+  }
 
+  .result-container .row.justify-content-center,
+  .result-container .col-md-8 {
+    text-align: center !important;
+  }
+
+  .result-container .col-md-4 {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+  }
 }
 
 /*--------------------------------------------------------------
@@ -1566,6 +1585,9 @@ width:36%;
   color:white;
     transition: transform 0.3s ease-in-out !important;
     display: inline-block;
+
+}
+.result-container{
 
 }
 .result-btn:hover {

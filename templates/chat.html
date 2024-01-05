@@ -64,7 +64,12 @@
             {%endif%}
             <li><a class="nav-link scrollto" href="{{url_for('statistics')}}">DATA</a></li>
           <li><a class="nav-link scrollto" href="{{url_for('assistants')}}">SUPPORT</a></li>
+            {% if isLogin %}
+            <li class="logoutmenu"><a class="nav-link scrollto" href="{{url_for('logout')}}">Logout</a></li>
 
+            {% else %}
+
+            {%endif%}
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
@@ -134,6 +139,8 @@
       <option value="depression">Depression</option>
       <option value="alcohol">Alcohol</option>
       <option value="gambling">Gambling</option>
+        <option value="gambling">Anxiety</option>
+        <option value="gambling">Drug Addiction</option>
 <!--      <option value="other">Other</option>-->
     </select>
               </div>
@@ -141,7 +148,7 @@
 
 
               <div class=" mb-3">
-                <label for="messageInput" class="form-label sympmt-3">Main Concern</label>
+                <label for="messageInput" class="form-label sympmt-3">Main Concerns</label>
                 <textarea class="form-control"  name="symptom" rows="4" required></textarea>
               </div>
 

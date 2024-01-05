@@ -64,7 +64,12 @@
             {%endif%}
             <li><a class="nav-link scrollto" href="{{url_for('statistics')}}">DATA</a></li>
           <li><a class="nav-link scrollto" href="{{url_for('assistants')}}">SUPPORT</a></li>
+            {% if isLogin %}
+            <li class="logoutmenu"><a class="nav-link scrollto" href="{{url_for('logout')}}">Logout</a></li>
 
+            {% else %}
+
+            {%endif%}
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
@@ -329,15 +334,49 @@
         });
     });
   </script>
+<!--<script>-->
+<!--      function sendChat(chatId) {-->
+<!--    const message = document.getElementById(`chatMessage_${chatId}`).value;-->
+
+
+<!--    alert(`Message sent for Chat ${chatId}: ${message}`);-->
+
+<!--    $(`#sendChatModal_${chatId}`).modal('hide');-->
+<!--  }-->
+<!--</script>-->
+
 <script>
-      function sendChat(chatId) {
-    const message = document.getElementById(`chatMessage_${chatId}`).value;
 
+        function sendChat(chatId) {
+        const message = document.getElementById(`chatMessage_${chatId}`).value;
+        const username = document.querySelector(`[data-id="${chatId}"]`).getAttribute("data-username");
 
-    alert(`Message sent for Chat ${chatId}: ${message}`);
+        const data = {
+            username: username,
+            message: message
+        };
 
-    $(`#sendChatModal_${chatId}`).modal('hide');
-  }
+        fetch('/reply-message2', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+        .then(response => {
+            if (response.ok) {
+                // Message sent successfully
+                alert(`Message sent!`);
+                $('#sendChatModal_' + chatId).modal('hide'); // Closing the modal using jQuery
+            } else {
+                // Handle error
+                throw new Error('Failed to send message');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+    }
 </script>
 </body>
 

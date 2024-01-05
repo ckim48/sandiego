@@ -333,7 +333,23 @@ def reply_message():
         conn.commit()
 
         return jsonify({'success': True, 'message': 'Message saved successfully'})
+@app.route('/reply-message2', methods=['POST'])
+def reply_message2():
+    if request.method == 'POST':
+        conn = sqlite3.connect('static/database.db')  # Replace 'your_database.db' with your database file
+        cursor = conn.cursor()
+        data = request.get_json()
 
+        # Extract data from the request
+        username = session["username"]
+        date = datetime.now().strftime('%Y-%m-%d')
+        content = data.get('message')
+
+        # Save chat into the 'replay' table
+        cursor.execute('INSERT INTO chats (username, date, content) VALUES (?, ?, ?)', (username, date, content))
+        conn.commit()
+
+        return jsonify({'success': True, 'message': 'Message saved successfully'})
 @app.route("/chat_user",methods=['GET'])
 def chat_user():
     conn = sqlite3.connect('static/database.db')  # Replace 'your_database.db' with your database file

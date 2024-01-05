@@ -65,7 +65,12 @@
 
             <li><a class="nav-link scrollto" href="{{url_for('statistics')}}">DATA</a></li>
           <li><a class="nav-link scrollto" href="{{url_for('assistants')}}">SUPPORTS</a></li>
+            {% if isLogin %}
+            <li class="logoutmenu"><a class="nav-link scrollto" href="{{url_for('logout')}}">Logout</a></li>
 
+            {% else %}
+
+            {%endif%}
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
@@ -127,7 +132,7 @@
           <div class="col-md-6 col-lg-4 mb-4 graph">
                         <div class="card chartcard">
               <div class="card-body">
-                                    <h4 class="text-center mb-4">Concern Distribution</h4>
+                                    <h4 class="text-center mb-4">Concerns Distribution</h4>
 
             <canvas id="symptomChart" width="300" height="300"></canvas>
                 </div>
