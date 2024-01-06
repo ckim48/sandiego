@@ -185,18 +185,21 @@ display:none !important;
    .chartcard{
    height:450px !important;
    }
+      .chartcard li {
+   font-size:14px;
+   }
     canvas{
     margin-top: 70px !important;
     }
 }
-@media (max-width: 768px) {
+@media (max-width: 790px) {
   .appointment-btn {
   display:none;
     margin: 0 15px 0 0;
     padding: 6px 15px;
   }
    .chartcard{
-   height:500px !important;
+   height:600px !important;
    }
 }
 

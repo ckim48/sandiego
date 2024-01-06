@@ -3,7 +3,7 @@ import sqlite3
 from datetime import datetime
 
 app = Flask(__name__)
-chat_id = 16
+chat_id = 18
 app.secret_key = "abcde"
 session = {} # {'username':'scott2023'}
 def create_connection():
