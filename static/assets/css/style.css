@@ -205,7 +205,7 @@ display:none !important;
 
 @media (max-width: 500px) {
    .chartcard{
-   height:480px !important;
+   height:540px !important;
    }
    .assist{
     height: 640px !important;
@@ -216,7 +216,9 @@ display:none !important;
   .result-container.text-center {
     text-align: center;
   }
-
+   .chartcard2{
+   height:360px !important;
+   }
   .result-container .row.justify-content-center,
   .result-container .col-md-8 {
     text-align: center !important;
