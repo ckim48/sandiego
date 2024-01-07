@@ -230,7 +230,12 @@ display:none !important;
     justify-content: center;
   }
 }
+@media (max-width: 420px) {
+   .chartcard{
+   height:440px !important;
+   }
 
+   }
 /*--------------------------------------------------------------
 # Navigation Menu
 --------------------------------------------------------------*/
