@@ -7,247 +7,247 @@ chat_id = 16
 app.secret_key = "abcde"
 session = {} # {'username':'scott2023'}
 def create_connection():
-    conn = sqlite3.connect('static/database.db')
-    return conn
+	conn = sqlite3.connect('static/database.db')
+	return conn
 
 @app.route("/",methods=['GET'])
 def index():
-    isLogin = False
-    isAdmin = False
-    if "username" in session:
-        isLogin = True
-        if session["username"] == "test123":
-            isAdmin = True
-    return render_template("index.html", isLogin=isLogin,isAdmin = isAdmin)
+	isLogin = False
+	isAdmin = False
+	if "username" in session:
+		isLogin = True
+		if session["username"] == "test123":
+			isAdmin = True
+	return render_template("index.html", isLogin=isLogin,isAdmin = isAdmin)
 
 
 
 @app.route("/dashboard/",methods=['GET'])
 def dashboard():
-    if "username" not in session:
-        return redirect(url_for("login"))
-    return render_template("index.html")
+	if "username" not in session:
+		return redirect(url_for("login"))
+	return render_template("index.html")
 
 
 @app.route("/send",methods=['POST'])
 def send():
-    global chat_id
-    username = session["username"]
-    age = request.form.get('age')
-    gender = request.form.get('gender')
-    location = request.form.get('location')
-    symptom = request.form.get('symptom')
-    date = datetime.now().strftime('%Y-%m-%d')
-    chat_id += 1
+	global chat_id
+	username = session["username"]
+	age = request.form.get('age')
+	gender = request.form.get('gender')
+	location = request.form.get('location')
+	symptom = request.form.get('symptom')
+	date = datetime.now().strftime('%Y-%m-%d')
+	chat_id += 1
 
-    content = request.form.get('message')  # Assuming the message field is for content
+	content = request.form.get('message')  # Assuming the message field is for content
 
-    conn = create_connection()
-    cursor = conn.cursor()
-    cursor.execute(
-        'INSERT INTO chats (username, date, content, id, read,symptom,location,age,gender) VALUES (?, ?, ?, ?,?,?,?,?,?)',
-        (username, date, content, chat_id, 0, symptom, location, age, gender))
-    conn.commit()
-    conn.close()
-    return redirect(url_for("chat"))
+	conn = create_connection()
+	cursor = conn.cursor()
+	cursor.execute(
+		'INSERT INTO chats (username, date, content, id, read,symptom,location,age,gender) VALUES (?, ?, ?, ?,?,?,?,?,?)',
+		(username, date, content, chat_id, 0, symptom, location, age, gender))
+	conn.commit()
+	conn.close()
+	return redirect(url_for("chat"))
 @app.route("/chat",methods=['GET','POST'])
 def chat():
-    isLogin = False
-    if request.method == "POST":
-        global chat_id
-        username = session["username"]
-        age = request.form.get('age')
-        gender = request.form.get('gender')
-        location = request.form.get('location')
-        symptom = request.form.get('symptom')
-        date = datetime.now().strftime('%Y-%m-%d')
-        chat_id += 1
+	isLogin = False
+	if request.method == "POST":
+		global chat_id
+		username = session["username"]
+		age = request.form.get('age')
+		gender = request.form.get('gender')
+		location = request.form.get('location')
+		symptom = request.form.get('symptom')
+		date = datetime.now().strftime('%Y-%m-%d')
+		chat_id += 1
 
-        content = request.form.get('message')  # Assuming the message field is for content
+		content = request.form.get('message')  # Assuming the message field is for content
 
-        conn = create_connection()
-        cursor = conn.cursor()
-        cursor.execute('INSERT INTO chats (username, date, content, id, read,symptom,location,age,gender) VALUES (?, ?, ?, ?,?,?,?,?,?)',
-                       (username, date, content, chat_id,0,symptom,location,age,gender))
-        conn.commit()
-        conn.close()
-        return render_template("chat.html", submitted=True,isLogin=True)
-    else:
+		conn = create_connection()
+		cursor = conn.cursor()
+		cursor.execute('INSERT INTO chats (username, date, content, id, read,symptom,location,age,gender) VALUES (?, ?, ?, ?,?,?,?,?,?)',
+					   (username, date, content, chat_id,0,symptom,location,age,gender))
+		conn.commit()
+		conn.close()
+		return render_template("chat.html", submitted=True,isLogin=True)
+	else:
 
-        if "username" not in session:
-            return redirect(url_for("login"))
-        else:
-            isLogin = True
-        return render_template("chat.html",isLogin=isLogin)
+		if "username" not in session:
+			return redirect(url_for("login"))
+		else:
+			isLogin = True
+		return render_template("chat.html",isLogin=isLogin)
 @app.route("/about",methods=['GET','POST'])
 def about():
-    isLogin = False
-    isAdmin = False
-    if "username" in session:
-        isLogin = True
-        if session["username"] == "test123":
-            isAdmin = True
-    return render_template('about.html',isLogin=isLogin,isAdmin=isAdmin)
+	isLogin = False
+	isAdmin = False
+	if "username" in session:
+		isLogin = True
+		if session["username"] == "test123":
+			isAdmin = True
+	return render_template('about.html',isLogin=isLogin,isAdmin=isAdmin)
 
 @app.route("/bsurvey",methods=['GET','POST'])
 def bsurvey():
-    isLogin = False
-    isAdmin = False
-    if "username" in session:
-        isLogin = True
-        if session["username"] == "test123":
-            isAdmin = True
-    return render_template('before_survey.html',isLogin=isLogin,isAdmin=isAdmin)
+	isLogin = False
+	isAdmin = False
+	if "username" in session:
+		isLogin = True
+		if session["username"] == "test123":
+			isAdmin = True
+	return render_template('before_survey.html',isLogin=isLogin,isAdmin=isAdmin)
 
 @app.route("/assistants",methods=['GET','POST'])
 def assistants():
-    isAdmin = False
-    isLogin = False
-    if "username" in session:
-        isLogin = True
-        if session["username"] == "test123":
-            isAdmin = True
-    return render_template('assistants.html',isLogin=isLogin,isAdmin=isAdmin)
+	isAdmin = False
+	isLogin = False
+	if "username" in session:
+		isLogin = True
+		if session["username"] == "test123":
+			isAdmin = True
+	return render_template('assistants.html',isLogin=isLogin,isAdmin=isAdmin)
 
 
 @app.route("/result/<int:score>",methods=['GET','POST'])
 def result(score):
-    isAdmin = False
-    isLogin = False
-    if "username" in session:
-        isLogin = True
-        if session["username"] == "test123":
-            isAdmin = True
-    return render_template('result.html', score=score,isLogin=isLogin,isAdmin=isAdmin)
+	isAdmin = False
+	isLogin = False
+	if "username" in session:
+		isLogin = True
+		if session["username"] == "test123":
+			isAdmin = True
+	return render_template('result.html', score=score,isLogin=isLogin,isAdmin=isAdmin)
 @app.route("/statistics", methods=['GET', 'POST'])
 def statistics():
-    isAdmin = False
-    isLogin = False
-    if "username" in session:
-        isLogin = True
-        if session["username"] == "test123":
-            isAdmin = True
+	isAdmin = False
+	isLogin = False
+	if "username" in session:
+		isLogin = True
+		if session["username"] == "test123":
+			isAdmin = True
 
-    conn = sqlite3.connect('static/database.db')  # Replace 'your_database.db' with the actual database file name
-    cursor = conn.cursor()
+	conn = sqlite3.connect('static/database.db')  # Replace 'your_database.db' with the actual database file name
+	cursor = conn.cursor()
 
-    query = "SELECT symptom, COUNT(*) FROM chats GROUP BY symptom;"
-    cursor.execute(query)
+	query = "SELECT symptom, COUNT(*) FROM chats GROUP BY symptom;"
+	cursor.execute(query)
 
-    result_dict = dict(cursor.fetchall())
+	result_dict = dict(cursor.fetchall())
 
-    # Close the database connection
-    conn.close()
+	# Close the database connection
+	conn.close()
 
-    # Convert result_dict to the format expected by Chart.js
-    symptom_labels = list(result_dict.keys())
-    symptom_counts = list(result_dict.values())
+	# Convert result_dict to the format expected by Chart.js
+	symptom_labels = list(result_dict.keys())
+	symptom_counts = list(result_dict.values())
 
-    symptomData = {
-        'labels': symptom_labels,
-        'datasets': [{
-            'data': symptom_counts,
-            'backgroundColor': ["#FF6384", "#CC94CC", "#FFCE56", "#E9C074", "#E774E9"]
-        }]
-    }
+	symptomData = {
+		'labels': symptom_labels,
+		'datasets': [{
+			'data': symptom_counts,
+			'backgroundColor': ["#FF6384", "#CC94CC", "#FFCE56", "#E9C074", "#E774E9"]
+		}]
+	}
 
-    return render_template('statistics.html', isLogin=isLogin, isAdmin=isAdmin, symptomData=symptomData)
+	return render_template('statistics.html', isLogin=isLogin, isAdmin=isAdmin, symptomData=symptomData)
 @app.route("/survey",methods=['GET','POST'])
 def survey():
-    isAdmin = False
-    isLogin = False
-    if "username" in session:
-        isLogin = True
-        if session["username"] == "test123":
-            isAdmin = True
-    return render_template('survey.html',isLogin=isLogin,isAdmin=isAdmin)
+	isAdmin = False
+	isLogin = False
+	if "username" in session:
+		isLogin = True
+		if session["username"] == "test123":
+			isAdmin = True
+	return render_template('survey.html',isLogin=isLogin,isAdmin=isAdmin)
 
 @app.route("/survey_d",methods=['GET','POST'])
 def survey_d():
-    isAdmin = False
-    isLogin = False
-    if "username" in session:
-        isLogin = True
-        if session["username"] == "test123":
-            isAdmin = True
-    return render_template('survey_d.html',isLogin=isLogin,isAdmin=isAdmin)
+	isAdmin = False
+	isLogin = False
+	if "username" in session:
+		isLogin = True
+		if session["username"] == "test123":
+			isAdmin = True
+	return render_template('survey_d.html',isLogin=isLogin,isAdmin=isAdmin)
 @app.route("/survey_a",methods=['GET','POST'])
 def survey_a():
-    isAdmin = False
-    isLogin = False
-    if "username" in session:
-        isLogin = True
-        if session["username"] == "test123":
-            isAdmin = True
-    return render_template('survey_a.html',isLogin=isLogin,isAdmin=isAdmin)
+	isAdmin = False
+	isLogin = False
+	if "username" in session:
+		isLogin = True
+		if session["username"] == "test123":
+			isAdmin = True
+	return render_template('survey_a.html',isLogin=isLogin,isAdmin=isAdmin)
 
 @app.route("/survey_g",methods=['GET','POST'])
 def survey_g():
-    isAdmin = False
-    isLogin = False
-    if "username" in session:
-        isLogin = True
-        if session["username"] == "test123":
-            isAdmin = True
-    return render_template('survey_g.html',isLogin=isLogin,isAdmin=isAdmin)
+	isAdmin = False
+	isLogin = False
+	if "username" in session:
+		isLogin = True
+		if session["username"] == "test123":
+			isAdmin = True
+	return render_template('survey_g.html',isLogin=isLogin,isAdmin=isAdmin)
 @app.route("/result_d/<int:score>",methods=['GET','POST'])
 def result_d(score):
-    isAdmin = False
-    isLogin = False
-    if "username" in session:
-        isLogin = True
-        if session["username"] == "test123":
-            isAdmin = True
-    return render_template('result_d.html', score=score,isLogin=isLogin,isAdmin=isAdmin)
+	isAdmin = False
+	isLogin = False
+	if "username" in session:
+		isLogin = True
+		if session["username"] == "test123":
+			isAdmin = True
+	return render_template('result_d.html', score=score,isLogin=isLogin,isAdmin=isAdmin)
 
 @app.route("/result_a/<int:score>",methods=['GET','POST'])
 def result_a(score):
-    isAdmin = False
-    isLogin = False
-    if "username" in session:
-        isLogin = True
-        if session["username"] == "test123":
-            isAdmin = True
-    return render_template('result_a.html', score=score,isLogin=isLogin,isAdmin=isAdmin)
+	isAdmin = False
+	isLogin = False
+	if "username" in session:
+		isLogin = True
+		if session["username"] == "test123":
+			isAdmin = True
+	return render_template('result_a.html', score=score,isLogin=isLogin,isAdmin=isAdmin)
 @app.route('/calculate_d', methods=['POST'])
 def calculate_score_d():
-    total_score = 0
-    for key in request.form:
-        total_score += int(request.form[key])
+	total_score = 0
+	for key in request.form:
+		total_score += int(request.form[key])
 
-    return redirect(url_for('result_d', score=total_score))
+	return redirect(url_for('result_d', score=total_score))
 @app.route("/result_g/<int:score>",methods=['GET','POST'])
 def result_g(score):
-    isAdmin = False
-    isLogin = False
-    if "username" in session:
-        isLogin = True
-        if session["username"] == "test123":
-            isAdmin = True
-    return render_template('result_g.html', score=score,isLogin=isLogin,isAdmin=isAdmin)
+	isAdmin = False
+	isLogin = False
+	if "username" in session:
+		isLogin = True
+		if session["username"] == "test123":
+			isAdmin = True
+	return render_template('result_g.html', score=score,isLogin=isLogin,isAdmin=isAdmin)
 @app.route('/calculate_g', methods=['POST'])
 def calculate_score_g():
-    total_score = 0
-    for key in request.form:
-        total_score += int(request.form[key])
+	total_score = 0
+	for key in request.form:
+		total_score += int(request.form[key])
 
-    return redirect(url_for('result_g', score=total_score))
+	return redirect(url_for('result_g', score=total_score))
 
 
 @app.route('/calculate_a', methods=['POST'])
 def calculate_score_a():
-    total_score = 0
-    for key in request.form:
-        total_score += int(request.form[key])
+	total_score = 0
+	for key in request.form:
+		total_score += int(request.form[key])
 
-    return redirect(url_for('result_a', score=total_score))
+	return redirect(url_for('result_a', score=total_score))
 @app.route('/calculate', methods=['POST'])
 def calculate_score():
-    total_score = 0
-    for key in request.form:
-        total_score += int(request.form[key])
+	total_score = 0
+	for key in request.form:
+		total_score += int(request.form[key])
 
-    return redirect(url_for('result', score=total_score))
+	return redirect(url_for('result', score=total_score))
 
 
 @app.route('/login', methods=['GET','POST'])
@@ -284,110 +284,113 @@ def login():
 
 @app.route("/register",methods=['GET','POST'])
 def register():
-    if request.method == "POST":  # submitting the registration form
-        username = request.form.get("username")
-        password = request.form.get("password")
-        gender = request.form.get("gender")
-        age = request.form.get("age")
-        # Connect to the database
+	if request.method == "POST":  # submitting the registration form
+		username = request.form.get("username")
+		password = request.form.get("password")
+		gender = request.form.get("gender")
+		age = request.form.get("age")
+		# Connect to the database
 
-        conn = sqlite3.connect('static/database.db')
-        cursor = conn.cursor()
+		conn = sqlite3.connect('static/database.db')
+		cursor = conn.cursor()
 
-        # Check if the username already exists in the database
-        cursor.execute("SELECT * FROM Users WHERE username=?", (username,))
-        existing_user = cursor.fetchone()
-
-
-        if existing_user:  # If the username already exists
-            flash("Username already exists. Please choose a different username.")
-            conn.close()
-            return render_template('register.html')
+		# Check if the username already exists in the database
+		cursor.execute("SELECT * FROM Users WHERE username=?", (username,))
+		existing_user = cursor.fetchone()
 
 
-        cursor.execute("INSERT INTO Users (username, password, gender, age) VALUES (?, ?, ?, ?)",
-                       (username, password, gender, age))
-        conn.commit()
-        conn.close()
+		if existing_user:  # If the username already exists
+			flash("Username already exists. Please choose a different username.")
+			conn.close()
+			return render_template('register.html')
 
-        # flash("Registration successful! You can now log in.")
-        return redirect(url_for('login'))
 
-    else:  # Accessing the registration page via GET request
-        if "username" in session:  # If user is already logged in, redirect to index/homepage
-            return redirect(url_for('index'))
-        return render_template('register.html')
+		cursor.execute("INSERT INTO Users (username, password, gender, age) VALUES (?, ?, ?, ?)",
+					   (username, password, gender, age))
+		conn.commit()
+		conn.close()
+
+		# flash("Registration successful! You can now log in.")
+		return redirect(url_for('login'))
+
+	else:  # Accessing the registration page via GET request
+		if "username" in session:  # If user is already logged in, redirect to index/homepage
+			return redirect(url_for('index'))
+		return render_template('register.html')
 
 @app.route("/chat_admin",methods=['GET'])
 def chat_admin():
-    conn = sqlite3.connect('static/database.db')  # Replace 'your_database.db' with your database file
-    cursor = conn.cursor()
-    isLogin = False
-    cursor.execute("SELECT * FROM chats")  # Fetch all chats from the 'chats' table
-    chats = cursor.fetchall()  # Get all fetched chats
-    print("AAAAA",chats)
-    isAdmin = False
-    if "username" in session:
-        isLogin = True
-        if session["username"] == "test123":
-            isAdmin = True
-    conn.close()
+	conn = sqlite3.connect('static/database.db')  # Replace 'your_database.db' with your database file
+	cursor = conn.cursor()
+	isLogin = False
+	cursor.execute("SELECT * FROM chats")  # Fetch all chats from the 'chats' table
+	chats = cursor.fetchall()  # Get all fetched chats
+	print("AAAAA",chats)
+	isAdmin = False
+	if "username" in session:
+		isLogin = True
+		if session["username"] == "test123":
+			isAdmin = True
+	conn.close()
 
-    return render_template("chat_admin.html",chats=chats,isLogin=isLogin,isAdmin=isAdmin)
+	return render_template("chat_admin.html",chats=chats,isLogin=isLogin,isAdmin=isAdmin)
 
 chat_messages = {}
 @app.route('/reply-message', methods=['POST'])
 def reply_message():
-    if request.method == 'POST':
-        conn = sqlite3.connect('static/database.db')  # Replace 'your_database.db' with your database file
-        cursor = conn.cursor()
-        data = request.get_json()
+	if request.method == 'POST':
+		conn = sqlite3.connect('static/database.db')  # Replace 'your_database.db' with your database file
+		cursor = conn.cursor()
+		data = request.get_json()
 
-        # Extract data from the request
-        username = data.get('username')
-        date = datetime.now().strftime('%Y-%m-%d')
-        content = data.get('message')
+		# Extract data from the request
+		username = data.get('username')
+		date = datetime.now().strftime('%Y-%m-%d')
+		content = data.get('message')
 
-        # Save chat into the 'replay' table
-        cursor.execute('INSERT INTO reply (toUsername, date, content) VALUES (?, ?, ?)', (username, date, content))
-        conn.commit()
+		# Save chat into the 'replay' table
+		cursor.execute('INSERT INTO reply (toUsername, date, content) VALUES (?, ?, ?)', (username, date, content))
+		conn.commit()
 
-        return jsonify({'success': True, 'message': 'Message saved successfully'})
+		return jsonify({'success': True, 'message': 'Message saved successfully'})
 @app.route('/reply-message2', methods=['POST'])
 def reply_message2():
-    if request.method == 'POST':
-        conn = sqlite3.connect('static/database.db')  # Replace 'your_database.db' with your database file
-        cursor = conn.cursor()
-        data = request.get_json()
+	if request.method == 'POST':
+		conn = sqlite3.connect('static/database.db')  # Replace 'your_database.db' with your database file
+		cursor = conn.cursor()
+		data = request.get_json()
 
-        # Extract data from the request
-        username = session["username"]
-        date = datetime.now().strftime('%Y-%m-%d')
-        content = data.get('message')
+		# Extract data from the request
+		username = session["username"]
+		date = datetime.now().strftime('%Y-%m-%d')
+		content = data.get('message')
 
-        # Save chat into the 'replay' table
-        cursor.execute('INSERT INTO chats (username, date, content) VALUES (?, ?, ?)', (username, date, content))
-        conn.commit()
+		# Save chat into the 'replay' table
+		cursor.execute('INSERT INTO chats (username, date, content) VALUES (?, ?, ?)', (username, date, content))
+		conn.commit()
 
-        return jsonify({'success': True, 'message': 'Message saved successfully'})
+		return jsonify({'success': True, 'message': 'Message saved successfully'})
 @app.route("/chat_user",methods=['GET'])
 def chat_user():
-    conn = sqlite3.connect('static/database.db')  # Replace 'your_database.db' with your database file
-    cursor = conn.cursor()
-    username = session["username"]
-    cursor.execute("SELECT * FROM reply where toUsername =?",(username,))  # Fetch all chats from the 'chats' table
-    chats = cursor.fetchall()  # Get all fetched chats
-    print("AAAAA",chats)
-    if "username" in session:
-        isLogin = True
-    conn.close()
+	conn = sqlite3.connect('static/database.db')  # Replace 'your_database.db' with your database file
+	cursor = conn.cursor()
+	if "username" in session:
+		isLogin = True
+	else:
+		return redirect(url_for('login'))
+	username = session["username"]
+	cursor.execute("SELECT * FROM reply where toUsername =?",(username,))  # Fetch all chats from the 'chats' table
+	chats = cursor.fetchall()  # Get all fetched chats
+	print("AAAAA",chats)
 
-    return render_template("chat_user.html",chats=chats,isLogin=isLogin)
+	conn.close()
+
+	return render_template("chat_user.html",chats=chats,isLogin=isLogin)
 
 @app.route("/logout",methods=['GET'])
 def logout():
-    session.clear() # remove everything in session
-    return render_template("index.html")
+	session.clear() # remove everything in session
+	return render_template("index.html")
 
 if __name__=="__main__":
-    app.run(host="127.0.0.1",port=8000,debug=True)
+	app.run(host="127.0.0.1",port=8000,debug=True)
