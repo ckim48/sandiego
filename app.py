@@ -97,8 +97,6 @@ def bsurvey():
         isLogin = True
         if session["username"] == "test123":
             isAdmin = True
-    else:
-        return redirect(url_for('login'))
     return render_template('before_survey.html',isLogin=isLogin,isAdmin=isAdmin)
 
 @app.route("/assistants",methods=['GET','POST'])
@@ -129,8 +127,6 @@ def statistics():
         isLogin = True
         if session["username"] == "test123":
             isAdmin = True
-    else:
-        return redirect(url_for('login'))
     return render_template('statistics.html',isLogin=isLogin,isAdmin=isAdmin)
 @app.route("/survey",methods=['GET','POST'])
 def survey():
