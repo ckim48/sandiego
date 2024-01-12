@@ -290,49 +290,39 @@
 
 
 
-                  const symptomData = {
-        labels: ["Angry", "Depress","Shaking","Unstable Moods","Poor Judgement"],
-        datasets: [{
-          data: [10,10,10, 40,20],
-          backgroundColor: ["#FF6384", "#CC94CC", "#FFCE56","#E9C074","#E774E9"]
-        }]
-      };
+ const symptomData = {{ symptomData|tojson|safe }};
 
-
-      new Chart(symptomCanvas, {
-        type: 'bar',
-        data: symptomData,
-		    options:{
-		    	scales:{
-		    		y:{
-		    			title:{
-		    				display:true,
-		    				text:"Number",
-		    				          font: {
-            weight: 'bold'
-          }
-		    			},
-
-		    		},
-		    		x:{
-		    			title:{
-		    				display:true,
-		    				text:"Symptom",
-		    				          font: {
-            weight: 'bold'
-          }
-		    			},
-		    		}
-		    	},
-		    	plugins:{
-		    		legend:{
-		    			display:false
-		    		}
-		    	}
-		    }
-
-      });
-
+        new Chart(symptomCanvas, {
+            type: 'bar',
+            data: symptomData,
+            options: {
+                scales: {
+                    y: {
+                        title: {
+                            display: true,
+                            text: "Number",
+                            font: {
+                                weight: 'bold'
+                            }
+                        },
+                    },
+                    x: {
+                        title: {
+                            display: true,
+                            text: "Symptom",
+                            font: {
+                                weight: 'bold'
+                            }
+                        },
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                }
+            }
+        });
 
                         const causeData = {
         labels: ["Alcohol","Gambling","Depression","Anxiety Disorder","Drug Addiction"],

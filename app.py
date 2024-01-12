@@ -119,7 +119,7 @@ def result(score):
         if session["username"] == "test123":
             isAdmin = True
     return render_template('result.html', score=score,isLogin=isLogin,isAdmin=isAdmin)
-@app.route("/statistics",methods=['GET','POST'])
+@app.route("/statistics", methods=['GET', 'POST'])
 def statistics():
     isAdmin = False
     isLogin = False
@@ -127,7 +127,31 @@ def statistics():
         isLogin = True
         if session["username"] == "test123":
             isAdmin = True
-    return render_template('statistics.html',isLogin=isLogin,isAdmin=isAdmin)
+
+    conn = sqlite3.connect('static/database.db')  # Replace 'your_database.db' with the actual database file name
+    cursor = conn.cursor()
+
+    query = "SELECT symptom, COUNT(*) FROM chats GROUP BY symptom;"
+    cursor.execute(query)
+
+    result_dict = dict(cursor.fetchall())
+
+    # Close the database connection
+    conn.close()
+
+    # Convert result_dict to the format expected by Chart.js
+    symptom_labels = list(result_dict.keys())
+    symptom_counts = list(result_dict.values())
+
+    symptomData = {
+        'labels': symptom_labels,
+        'datasets': [{
+            'data': symptom_counts,
+            'backgroundColor': ["#FF6384", "#CC94CC", "#FFCE56", "#E9C074", "#E774E9"]
+        }]
+    }
+
+    return render_template('statistics.html', isLogin=isLogin, isAdmin=isAdmin, symptomData=symptomData)
 @app.route("/survey",methods=['GET','POST'])
 def survey():
     isAdmin = False
