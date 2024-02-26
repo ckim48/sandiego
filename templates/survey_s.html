@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Relaxio</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="../static/assets/img/favicon.png" rel="icon">
+  <link href="../static/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="../static/assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+  <link href="../static/assets/vendor/animate.css/animate.min.css" rel="stylesheet">
+  <link href="../static/assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="../static/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../static/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="../static/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="../static/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="../static/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="../static/assets/css/style.css" rel="stylesheet">
+
+</head>
+
+<body class="d-flex flex-column min-vh-100">
+
+
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top">
+    <div class="container d-flex align-items-center">
+
+      <!-- <a href="index.html" class="logo me-auto"><img src="../static/assets/img/logo.png" alt=""></a> -->
+      <!-- Uncomment below if you prefer to use an image logo -->
+      <h1 class="logo me-auto"><a href="{{url_for('index')}}">Relaxio</a></h1>
+
+      <nav id="navbar" class="navbar order-last order-lg-0">
+        <ul>
+          <li><a class="nav-link scrollto " href="{{url_for('about')}}">About</a></li>
+          <li><a class="nav-link scrollto" href="{{url_for('bsurvey')}}">WELLNESS CHECK-UP</a></li>
+                                                        {% if isAdmin %}
+
+          <li><a class="nav-link scrollto" href="{{url_for('chat_admin')}}">CHAT</a></li>
+            {%else%}
+                                                        {% if isLogin %}
+          <li class="dropdown"><a class="nav-link scrollto" href="{{url_for('chat')}}">CHAT<i class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li><a class="nav-link scrollto" href="{{url_for('chat')}}">Send Message</a></li>
+              <li><a class="nav-link scrollto" href="{{url_for('chat_user')}}">Inbox</a></li>
+            </ul>
+          </li>
+
+            {%endif%}
+
+            {%endif%}
+
+            <li><a class="nav-link scrollto" href="{{url_for('statistics')}}">DATA</a></li>
+          <li><a class="nav-link scrollto" href="{{url_for('assistants')}}">SUPPORT</a></li>
+            {% if isLogin %}
+            <li class="logoutmenu"><a class="nav-link scrollto" href="{{url_for('logout')}}">Logout</a></li>
+
+            {% else %}
+
+            {%endif%}
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+{% if isLogin %}
+      <a class="appointment-btn scrollto"  href="{{url_for('logout')}}"><span class="d-none d-md-inline">Logout</span> </a>
+
+        {%else%}
+              <a href="#appointment" class="appointment-btn scrollto"><span class="d-none d-md-inline">Login</span> </a>
+
+        {%endif%}
+
+    </div>
+  </header><!-- End Header -->
+
+
+
+  <main id="main">
+
+    <!-- ======= Featured Services Section ======= -->
+    <section id="survey" class="survey mt-5">
+      <div class="container">
+          <div class="section-title" data-aos="fade-up" data-aos-duration="1200">
+          <h2 class="mt-5">Survey</h2>
+          <p>How often have you experienced these symptoms in the past three months? For accurate results, kindly provide honest responses.</p>
+        </div>
+               <form class="mt-7" id="surveyForm" action="/calculate_s" method="post">
+      <div class="form-group text-center" data-aos="fade-in" data-aos-duration="1200">
+        <label class="questions">1. How often do you find that you stay on SNS longer than you intended?</label><br>
+        <div class="form-check form-check-inline custom-radio">
+          <input class="form-check-input" type="radio" name="question1" id="q1_1" value="0">
+          <label class="form-check-label" for="q1_1">Not Applicable</label>
+        </div>
+        <div class="form-check form-check-inline custom-radio">
+          <input class="form-check-input" type="radio" name="question1" id="q1_2" value="1">
+          <label class="form-check-label" for="q1_2">Rarely</label>
+        </div>
+                  <div class="form-check form-check-inline custom-radio">
+          <input class="form-check-input" type="radio" name="question1" id="q1_3" value=2">
+          <label class="form-check-label" for="q1_3">Occasionally</label>
+        </div>
+        <div class="form-check form-check-inline custom-radio">
+          <input class="form-check-input" type="radio" name="question1" id="q1_4" value="3">
+          <label class="form-check-label" for="q1_4">Frequently</label>
+        </div>
+                  <div class="form-check form-check-inline custom-radio">
+          <input class="form-check-input" type="radio" name="question1" id="q1_5" value="4">
+          <label class="form-check-label" for="q1_5">Often</label>
+        </div>
+                            <div class="form-check form-check-inline custom-radio">
+          <input class="form-check-input" type="radio" name="question1" id="q1_6" value="5">
+          <label class="form-check-label" for="q1_6">Always</label>
+        </div>
+
+        <!-- Repeat the similar structure for other options -->
+      </div>
+
+      <!-- Add similar form groups for the rest of the questions -->
+      
+      <!-- Example for another question -->
+      <div class="form-group text-center" data-aos="fade-in" data-aos-duration="1200">
+        <label class="questions">2. How often do you neglect your work to spend more time on SNS?</label><br>
+  <div class="form-check form-check-inline custom-radio">
+          <input class="form-check-input" type="radio" name="question2" id="q2_1" value="0">
+          <label class="form-check-label" for="q2_1">Not Applicable</label>
+        </div>
+        <div class="form-check form-check-inline custom-radio">
+          <input class="form-check-input" type="radio" name="question2" id="q2_2" value="1">
+          <label class="form-check-label" for="q2_2">Rarely</label>
+        </div>
+                  <div class="form-check form-check-inline custom-radio">
+          <input class="form-check-input" type="radio" name="question2" id="q2_3" value=2">
+          <label class="form-check-label" for="q2_3">Occasionally</label>
+        </div>
+        <div class="form-check form-check-inline custom-radio">
+          <input class="form-check-input" type="radio" name="question2" id="q2_4" value="3">
+          <label class="form-check-label" for="q2_4">Frequently</label>
+        </div>
+                  <div class="form-check form-check-inline custom-radio">
+          <input class="form-check-input" type="radio" name="question2" id="q2_5" value="4">
+          <label class="form-check-label" for="q2_5">Often</label>
+        </div>
+                            <div class="form-check form-check-inline custom-radio">
+          <input class="form-check-input" type="radio" name="question2" id="q2_6" value="5">
+          <label class="form-check-label" for="q2_6">Always</label>
+        </div>
+
+        <!-- Repeat the similar structure for other options -->
+      </div>
+            <div class="form-group text-center" data-aos="fade-in" data-aos-duration="1200">
+        <label class="questions">3. How often do you prefer the excitement of SNS to intimacy with your friends?</label><br>
+<div class="form-check form-check-inline custom-radio">
+          <input class="form-check-input" type="radio" name="question3" id="q3_1" value="0">
+          <label class="form-check-label" for="q3_1">Not Applicable</label>
+        </div>
+        <div class="form-check form-check-inline custom-radio">
+          <input class="form-check-input" type="radio" name="question3" id="q3_2" value="1">
+          <label class="form-check-label" for="q3_2">Rarely</label>
+        </div>
+                  <div class="form-check form-check-inline custom-radio">
+          <input class="form-check-input" type="radio" name="question3" id="q3_3" value=2">
+          <label class="form-check-label" for="q3_3">Occasionally</label>
+        </div>
+        <div class="form-check form-check-inline custom-radio">
+          <input class="form-check-input" type="radio" name="question3" id="q3_4" value="3">
+          <label class="form-check-label" for="q3_4">Frequently</label>
+        </div>
+                  <div class="form-check form-check-inline custom-radio">
+          <input class="form-check-input" type="radio" name="question3" id="q3_5" value="4">
+          <label class="form-check-label" for="q3_5">Often</label>
+        </div>
+                            <div class="form-check form-check-inline custom-radio">
+          <input class="form-check-input" type="radio" name="question3" id="q3_6" value="5">
+          <label class="form-check-label" for="q3_6">Always</label>
+        </div>
+
+        <!-- Repeat the similar structure for other options -->
+      </div>
+            <div class="form-group text-center" data-aos="fade-in" data-aos-duration="1200">
+        <label class="questions">4. How often do you form new relationships with fellow SNS users?</label><br>
+        <div class="form-check form-check-inline custom-radio">
+          <input class="form-check-input" type="radio" name="question4" id="q4_1" value="0">
+          <label class="form-check-label" for="q4_1">Not Applicable</label>
+        </div>
+        <div class="form-check form-check-inline custom-radio">
+          <input class="form-check-input" type="radio" name="question4" id="q4_2" value="1">
+          <label class="form-check-label" for="q4_2">Rarely</label>
+        </div>
+                  <div class="form-check form-check-inline custom-radio">
+          <input class="form-check-input" type="radio" name="question4" id="q4_3" value=2">
+          <label class="form-check-label" for="q4_3">Occasionally</label>
+        </div>
+        <div class="form-check form-check-inline custom-radio">
+          <input class="form-check-input" type="radio" name="question4" id="q4_4" value="3">
+          <label class="form-check-label" for="q4_4">Frequently</label>
+        </div>
+                  <div class="form-check form-check-inline custom-radio">
+          <input class="form-check-input" type="radio" name="question4" id="q4_5" value="4">
+          <label class="form-check-label" for="q4_5">Often</label>
+        </div>
+                            <div class="form-check form-check-inline custom-radio">
+          <input class="form-check-input" type="radio" name="question4" id="q4_6" value="5">
+          <label class="form-check-label" for="q4_6">Always</label>
+        </div>
+
+        <!-- Repeat the similar structure for other options -->
+      </div>
+            <div class="form-group text-center" data-aos="fade-in" data-aos-duration="1200">
+        <label class="questions">5. How often do others in your life complain to you about the amount of time you spend on SNS?</label><br>
+  <div class="form-check form-check-inline custom-radio">
+          <input class="form-check-input" type="radio" name="question5" id="q5_1" value="0">
+          <label class="form-check-label" for="q5_1">Not Applicable</label>
+        </div>
+        <div class="form-check form-check-inline custom-radio">
+          <input class="form-check-input" type="radio" name="question5" id="q5_2" value="1">
+          <label class="form-check-label" for="q5_2">Rarely</label>
+        </div>
+                  <div class="form-check form-check-inline custom-radio">
+          <input class="form-check-input" type="radio" name="question5" id="q5_3" value=2">
+          <label class="form-check-label" for="q5_3">Occasionally</label>
+        </div>
+        <div class="form-check form-check-inline custom-radio">
+          <input class="form-check-input" type="radio" name="question5" id="q5_4" value="3">
+          <label class="form-check-label" for="q5_4">Frequently</label>
+        </div>
+                  <div class="form-check form-check-inline custom-radio">
+          <input class="form-check-input" type="radio" name="question5" id="q5_5" value="4">
+          <label class="form-check-label" for="q5_5">Often</label>
+        </div>
+                            <div class="form-check form-check-inline custom-radio">
+          <input class="form-check-input" type="radio" name="question5" id="q5_6" value="5">
+          <label class="form-check-label" for="q5_6">Always</label>
+        </div>
+        <!-- Repeat the similar structure for other options -->
+      </div>
+                    <div class="form-group text-center" data-aos="fade-in" data-aos-duration="1200">
+        <label class="questions">6. How often do your grades or school work suffer because of the amount of time you spend on SNS?</label><br>
+  <div class="form-check form-check-inline custom-radio">
+          <input class="form-check-input" type="radio" name="question6" id="q6_1" value="0">
+          <label class="form-check-label" for="q6_1">Not Applicable</label>
+        </div>
+        <div class="form-check form-check-inline custom-radio">
+          <input class="form-check-input" type="radio" name="question6" id="q6_2" value="1">
+          <label class="form-check-label" for="q6_2">Rarely</label>
+        </div>
+                  <div class="form-check form-check-inline custom-radio">
+          <input class="form-check-input" type="radio" name="question6" id="q6_3" value=2">
+          <label class="form-check-label" for="q6_3">Occasionally</label>
+        </div>
+        <div class="form-check form-check-inline custom-radio">
+          <input class="form-check-input" type="radio" name="question6" id="q6_4" value="3">
+          <label class="form-check-label" for="q6_4">Frequently</label>
+        </div>
+                  <div class="form-check form-check-inline custom-radio">
+          <input class="form-check-input" type="radio" name="question6" id="q6_5" value="4">
+          <label class="form-check-label" for="q6_5">Often</label>
+        </div>
+                            <div class="form-check form-check-inline custom-radio">
+          <input class="form-check-input" type="radio" name="question6" id="q6_6" value="5">
+          <label class="form-check-label" for="q6_6">Always</label>
+        </div>
+
+        <!-- Repeat the similar structure for other options -->
+      </div>
+            <div class="form-group text-center" data-aos="fade-in" data-aos-duration="1200">
+        <label class="questions">7. How often does your academic performance or productivity suffer because of SNS?</label><br>
+  <div class="form-check form-check-inline custom-radio">
+          <input class="form-check-input" type="radio" name="question7" id="q7_1" value="0">
+          <label class="form-check-label" for="q7_1">Not Applicable</label>
+        </div>
+        <div class="form-check form-check-inline custom-radio">
+          <input class="form-check-input" type="radio" name="question7" id="q7_2" value="1">
+          <label class="form-check-label" for="q7_2">Rarely</label>
+        </div>
+                  <div class="form-check form-check-inline custom-radio">
+          <input class="form-check-input" type="radio" name="question7" id="q7_3" value=2">
+          <label class="form-check-label" for="q7_3">Occasionally</label>
+        </div>
+        <div class="form-check form-check-inline custom-radio">
+          <input class="form-check-input" type="radio" name="question7" id="q7_4" value="3">
+          <label class="form-check-label" for="q7_4">Frequently</label>
+        </div>
+                  <div class="form-check form-check-inline custom-radio">
+          <input class="form-check-input" type="radio" name="question7" id="q7_5" value="4">
+          <label class="form-check-label" for="q7_5">Often</label>
+        </div>
+                            <div class="form-check form-check-inline custom-radio">
+          <input class="form-check-input" type="radio" name="question7" id="q7_6" value="5">
+          <label class="form-check-label" for="q7_6">Always</label>
+        </div>
+
+        <!-- Repeat the similar structure for other options -->
+      </div>
+            <div class="form-group text-center" data-aos="fade-in" data-aos-duration="1200">
+        <label class="questions">8. How often do you become defensive or secretive when anyone asks you what you do on SNS?
+</label><br>
+  <div class="form-check form-check-inline custom-radio">
+          <input class="form-check-input" type="radio" name="question8" id="q8_1" value="0">
+          <label class="form-check-label" for="q8_1">Not Applicable</label>
+        </div>
+        <div class="form-check form-check-inline custom-radio">
+          <input class="form-check-input" type="radio" name="question8" id="q8_2" value="1">
+          <label class="form-check-label" for="q8_2">Rarely</label>
+        </div>
+                  <div class="form-check form-check-inline custom-radio">
+          <input class="form-check-input" type="radio" name="question8" id="q8_3" value=2">
+          <label class="form-check-label" for="q8_3">Occasionally</label>
+        </div>
+        <div class="form-check form-check-inline custom-radio">
+          <input class="form-check-input" type="radio" name="question8" id="q8_4" value="3">
+          <label class="form-check-label" for="q8_4">Frequently</label>
+        </div>
+                  <div class="form-check form-check-inline custom-radio">
+          <input class="form-check-input" type="radio" name="question8" id="q8_5" value="4">
+          <label class="form-check-label" for="q8_5">Often</label>
+        </div>
+                            <div class="form-check form-check-inline custom-radio">
+          <input class="form-check-input" type="radio" name="question8" id="q8_6" value="5">
+          <label class="form-check-label" for="q8_6">Always</label>
+        </div>
+        <!-- Repeat the similar structure for other options -->
+      </div>
+            <div class="form-group text-center" data-aos="fade-in" data-aos-duration="1200">
+        <label class="questions">9. How often do you block out disturbing thoughts about your life with soothing thoughts of SNS?</label><br>
+  <div class="form-check form-check-inline custom-radio">
+          <input class="form-check-input" type="radio" name="question9" id="q9_1" value="0">
+          <label class="form-check-label" for="q9_1">Not Applicable</label>
+        </div>
+        <div class="form-check form-check-inline custom-radio">
+          <input class="form-check-input" type="radio" name="question9" id="q9_2" value="1">
+          <label class="form-check-label" for="q9_2">Rarely</label>
+        </div>
+                  <div class="form-check form-check-inline custom-radio">
+          <input class="form-check-input" type="radio" name="question9" id="q9_3" value=2">
+          <label class="form-check-label" for="q9_3">Occasionally</label>
+        </div>
+        <div class="form-check form-check-inline custom-radio">
+          <input class="form-check-input" type="radio" name="question9" id="q9_4" value="3">
+          <label class="form-check-label" for="q9_4">Frequently</label>
+        </div>
+                  <div class="form-check form-check-inline custom-radio">
+          <input class="form-check-input" type="radio" name="question9" id="q9_5" value="4">
+          <label class="form-check-label" for="q9_5">Often</label>
+        </div>
+                            <div class="form-check form-check-inline custom-radio">
+          <input class="form-check-input" type="radio" name="question9" id="q9_6" value="5">
+          <label class="form-check-label" for="q9_6">Always</label>
+        </div>
+
+      </div>
+
+                  <div class="form-group text-center" data-aos="fade-in" data-aos-duration="1200">
+        <label class="questions">10. How often do you find yourself anticipating when you will go to SNS again?</label><br>
+  <div class="form-check form-check-inline custom-radio">
+          <input class="form-check-input" type="radio" name="question10" id="q10_1" value="0">
+          <label class="form-check-label" for="q10_1">Not Applicable</label>
+        </div>
+        <div class="form-check form-check-inline custom-radio">
+          <input class="form-check-input" type="radio" name="question10" id="q10_2" value="1">
+          <label class="form-check-label" for="q10_2">Rarely</label>
+        </div>
+                  <div class="form-check form-check-inline custom-radio">
+          <input class="form-check-input" type="radio" name="question10" id="q10_3" value=2">
+          <label class="form-check-label" for="q10_3">Occasionally</label>
+        </div>
+        <div class="form-check form-check-inline custom-radio">
+          <input class="form-check-input" type="radio" name="question10" id="q10_4" value="3">
+          <label class="form-check-label" for="q10_4">Frequently</label>
+        </div>
+                  <div class="form-check form-check-inline custom-radio">
+          <input class="form-check-input" type="radio" name="question10" id="q10_5" value="4">
+          <label class="form-check-label" for="q10_5">Often</label>
+        </div>
+                            <div class="form-check form-check-inline custom-radio">
+          <input class="form-check-input" type="radio" name="question10" id="q10_6" value="5">
+          <label class="form-check-label" for="q10_6">Always</label>
+        </div>
+
+      </div>
+
+                               <div class="form-group text-center" data-aos="fade-in" data-aos-duration="1200">
+        <label class="questions">11. How often do you fear that life without SNS would be boring, empty, and joyless?</label><br>
+  <div class="form-check form-check-inline custom-radio">
+          <input class="form-check-input" type="radio" name="question11" id="q11_1" value="0">
+          <label class="form-check-label" for="q11_1">Not Applicable</label>
+        </div>
+        <div class="form-check form-check-inline custom-radio">
+          <input class="form-check-input" type="radio" name="question11" id="q11_2" value="1">
+          <label class="form-check-label" for="q11_2">Rarely</label>
+        </div>
+                  <div class="form-check form-check-inline custom-radio">
+          <input class="form-check-input" type="radio" name="question11" id="q11_3" value=2">
+          <label class="form-check-label" for="q11_3">Occasionally</label>
+        </div>
+        <div class="form-check form-check-inline custom-radio">
+          <input class="form-check-input" type="radio" name="question11" id="q11_4" value="3">
+          <label class="form-check-label" for="q11_4">Frequently</label>
+        </div>
+                  <div class="form-check form-check-inline custom-radio">
+          <input class="form-check-input" type="radio" name="question11" id="q11_5" value="4">
+          <label class="form-check-label" for="q11_5">Often</label>
+        </div>
+                            <div class="form-check form-check-inline custom-radio">
+          <input class="form-check-input" type="radio" name="question11" id="q11_6" value="5">
+          <label class="form-check-label" for="q11_6">Always</label>
+        </div>
+
+      </div>
+                               <div class="form-group text-center" data-aos="fade-in" data-aos-duration="1200">
+        <label class="questions">12. How often do you snap, yell, or act annoyed if someone bothers you while you are on SNS?</label><br>
+  <div class="form-check form-check-inline custom-radio">
+          <input class="form-check-input" type="radio" name="question12" id="q12_1" value="0">
+          <label class="form-check-label" for="q12_1">Not Applicable</label>
+        </div>
+        <div class="form-check form-check-inline custom-radio">
+          <input class="form-check-input" type="radio" name="question12" id="q12_2" value="1">
+          <label class="form-check-label" for="q12_2">Rarely</label>
+        </div>
+                  <div class="form-check form-check-inline custom-radio">
+          <input class="form-check-input" type="radio" name="question12" id="q12_3" value=2">
+          <label class="form-check-label" for="q12_3">Occasionally</label>
+        </div>
+        <div class="form-check form-check-inline custom-radio">
+          <input class="form-check-input" type="radio" name="question12" id="q12_4" value="3">
+          <label class="form-check-label" for="q12_4">Frequently</label>
+        </div>
+                  <div class="form-check form-check-inline custom-radio">
+          <input class="form-check-input" type="radio" name="question12" id="q12_5" value="4">
+          <label class="form-check-label" for="q12_5">Often</label>
+        </div>
+                            <div class="form-check form-check-inline custom-radio">
+          <input class="form-check-input" type="radio" name="question12" id="q12_6" value="5">
+          <label class="form-check-label" for="q12_6">Always</label>
+        </div>
+
+      </div>
+                               <div class="form-group text-center" data-aos="fade-in" data-aos-duration="1200">
+        <label class="questions">13. How often do you lose sleep due to being on SNS?</label><br>
+  <div class="form-check form-check-inline custom-radio">
+          <input class="form-check-input" type="radio" name="question13" id="q13_1" value="0">
+          <label class="form-check-label" for="q13_1">Not Applicable</label>
+        </div>
+        <div class="form-check form-check-inline custom-radio">
+          <input class="form-check-input" type="radio" name="question13" id="q13_2" value="1">
+          <label class="form-check-label" for="q13_2">Rarely</label>
+        </div>
+                  <div class="form-check form-check-inline custom-radio">
+          <input class="form-check-input" type="radio" name="question13" id="q13_3" value=2">
+          <label class="form-check-label" for="q13_3">Occasionally</label>
+        </div>
+        <div class="form-check form-check-inline custom-radio">
+          <input class="form-check-input" type="radio" name="question13" id="q13_4" value="3">
+          <label class="form-check-label" for="q13_4">Frequently</label>
+        </div>
+                  <div class="form-check form-check-inline custom-radio">
+          <input class="form-check-input" type="radio" name="question13" id="q13_5" value="4">
+          <label class="form-check-label" for="q13_5">Often</label>
+        </div>
+                            <div class="form-check form-check-inline custom-radio">
+          <input class="form-check-input" type="radio" name="question13" id="q13_6" value="5">
+          <label class="form-check-label" for="q13_6">Always</label>
+        </div>
+
+      </div>
+                               <div class="form-group text-center" data-aos="fade-in" data-aos-duration="1200">
+        <label class="questions">14. How often do you feel preoccupied with SNS when off-line, or fantasize about being online?</label><br>
+  <div class="form-check form-check-inline custom-radio">
+          <input class="form-check-input" type="radio" name="question14" id="q14_1" value="0">
+          <label class="form-check-label" for="q14_1">Not Applicable</label>
+        </div>
+        <div class="form-check form-check-inline custom-radio">
+          <input class="form-check-input" type="radio" name="question14" id="q14_2" value="1">
+          <label class="form-check-label" for="q14_2">Rarely</label>
+        </div>
+                  <div class="form-check form-check-inline custom-radio">
+          <input class="form-check-input" type="radio" name="question14" id="q14_3" value=2">
+          <label class="form-check-label" for="q14_3">Occasionally</label>
+        </div>
+        <div class="form-check form-check-inline custom-radio">
+          <input class="form-check-input" type="radio" name="question14" id="q14_4" value="3">
+          <label class="form-check-label" for="q14_4">Frequently</label>
+        </div>
+                  <div class="form-check form-check-inline custom-radio">
+          <input class="form-check-input" type="radio" name="question14" id="q14_5" value="4">
+          <label class="form-check-label" for="q14_5">Often</label>
+        </div>
+                            <div class="form-check form-check-inline custom-radio">
+          <input class="form-check-input" type="radio" name="question14" id="q14_6" value="5">
+          <label class="form-check-label" for="q14_6">Always</label>
+        </div>
+
+      </div>
+                               <div class="form-group text-center" data-aos="fade-in" data-aos-duration="1200">
+        <label class="questions">15. How often do you find yourself saying “just a few more minutes” when on SNS?</label><br>
+  <div class="form-check form-check-inline custom-radio">
+          <input class="form-check-input" type="radio" name="question15" id="q15_1" value="0">
+          <label class="form-check-label" for="q15_1">Not Applicable</label>
+        </div>
+        <div class="form-check form-check-inline custom-radio">
+          <input class="form-check-input" type="radio" name="question15" id="q15_2" value="1">
+          <label class="form-check-label" for="q15_2">Rarely</label>
+        </div>
+                  <div class="form-check form-check-inline custom-radio">
+          <input class="form-check-input" type="radio" name="question15" id="q15_3" value=2">
+          <label class="form-check-label" for="q15_3">Occasionally</label>
+        </div>
+        <div class="form-check form-check-inline custom-radio">
+          <input class="form-check-input" type="radio" name="question15" id="q15_4" value="3">
+          <label class="form-check-label" for="q15_4">Frequently</label>
+        </div>
+                  <div class="form-check form-check-inline custom-radio">
+          <input class="form-check-input" type="radio" name="question15" id="q15_5" value="4">
+          <label class="form-check-label" for="q15_5">Often</label>
+        </div>
+                            <div class="form-check form-check-inline custom-radio">
+          <input class="form-check-input" type="radio" name="question15" id="q15_6" value="5">
+          <label class="form-check-label" for="q15_6">Always</label>
+        </div>
+      </div>
+
+                                                  <div class="form-group text-center" data-aos="fade-in" data-aos-duration="1200">
+        <label class="questions">16. How often do you try to cut down the amount of time you spend on SNS and fail?</label><br>
+  <div class="form-check form-check-inline custom-radio">
+          <input class="form-check-input" type="radio" name="question16" id="q16_1" value="0">
+          <label class="form-check-label" for="q16_1">Not Applicable</label>
+        </div>
+        <div class="form-check form-check-inline custom-radio">
+          <input class="form-check-input" type="radio" name="question16" id="q16_2" value="1">
+          <label class="form-check-label" for="q16_2">Rarely</label>
+        </div>
+                  <div class="form-check form-check-inline custom-radio">
+          <input class="form-check-input" type="radio" name="question16" id="q16_3" value=2">
+          <label class="form-check-label" for="q16_3">Occasionally</label>
+        </div>
+        <div class="form-check form-check-inline custom-radio">
+          <input class="form-check-input" type="radio" name="question16" id="q16_4" value="3">
+          <label class="form-check-label" for="q16_4">Frequently</label>
+        </div>
+                  <div class="form-check form-check-inline custom-radio">
+          <input class="form-check-input" type="radio" name="question16" id="q16_5" value="4">
+          <label class="form-check-label" for="q16_5">Often</label>
+        </div>
+                            <div class="form-check form-check-inline custom-radio">
+          <input class="form-check-input" type="radio" name="question16" id="q16_6" value="5">
+          <label class="form-check-label" for="q16_6">Always</label>
+        </div>
+      </div>
+
+                                                  <div class="form-group text-center" data-aos="fade-in" data-aos-duration="1200">
+        <label class="questions">17. How often do you try to hide how long you’ve been on SNS?</label><br>
+  <div class="form-check form-check-inline custom-radio">
+          <input class="form-check-input" type="radio" name="question17" id="q17_1" value="0">
+          <label class="form-check-label" for="q17_1">Not Applicable</label>
+        </div>
+        <div class="form-check form-check-inline custom-radio">
+          <input class="form-check-input" type="radio" name="question17" id="q17_2" value="1">
+          <label class="form-check-label" for="q17_2">Rarely</label>
+        </div>
+                  <div class="form-check form-check-inline custom-radio">
+          <input class="form-check-input" type="radio" name="question17" id="q17_3" value=2">
+          <label class="form-check-label" for="q17_3">Occasionally</label>
+        </div>
+        <div class="form-check form-check-inline custom-radio">
+          <input class="form-check-input" type="radio" name="question17" id="q17_4" value="3">
+          <label class="form-check-label" for="q17_4">Frequently</label>
+        </div>
+                  <div class="form-check form-check-inline custom-radio">
+          <input class="form-check-input" type="radio" name="question17" id="q17_5" value="4">
+          <label class="form-check-label" for="q17_5">Often</label>
+        </div>
+                            <div class="form-check form-check-inline custom-radio">
+          <input class="form-check-input" type="radio" name="question17" id="q17_6" value="5">
+          <label class="form-check-label" for="q17_6">Always</label>
+        </div>
+
+      </div>
+
+                                                  <div class="form-group text-center" data-aos="fade-in" data-aos-duration="1200">
+        <label class="questions">18. How often do you choose to spend more time on SNS over going out with others?</label><br>
+  <div class="form-check form-check-inline custom-radio">
+          <input class="form-check-input" type="radio" name="question18" id="q18_1" value="0">
+          <label class="form-check-label" for="q18_1">Not Applicable</label>
+        </div>
+        <div class="form-check form-check-inline custom-radio">
+          <input class="form-check-input" type="radio" name="question18" id="q18_2" value="1">
+          <label class="form-check-label" for="q18_2">Rarely</label>
+        </div>
+                  <div class="form-check form-check-inline custom-radio">
+          <input class="form-check-input" type="radio" name="question18" id="q18_3" value=2">
+          <label class="form-check-label" for="q18_3">Occasionally</label>
+        </div>
+        <div class="form-check form-check-inline custom-radio">
+          <input class="form-check-input" type="radio" name="question18" id="q18_4" value="3">
+          <label class="form-check-label" for="q18_4">Frequently</label>
+        </div>
+                  <div class="form-check form-check-inline custom-radio">
+          <input class="form-check-input" type="radio" name="question18" id="q18_5" value="4">
+          <label class="form-check-label" for="q18_5">Often</label>
+        </div>
+                            <div class="form-check form-check-inline custom-radio">
+          <input class="form-check-input" type="radio" name="question18" id="q18_6" value="5">
+          <label class="form-check-label" for="q18_6">Always</label>
+        </div>
+
+      </div>
+
+                                                  <div class="form-group text-center" data-aos="fade-in" data-aos-duration="1200">
+        <label class="questions">19. How often do you feel depressed, moody, or nervous when you are offline from SNS, which goes away once you are back online?
+</label><br>
+  <div class="form-check form-check-inline custom-radio">
+          <input class="form-check-input" type="radio" name="question19" id="q19_1" value="0">
+          <label class="form-check-label" for="q19_1">Not Applicable</label>
+        </div>
+        <div class="form-check form-check-inline custom-radio">
+          <input class="form-check-input" type="radio" name="question19" id="q19_2" value="1">
+          <label class="form-check-label" for="q19_2">Rarely</label>
+        </div>
+                  <div class="form-check form-check-inline custom-radio">
+          <input class="form-check-input" type="radio" name="question19" id="q19_3" value=2">
+          <label class="form-check-label" for="q19_3">Occasionally</label>
+        </div>
+        <div class="form-check form-check-inline custom-radio">
+          <input class="form-check-input" type="radio" name="question19" id="q19_4" value="3">
+          <label class="form-check-label" for="q19_4">Frequently</label>
+        </div>
+                  <div class="form-check form-check-inline custom-radio">
+          <input class="form-check-input" type="radio" name="question19" id="q19_5" value="4">
+          <label class="form-check-label" for="q19_5">Often</label>
+        </div>
+                            <div class="form-check form-check-inline custom-radio">
+          <input class="form-check-input" type="radio" name="question19" id="q19_6" value="5">
+          <label class="form-check-label" for="q19_6">Always</label>
+        </div>
+
+      </div>
+
+                                                  <div class="form-group text-center" data-aos="fade-in" data-aos-duration="1200">
+        <label class="questions">20. How often do you check your SNS messages before something else that you need to do?</label><br>
+  <div class="form-check form-check-inline custom-radio">
+          <input class="form-check-input" type="radio" name="question20" id="q20_1" value="0">
+          <label class="form-check-label" for="q20_1">Not Applicable</label>
+        </div>
+        <div class="form-check form-check-inline custom-radio">
+          <input class="form-check-input" type="radio" name="question20" id="q20_2" value="1">
+          <label class="form-check-label" for="q20_2">Rarely</label>
+        </div>
+                  <div class="form-check form-check-inline custom-radio">
+          <input class="form-check-input" type="radio" name="question20" id="q20_3" value=2">
+          <label class="form-check-label" for="q20_3">Occasionally</label>
+        </div>
+        <div class="form-check form-check-inline custom-radio">
+          <input class="form-check-input" type="radio" name="question20" id="q20_4" value="3">
+          <label class="form-check-label" for="q20_4">Frequently</label>
+        </div>
+                  <div class="form-check form-check-inline custom-radio">
+          <input class="form-check-input" type="radio" name="question20" id="q20_5" value="4">
+          <label class="form-check-label" for="q20_5">Often</label>
+        </div>
+                            <div class="form-check form-check-inline custom-radio">
+          <input class="form-check-input" type="radio" name="question20" id="q20_6" value="5">
+          <label class="form-check-label" for="q20_6">Always</label>
+        </div>
+
+      </div>
+<!--       <div class="text-center">
+        <a class="btn submit-btn mt-5" href="result.html"data-aos="fade-doen" data-aos-duration="1200">Submit</a>
+      </div>  -->   
+    </form>
+
+
+      </div>
+
+
+
+    </section><!-- End Cta Section -->
+
+
+   
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer" class="mt-auto">
+
+
+    <div class="container">
+      <div class="copyright">
+        &copy; Copyright <strong><span>Relaxio</span></strong>. All Rights Reserved
+      </div>
+
+    </div>
+  </footer><!-- End Footer -->
+
+  <div id="preloader"></div>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="../static/assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="../static/assets/vendor/aos/aos.js"></script>
+  <script src="../static/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../static/assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="../static/assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="../static/assets/vendor/php-email-form/validate.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="../static/assets/js/main.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const form = document.getElementById("surveyForm");
+      const questions = form.querySelectorAll(".form-group");
+
+      let currentQuestion = 0;
+
+      // Function to show the next question
+      const showNextQuestion = () => {
+        if (currentQuestion < questions.length - 1) {
+          questions[currentQuestion].style.display = "none";
+          currentQuestion++;
+          questions[currentQuestion].style.display = "block";
+        } else {
+          form.submit(); // Submit the form if all questions are answered
+        }
+      };
+
+      // Hide all questions except the first one initially
+      for (let i = 1; i < questions.length; i++) {
+        questions[i].style.display = "none";
+      }
+
+      // Listen for change events on radio inputs to show the next question
+      form.addEventListener("change", showNextQuestion);
+    });
+</script>
+<script>
+  $(document).ready(function() {
+    $('input[type=radio]').change(function() {
+      var totalQuestions = 20; // Total number of questions
+      var answeredQuestions = $('input[type=radio]:checked').length;
+
+      if (answeredQuestions === totalQuestions) {
+        $('#surveyForm').submit(); // Submit the form when all questions are answered
+      }
+    });
+  });
+</script>
+</body>
+
+</html>
