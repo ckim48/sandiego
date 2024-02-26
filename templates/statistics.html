@@ -51,7 +51,7 @@
 
           <li><a class="nav-link scrollto" href="{{url_for('chat_admin')}}">CHAT</a></li>
             {%else%}
-                                                        {% if isLogin %}
+
           <li class="dropdown"><a class="nav-link scrollto" href="{{url_for('chat')}}">CHAT<i class="bi bi-chevron-down"></i></a>
             <ul>
               <li><a class="nav-link scrollto" href="{{url_for('chat')}}">Send Message</a></li>
@@ -59,7 +59,6 @@
             </ul>
           </li>
 
-            {%endif%}
 
             {%endif%}
 
@@ -69,6 +68,7 @@
             <li class="logoutmenu"><a class="nav-link scrollto" href="{{url_for('logout')}}">Logout</a></li>
 
             {% else %}
+            <li class="logoutmenu"><a class="nav-link scrollto" href="{{url_for('login')}}">Login</a></li>
 
             {%endif%}
         </ul>
@@ -78,7 +78,7 @@
       <a class="appointment-btn scrollto"  href="{{url_for('logout')}}"><span class="d-none d-md-inline">Logout</span> </a>
 
         {%else%}
-              <a href="#appointment" class="appointment-btn scrollto"><span class="d-none d-md-inline">Login</span> </a>
+              <a href="{{url_for('login')}}" class="appointment-btn scrollto"><span class="d-none d-md-inline">Login</span> </a>
 
         {%endif%}
 
@@ -289,49 +289,39 @@
 
 
 
-                  const symptomData = {
-        labels: ["Angry", "Depress","Shaking","Unstable Moods","Poor Judgement"],
-        datasets: [{
-          data: [10,10,10, 40,20],
-          backgroundColor: ["#FF6384", "#CC94CC", "#FFCE56","#E9C074","#E774E9"]
-        }]
-      };
+ const symptomData = {{ symptomData|tojson|safe }};
 
-
-      new Chart(symptomCanvas, {
-        type: 'bar',
-        data: symptomData,
-		    options:{
-		    	scales:{
-		    		y:{
-		    			title:{
-		    				display:true,
-		    				text:"Number",
-		    				          font: {
-            weight: 'bold'
-          }
-		    			},
-
-		    		},
-		    		x:{
-		    			title:{
-		    				display:true,
-		    				text:"Symptom",
-		    				          font: {
-            weight: 'bold'
-          }
-		    			},
-		    		}
-		    	},
-		    	plugins:{
-		    		legend:{
-		    			display:false
-		    		}
-		    	}
-		    }
-
-      });
-
+        new Chart(symptomCanvas, {
+            type: 'bar',
+            data: symptomData,
+            options: {
+                scales: {
+                    y: {
+                        title: {
+                            display: true,
+                            text: "Number",
+                            font: {
+                                weight: 'bold'
+                            }
+                        },
+                    },
+                    x: {
+                        title: {
+                            display: true,
+                            text: "Symptom",
+                            font: {
+                                weight: 'bold'
+                            }
+                        },
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                }
+            }
+        });
 
                         const causeData = {
         labels: ["Alcohol","Gambling","Depression","Anxiety Disorder","Drug Addiction"],

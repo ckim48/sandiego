@@ -51,7 +51,7 @@
 
           <li><a class="nav-link scrollto" href="{{url_for('chat_admin')}}">CHAT</a></li>
             {%else%}
-                                                        {% if isLogin %}
+
           <li class="dropdown"><a class="nav-link scrollto" href="{{url_for('chat')}}">CHAT<i class="bi bi-chevron-down"></i></a>
             <ul>
               <li><a class="nav-link scrollto" href="{{url_for('chat')}}">Send Message</a></li>
@@ -59,7 +59,7 @@
             </ul>
           </li>
 
-            {%endif%}
+
 
             {%endif%}
           <li><a class="nav-link scrollto" href="{{url_for('statistics')}}">DATA</a></li>
@@ -68,6 +68,7 @@
             <li class="logoutmenu"><a class="nav-link scrollto" href="{{url_for('logout')}}">Logout</a></li>
 
             {% else %}
+            <li class="logoutmenu"><a class="nav-link scrollto" href="{{url_for('login')}}">Login</a></li>
 
             {%endif%}
         </ul>
@@ -77,7 +78,7 @@
       <a class="appointment-btn scrollto"  href="{{url_for('logout')}}"><span class="d-none d-md-inline">Logout</span> </a>
 
         {%else%}
-              <a href="#appointment" class="appointment-btn scrollto"><span class="d-none d-md-inline">Login</span> </a>
+              <a href="{{url_for('login')}}" class="appointment-btn scrollto"><span class="d-none d-md-inline">Login</span> </a>
 
         {%endif%}
 
