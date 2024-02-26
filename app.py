@@ -1,11 +1,10 @@
-from flask import Flask, render_template, request, redirect, url_for, flash,jsonify
+from flask import Flask, render_template,session, request, redirect, url_for, flash,jsonify
 import sqlite3
 from datetime import datetime
 
 app = Flask(__name__)
 chat_id = 19
 app.secret_key = "abcde"
-session = {} # {'username':'scott2023'}
 def create_connection():
     conn = sqlite3.connect('static/database.db')
     return conn

@@ -1739,6 +1739,20 @@ height: 140px;
   height: auto; /* Maintain aspect ratio */
 }
 
+
+.bottom-right-images {
+  position: fixed;
+  bottom: 100px; /* Adjust the distance from the bottom as needed */
+  right: 50px; /* Adjust the distance from the right as needed */
+  z-index: 9999; /* Set a higher z-index if needed to ensure it's on top */
+}
+
+/* Optional styles for the image */
+.bottom-right-images img {
+  width: 210px; /* Adjust the width of the image */
+  height: auto; /* Maintain aspect ratio */
+}
+
 .bottom-right-imageg {
   position: fixed;
   bottom: 100px; /* Adjust the distance from the bottom as needed */
@@ -1797,6 +1811,9 @@ width:18%;
 margin-top: 20px;
 }
   .bottom-right-imaged{
+    display:none;
+  }
+    .bottom-right-images{
     display:none;
   }
     .bottom-right-imageg{
