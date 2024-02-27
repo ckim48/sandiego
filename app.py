@@ -92,12 +92,12 @@ def about():
 def bsurvey():
     isLogin = False
     isAdmin = False
-    if "username" in session:
-        isLogin = True
-        if session["username"] == "test123":
-            isAdmin = True
-    else:
-        return redirect(url_for('login'))
+    # if "username" in session:
+    #     isLogin = True
+    #     if session["username"] == "test123":
+    #         isAdmin = True
+    # else:
+    #     return redirect(url_for('login'))
     return render_template('before_survey.html',isLogin=isLogin,isAdmin=isAdmin)
 
 @app.route("/assistants",methods=['GET','POST'])
