@@ -1827,7 +1827,7 @@ width:18%;
     color: #fff; /* Text color when checked */
   }
 
-  @media (max-width: 1200px) {
+  @media (max-width: 1290px) {
   .sympmt-3{
 margin-top: 20px;
 }
