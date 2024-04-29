@@ -1700,83 +1700,86 @@ height: 140px;
 }
 .bottom-right-image {
   position: fixed;
-  bottom: 100px; /* Adjust the distance from the bottom as needed */
-  right: 80px; /* Adjust the distance from the right as needed */
-  z-index: 9999; /* Set a higher z-index if needed to ensure it's on top */
+  bottom: 100px;
+  right: 80px;
+  z-index: 9999;
 }
 
 /* Optional styles for the image */
 .bottom-right-image img {
-  width: 250px; /* Adjust the width of the image */
-  height: auto; /* Maintain aspect ratio */
+  width: 250px;
+  height: auto;
+}
+@media (min-width: 1500px) {
+.bottom-right-imageg img {
+  width: 250px;
+  height: auto;
+}
 }
 @media (min-width: 1000px) {
 
 .bottom-right-image img {
-  width: 350px; /* Adjust the width of the image */
-  height: auto; /* Maintain aspect ratio */
+  width: 350px;
+  height: auto;
 }
 .bottom-right-imaged img {
-  width: 430px; /* Adjust the width of the image */
-  height: auto; /* Maintain aspect ratio */
+  width: 430px;
+  height: auto;
 }
 .bottom-right-imageg img {
-  width: 250px; /* Adjust the width of the image */
-  height: auto; /* Maintain aspect ratio */
+  width: 190px;
+  height: auto;
 }
 
 }
 .bottom-right-imaged {
   position: fixed;
-  bottom: 100px; /* Adjust the distance from the bottom as needed */
-  right: 50px; /* Adjust the distance from the right as needed */
-  z-index: 9999; /* Set a higher z-index if needed to ensure it's on top */
+  bottom: 100px;
+  right: 50px;
+  z-index: 9999;
 }
 
-/* Optional styles for the image */
+
 .bottom-right-imaged img {
-  width: 270px; /* Adjust the width of the image */
-  height: auto; /* Maintain aspect ratio */
+  width: 270px;
+  height: auto;
 }
 
 
 .bottom-right-images {
   position: fixed;
-  bottom: 100px; /* Adjust the distance from the bottom as needed */
-  right: 50px; /* Adjust the distance from the right as needed */
-  z-index: 9999; /* Set a higher z-index if needed to ensure it's on top */
+  bottom: 100px;
+  right: 50px;
+  z-index: 9999;
 }
 
-/* Optional styles for the image */
 .bottom-right-images img {
-  width: 210px; /* Adjust the width of the image */
-  height: auto; /* Maintain aspect ratio */
+  width: 210px;
+  height: auto;
 }
 
 .bottom-right-imageg {
   position: fixed;
-  bottom: 100px; /* Adjust the distance from the bottom as needed */
-  right: 140px; /* Adjust the distance from the right as needed */
-  z-index: 9999; /* Set a higher z-index if needed to ensure it's on top */
+  bottom: 100px;
+  right: 140px;
+  z-index: 9999;
 }
 
-/* Optional styles for the image */
 .bottom-right-imageg img {
-  width: 190px; /* Adjust the width of the image */
-  height: auto; /* Maintain aspect ratio */
+  width: 190px;
+  height: auto;
 }
 
 .bottom-right-imageg2 {
   position: fixed;
-  bottom: 100px; /* Adjust the distance from the bottom as needed */
-  right: 50px; /* Adjust the distance from the right as needed */
-  z-index: 9999; /* Set a higher z-index if needed to ensure it's on top */
+  bottom: 100px;
+  right: 50px;
+  z-index: 9999;
 }
 
-/* Optional styles for the image */
 .bottom-right-imageg2 img {
-  width: 200px; /* Adjust the width of the image */
-  height: auto; /* Maintain aspect ratio */
+  width: 200px;
+  height: auto;
 }
 .replyimg{
 width:18%;
@@ -1784,10 +1787,10 @@ width:18%;
   .custom-radio .form-check-label {
   pointer: cursor;
   background-color:#F6DFF6;
-    padding: 0.5rem 1rem; /* Adjust padding as needed */
-    border: 1px solid #F6DFF6;/* Button border color */
-    border-radius: 0.25rem; /* Button border radius */
-    margin-right: 5px; /* Margin between buttons */
+    padding: 0.5rem 1rem;
+    border: 1px solid #F6DFF6;
+    border-radius: 0.25rem;
+    margin-right: 5px;
     transition: 0.4s ease;
   }
     .custom-radio:hover .form-check-label{
