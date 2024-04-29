@@ -1719,6 +1719,10 @@ height: 140px;
 }
 
 @media (max-width: 1390px) {
+bottom-right-imaged img{
+  width: 310px;
+  height: auto;
+}
 .bottom-right-imageg img {
   width: 200px !important;
   height: auto;
