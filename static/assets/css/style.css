@@ -1717,6 +1717,19 @@ height: 140px;
   height: auto;
 }
 }
+
+@media (max-width: 1390px) {
+.bottom-right-imageg img {
+  width: 250px;
+  height: auto;
+}
+.bottom-right-image img {
+  width: 200px !important;
+  height: auto;
+}
+}
+
+
 @media (min-width: 1000px) {
 
 .bottom-right-image img {
