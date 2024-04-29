@@ -1705,21 +1705,22 @@ height: 140px;
   z-index: 9999;
 }
 
-/* Optional styles for the image */
-.bottom-right-image img {
-  width: 250px;
-  height: auto;
-}
+
+
 @media (min-width: 1500px) {
 .bottom-right-imageg img {
   width: 250px;
+  height: auto;
+}
+.bottom-right-image img {
+  width: 350px;
   height: auto;
 }
 }
 @media (min-width: 1000px) {
 
 .bottom-right-image img {
-  width: 350px;
+  width: 230px;
   height: auto;
 }
 .bottom-right-imaged img {
